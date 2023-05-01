@@ -34,3 +34,13 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# Divers
+notes/
+package-lock.json
+yarn.lock
+.idea
+
+# database
+/prisma/migrations
+
