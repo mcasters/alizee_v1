@@ -3,6 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import prisma from "@/lib/prisma";
 import { compare } from "bcrypt";
 
+// @ts-ignore
 export default NextAuth({
   providers: [
     CredentialsProvider({

@@ -1,7 +1,9 @@
-import { unstable_getServerSession } from "next-auth/next";
+import { useSession } from "next-auth/react";
 
-export default async function AuthStatus() {
-  const session = await unstable_getServerSession();
+export default function AuthStatus() {
+  const { data: session, status } = useSession();
+  const loading = status === "loading";
+
   return (
     <div className="absolute top-5 w-full flex justify-center items-center">
       {session && (
