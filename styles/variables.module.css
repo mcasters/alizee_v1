@@ -1,0 +1,47 @@
+:root {
+  /*
+   * Typography
+   * ======================================================================== */
+
+  --font-family-base: Georgia;
+  --font-family-sans: Tahoma;
+
+  /*
+   * Layout
+   * ======================================================================== */
+
+  --max-content-width: 540px;
+  --max-content-half-width: 270px;
+  --red-line-height: 6px;
+  --nav-1-height: 32px;
+  --nav-2-height: 55px;
+  --nav-1-height-without-border: 31px;
+  --red-line-nav-1-height: 38px;
+
+  /*
+   * Colors
+   * ======================================================================== */
+
+  --color-xxlight: #fafafa;
+  --color-xlight: #f3f3f3;
+  --color-light: #d0d0d0;
+  --color-dark: #a1a1a1;
+  --color-xdark: #333;
+
+  --link-color-dark: #be2d01;
+  /*
+   * Font size
+   * ======================================================================== */
+  --font-size-tab: 20px;
+  --font-size-nav: 17px;
+  --font-size-current-title: 15px;
+  --font-size-current-plus-plus: 14px;
+  --font-size-current-plus: 13px;
+  --font-size-current: 12px;
+
+  /*
+   * Form
+   * ======================================================================== */
+  --admin-button-width: 25%;
+
+}
