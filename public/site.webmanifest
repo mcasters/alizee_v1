@@ -1,0 +1,26 @@
+{
+  "short_name": "Alizée Roussel",
+  "name": "Alizée Roussel dressage",
+  "icons": [
+    {
+      "src": "logo-670.png",
+      "sizes": "670x670",
+      "type": "image/png"
+    },
+    {
+      "src": "logo-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "maskable_icon_192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#eee",
+  "display": "standalone",
+  "theme_color": "#9f0424"
+}

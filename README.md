@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://alizeeroussel.fr/">
-    <img src="/public/logo.png" height="96">
+    <img src="/public/logo-670.png" height="96">
     <h2 align="center">Dressage rider website</h2>
   </a>
 </p>

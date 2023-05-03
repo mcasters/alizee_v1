@@ -1,7 +1,7 @@
 import SignOut from "@/components/auth/sign-out";
 import Layout from "@/components/layout/layout";
 
-export default function Home() {
+export default function Admin() {
   return (
     <Layout>
       <div className="flex h-screen bg-black">
