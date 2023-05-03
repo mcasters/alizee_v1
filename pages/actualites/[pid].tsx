@@ -1,26 +1,39 @@
-import useSWR from "swr";
-import { useRouter } from "next/router";
+import React from "react";
+import { GetServerSideProps } from "next";
 
 import Layout from "@/components/layout/layout";
-import type { Post, ResponseError } from "../../interfaces";
+import type { Post } from "../../interfaces";
 import PostComponent from "@/components/actualites/Post";
+import prisma from "@/lib/prisma";
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+  const res = await prisma.post.findUnique({
+    where: {
+      id: Number(params?.pid) || -1,
+    },
+    include: {
+      images: {
+        select: { filename: true, width: true, height: true },
+      },
+      tags: {
+        select: { tag: true },
+      },
+    },
+  });
+  const post = JSON.parse(JSON.stringify(res));
+  return {
+    props: {
+      ...post,
+    },
+  };
+};
 
-export default function PostPage() {
-  const { query } = useRouter();
-  const { data, error, isLoading } = useSWR<Post, ResponseError>(
-    () => (query.pid ? `/api/post/${query.pid}` : null),
-    fetcher
-  );
-
-  if (error) return <div>Failed to load</div>;
-  if (isLoading) return <div>Loading...</div>;
-  if (!data) return null;
-
+const PostPage: React.FC<Post> = (props) => {
   return (
     <Layout>
-      <PostComponent post={data} />
+      <PostComponent post={props} />
     </Layout>
   );
-}
+};
+
+export default PostPage;

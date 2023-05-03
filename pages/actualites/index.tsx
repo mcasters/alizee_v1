@@ -1,26 +1,45 @@
-import useSWR from "swr";
+import React from "react";
+import { GetServerSideProps } from "next";
 
+import prisma from "@/lib/prisma";
 import Layout from "@/components/layout/layout";
-import type { Post } from "../../interfaces";
-import PostListComponent from "@/components/actualites/PostList";
+import ItemListComponent from "@/components/actualites/ItemList";
+import { Post } from "../../interfaces";
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
+export type PostProps = {
+  posts: [Post];
+};
 
-export default function PostPage() {
-  const { data, error, isLoading } = useSWR<Post[]>("/api/post", fetcher);
+export const getServerSideProps: GetServerSideProps = async () => {
+  const res = await prisma.post.findMany({
+    include: {
+      images: {
+        select: { filename: true, width: true, height: true },
+      },
+      tags: {
+        select: { tag: true },
+      },
+    },
+  });
+  const posts = JSON.parse(JSON.stringify(res));
+  return {
+    props: {
+      posts,
+    },
+  };
+};
 
-  if (error) return <div>Failed to load</div>;
-  if (isLoading) return <div>Loading...</div>;
-  if (!data) return null;
-
+const PostListPage: React.FC<PostProps> = ({ posts }) => {
   return (
     <Layout>
       <h1>Actualités</h1>
       <ul>
-        {data.map((p) => (
-          <PostListComponent key={p.id} post={p} />
+        {posts.map((post) => (
+          <ItemListComponent key={post.id} post={post} />
         ))}
       </ul>
     </Layout>
   );
-}
+};
+
+export default PostListPage;

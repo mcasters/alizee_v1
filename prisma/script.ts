@@ -72,6 +72,30 @@ async function main() {
       },
     },
   });
+  await prisma.image.create({
+    data: {
+      filename: "image3.jpg",
+      width: 700,
+      height: 600,
+      post: {
+        connect: {
+          id: 2,
+        },
+      },
+    },
+  });
+  await prisma.image.create({
+    data: {
+      filename: "image4.jpg",
+      width: 700,
+      height: 600,
+      post: {
+        connect: {
+          id: 2,
+        },
+      },
+    },
+  });
 
   const allPosts = await prisma.post.findMany({
     include: {
