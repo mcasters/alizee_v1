@@ -29,7 +29,7 @@ export type Image = {
 export type Tag = {
   id: number;
   tag: string;
-  post: [Post];
+  posts: [Post];
 };
 
 export type ResponseError = {

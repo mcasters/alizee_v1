@@ -5,11 +5,16 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const posts = await prisma.post.findMany();
-
-  if (!posts) {
-    res.status(400).send({ message: "Pas de posts" });
-  } else {
-    res.status(200).json(posts);
-  }
+  const { title, date, content, published, images, tags } = req.body;
+  const result = await prisma.post.create({
+    data: {
+      title,
+      date,
+      content,
+      published,
+      images,
+      tags,
+    },
+  });
+  return res.status(201).json(result);
 }
