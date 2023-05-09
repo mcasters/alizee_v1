@@ -1,7 +1,7 @@
-import React, { RefObject, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import s from "./dropdown.module.css";
-
+import { Option } from "@/interfaces/index";
 const Icon = () => {
   return (
     <svg height="20" width="20" viewBox="0 0 20 20">
@@ -18,17 +18,13 @@ const CloseIcon = () => {
   );
 };
 
-type Option = {
-  id: number;
-  tag: string;
-};
-
 const Dropdown: React.FC<{
   placeHolder: string;
   options: Option[];
   isMulti: boolean;
   isSearchable: boolean;
-}> = ({ placeHolder, options, isMulti, isSearchable }) => {
+  handleValues: any;
+}> = ({ placeHolder, options, isMulti, isSearchable, handleValues }) => {
   const [showMenu, setShowMenu] = useState<boolean>(false);
   const [selectedValue, setSelectedValue] = useState<Option[]>([]);
   const [searchValue, setSearchValue] = useState<string>("");
@@ -50,6 +46,10 @@ const Dropdown: React.FC<{
     }
   }, [showMenu]);
 
+  useEffect(() => {
+    handleValues(selectedValue);
+  }, [selectedValue]);
+
   const handleInputClick = (e: React.MouseEvent<HTMLSpanElement>) => {
     e.stopPropagation();
     setShowMenu(!showMenu);
@@ -61,7 +61,7 @@ const Dropdown: React.FC<{
         <div className={s.dropdownTags}>
           {selectedValue.map((option) => (
             <div key={option.id} className={s.dropdownTagItem}>
-              {option.tag}
+              {option.label}
               <span
                 onClick={(e) => onTagRemove(e, option)}
                 className={s.dropdownTagClose}
@@ -77,7 +77,7 @@ const Dropdown: React.FC<{
   };
 
   const removeOption = (option: Option) => {
-    return selectedValue.filter((o) => o.tag !== option.tag);
+    return selectedValue.filter((o) => o.label !== option.label);
   };
   const onTagRemove = (
     e: React.MouseEvent<HTMLSpanElement>,
@@ -90,7 +90,7 @@ const Dropdown: React.FC<{
   const onItemClick = (option: Option) => {
     let newValue: Option[];
     if (isMulti) {
-      if (selectedValue.findIndex((o) => o.tag === option.tag) >= 0) {
+      if (selectedValue.findIndex((o) => o.label === option.label) >= 0) {
         newValue = removeOption(option);
       } else {
         newValue = [...selectedValue, option];
@@ -121,9 +121,9 @@ const Dropdown: React.FC<{
     return options.filter(
       (option) =>
         // Match te text from any position :
-        option.tag.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0
+        option.label.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0
       // Match te text from the beginning :
-      // option.tag.toLowerCase().indexOf(searchValue.toLowerCase()) === 0
+      // option.label.toLowerCase().indexOf(searchValue.toLowerCase()) === 0
     );
   };
 
@@ -150,12 +150,19 @@ const Dropdown: React.FC<{
                   isSelected(option) && s.selected
                 }`}
               >
-                {option.tag}
+                {option.label}
               </div>
             ))}
           </div>
         )}
         <div className={s.dropdownSelectedValue}>{getDisplay()}</div>
+        <input
+          name="tags"
+          type="hidden"
+          value={selectedValue.map((option) => {
+            return option.label;
+          })}
+        />
         <div className={s.dropdownTools}>
           <div className={s.dropdownTool}>
             <Icon />

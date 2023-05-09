@@ -3,7 +3,7 @@ import { signIn } from "next-auth/react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
-import LoadingDots from "@/components/loading-dots";
+import LoadingDots from "../loading-dots";
 
 export default function Form() {
   const [loading, setLoading] = useState(false);

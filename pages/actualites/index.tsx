@@ -4,7 +4,7 @@ import { GetServerSideProps } from "next";
 import prisma from "@/lib/prisma";
 import Layout from "@/components/layout/layout";
 import ItemListComponent from "@/components/actualites/ItemList";
-import { Post } from "../../interfaces";
+import { Post } from "@/interfaces/index";
 
 export type PostProps = {
   posts: [Post];
@@ -17,7 +17,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
         select: { filename: true, width: true, height: true },
       },
       tags: {
-        select: { tag: true },
+        select: { id: true, tag: true },
       },
     },
   });

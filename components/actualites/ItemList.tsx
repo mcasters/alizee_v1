@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { Post } from "../../interfaces";
+import type { Post } from "@/interfaces/index";
 import Image from "next/image";
 
 type PostProps = {

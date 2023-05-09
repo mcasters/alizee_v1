@@ -13,7 +13,7 @@ export type Post = {
   content: string;
   published: string;
   images: [Image];
-  tags: [string];
+  tags: [Tag];
   viewCount: string;
 };
 
@@ -29,9 +29,17 @@ export type Image = {
 export type Tag = {
   id: number;
   tag: string;
-  posts: [Post];
 };
 
 export type ResponseError = {
   message: string;
 };
+
+export type Option = {
+  id: number;
+  label: string;
+};
+
+export interface HTMLInputEvent extends Event {
+  target: HTMLInputElement & EventTarget;
+}

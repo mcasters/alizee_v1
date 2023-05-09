@@ -1,6 +1,6 @@
 import React from "react";
-import { Post } from "../../interfaces";
-import AlbumComponent from "@/components/actualites/Album";
+import { Post } from "@/interfaces/index";
+import AlbumComponent from "./Album";
 import Image from "next/image";
 
 const PostComponent: React.FC<{ post: Post }> = ({ post }) => {

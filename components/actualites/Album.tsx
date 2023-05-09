@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-import { Image as ImageType } from "../../interfaces";
+import { Image as ImageType } from "@/interfaces/index";
 
 const AlbumComponent: React.FC<{ images: [ImageType]; title: string }> = ({
   images,

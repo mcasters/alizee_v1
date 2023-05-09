@@ -1,69 +1,92 @@
 import Router from "next/router";
 import React, { useState } from "react";
+
 import s from "@/styles/Draft.module.css";
-import Dropdown from "@/components/form/dropdown";
-import { Tag } from "../../interfaces";
+import Dropdown from "../form/dropdown/dropdown";
+import { Tag, Option } from "@/interfaces/index";
+import DayPickerComponent from "../form/daypicker/DayPickerComponent";
+import {
+  dropDownOptionsToTags,
+  tagsToDropDownOptions,
+} from "../../utils_client/formUtils";
+import ImageForm from "../form/imageForm/ImageForm";
 
 const DraftComponent: React.FC<{ tags: Tag[] }> = ({ tags }) => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [date, setDate] = useState("");
-  const [published, setPublished] = useState(false);
-  const [images, setImages] = useState("");
-  const [draftTags, setDraftTags] = useState("");
+  const [title, setTitle] = useState<string>("");
+  const [content, setContent] = useState<string>("");
+  const [date, setDate] = useState<Date>(new Date());
+  const [published, setPublished] = useState<boolean>(true);
+  const [images, setImages] = useState<File[]>([]);
+  const [draftTags, setDraftTags] = useState<Tag[]>();
 
-  console.log(tags);
-  const submitData = async (e: React.SyntheticEvent) => {
-    e.preventDefault();
-    try {
-      const body = { title, date, content, published, images, tags: draftTags };
-      await fetch(`/api/post`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
-      await Router.push("/drafts");
-    } catch (error) {
-      console.error(error);
-    }
+  const handleDayChange = (date: any) => {
+    setDate(date);
+  };
+
+  const handleSelectedTags = (selectedOptions: Option[]) => {
+    setDraftTags(dropDownOptionsToTags(selectedOptions));
+  };
+
+  const handleImage = (fileTab: File[]) => {
+    setImages(fileTab);
   };
 
   return (
     <>
-      <form onSubmit={submitData} className={s.form}>
+      <form
+        encType="multipart/form-data"
+        method="post"
+        action="/api/post/file"
+        className={s.form}
+      >
         <h1>Create Draft</h1>
         <input
           autoFocus
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Title"
+          name="title"
           type="text"
           value={title}
         />
-        <input
-          onChange={(e) => setDate(e.target.value)}
-          placeholder="Date"
-          type="text"
-          value={date}
+        <DayPickerComponent
+          handleDayChange={handleDayChange}
+          alreadyDay={date}
         />
         <textarea
-          cols={50}
+          cols={80}
           onChange={(e) => setContent(e.target.value)}
           placeholder="Content"
-          rows={8}
+          name="content"
+          rows={10}
           value={content}
         />
         <input
+          id="published"
           type="checkbox"
+          name="published"
           checked={published}
           onChange={(e) => setPublished(e.target.checked)}
+          style={{ width: "initial", marginRight: "10px" }}
         />
-        <Dropdown placeHolder="Select..." options={tags} isMulti isSearchable />
+        <label htmlFor="published">Publier</label>
+        <Dropdown
+          placeHolder="Tags..."
+          options={tagsToDropDownOptions(tags)}
+          isMulti
+          isSearchable
+          handleValues={handleSelectedTags}
+        />
+        <ImageForm isMulti handleImages={handleImage} />
         <input
           disabled={!content || !title || !date}
           type="submit"
-          value="Create"
+          value={published ? "Publier" : "Enregistrer le Brouillon"}
         />
-        <a className={s.black} href="#" onClick={() => Router.push("/")}>
+        <a
+          className={s.black}
+          href="components/admin#"
+          onClick={() => Router.push("/")}
+        >
           or Cancel
         </a>
       </form>

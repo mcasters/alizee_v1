@@ -2,7 +2,7 @@ import React from "react";
 import { GetServerSideProps } from "next";
 
 import Layout from "@/components/layout/layout";
-import type { Post } from "../../interfaces";
+import type { Post } from "@/interfaces/index";
 import PostComponent from "@/components/actualites/Post";
 import prisma from "@/lib/prisma";
 

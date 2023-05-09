@@ -3,7 +3,7 @@ import DraftComponent from "@/components/admin/Draft";
 import { GetServerSideProps } from "next";
 import prisma from "@/lib/prisma";
 import React from "react";
-import { Tag } from "interfaces";
+import { Tag } from "@/interfaces/index";
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const tags = await prisma.tag.findMany();
