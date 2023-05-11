@@ -16,7 +16,7 @@
       "@/utils_client/*": ["utils_client/*"],
       "@/utils_server/*": ["utils_server/*"]
     },
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": ["dom", "dom.iterable", "esnext" ],
     "allowJs": true,
     "noEmit": true,
     "incremental": true,

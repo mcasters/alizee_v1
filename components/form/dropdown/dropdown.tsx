@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 import s from "./dropdown.module.css";
 import { Option } from "@/interfaces/index";
+
 const Icon = () => {
   return (
     <svg height="20" width="20" viewBox="0 0 20 20">
@@ -20,11 +21,10 @@ const CloseIcon = () => {
 
 const Dropdown: React.FC<{
   placeHolder: string;
-  options: Option[];
+  options: { id: number; label: string }[];
   isMulti: boolean;
   isSearchable: boolean;
-  handleValues: any;
-}> = ({ placeHolder, options, isMulti, isSearchable, handleValues }) => {
+}> = ({ placeHolder, options, isMulti, isSearchable }) => {
   const [showMenu, setShowMenu] = useState<boolean>(false);
   const [selectedValue, setSelectedValue] = useState<Option[]>([]);
   const [searchValue, setSearchValue] = useState<string>("");
@@ -45,10 +45,6 @@ const Dropdown: React.FC<{
       searchRef.current.focus();
     }
   }, [showMenu]);
-
-  useEffect(() => {
-    handleValues(selectedValue);
-  }, [selectedValue]);
 
   const handleInputClick = (e: React.MouseEvent<HTMLSpanElement>) => {
     e.stopPropagation();
@@ -127,6 +123,7 @@ const Dropdown: React.FC<{
     );
   };
 
+  // @ts-ignore
   return (
     <div className={s.dropdownContainer}>
       <div onClick={handleInputClick} className={s.dropdownInput}>
@@ -160,7 +157,7 @@ const Dropdown: React.FC<{
           name="tags"
           type="hidden"
           value={selectedValue.map((option) => {
-            return option.label;
+            return option.id;
           })}
         />
         <div className={s.dropdownTools}>

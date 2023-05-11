@@ -24,7 +24,7 @@ model Post {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   content   String?
-  published Boolean @default(false)
+  published Boolean  @default(false)
   images    Image[]
   tags      Tag[]
   viewCount Int      @default(0)
@@ -32,7 +32,8 @@ model Post {
 
 model Image {
   id        Int     @id @default(autoincrement())
-  filename  String  @unique
+  filename  String
+  isMain    Boolean @default(false)
   width     Int
   height    Int
   postId    Int
@@ -41,6 +42,6 @@ model Image {
 
 model Tag {
   id    Int    @id @default(autoincrement())
-  tag   String @unique
+  label String @unique
   posts Post[]
 }

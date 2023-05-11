@@ -3,32 +3,22 @@ import React, { useState } from "react";
 
 import s from "@/styles/Draft.module.css";
 import Dropdown from "../form/dropdown/dropdown";
-import { Tag, Option } from "@/interfaces/index";
+import { Option, Post } from "@/interfaces/index";
 import DayPickerComponent from "../form/daypicker/DayPickerComponent";
-import {
-  dropDownOptionsToTags,
-  tagsToDropDownOptions,
-} from "../../utils_client/formUtils";
 import ImageForm from "../form/imageForm/ImageForm";
 
-const DraftComponent: React.FC<{ tags: Tag[] }> = ({ tags }) => {
+interface Props {
+  tags: Option[];
+}
+
+const DraftComponent = ({ tags }: Props) => {
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
   const [date, setDate] = useState<Date>(new Date());
   const [published, setPublished] = useState<boolean>(true);
-  const [images, setImages] = useState<File[]>([]);
-  const [draftTags, setDraftTags] = useState<Tag[]>();
 
   const handleDayChange = (date: any) => {
     setDate(date);
-  };
-
-  const handleSelectedTags = (selectedOptions: Option[]) => {
-    setDraftTags(dropDownOptionsToTags(selectedOptions));
-  };
-
-  const handleImage = (fileTab: File[]) => {
-    setImages(fileTab);
   };
 
   return (
@@ -36,7 +26,7 @@ const DraftComponent: React.FC<{ tags: Tag[] }> = ({ tags }) => {
       <form
         encType="multipart/form-data"
         method="post"
-        action="/api/post/file"
+        action="/api/post"
         className={s.form}
       >
         <h1>Create Draft</h1>
@@ -69,14 +59,8 @@ const DraftComponent: React.FC<{ tags: Tag[] }> = ({ tags }) => {
           style={{ width: "initial", marginRight: "10px" }}
         />
         <label htmlFor="published">Publier</label>
-        <Dropdown
-          placeHolder="Tags..."
-          options={tagsToDropDownOptions(tags)}
-          isMulti
-          isSearchable
-          handleValues={handleSelectedTags}
-        />
-        <ImageForm isMulti handleImages={handleImage} />
+        <Dropdown placeHolder="Tags..." options={tags} isMulti isSearchable />
+        <ImageForm isMulti />
         <input
           disabled={!content || !title || !date}
           type="submit"

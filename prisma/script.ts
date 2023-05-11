@@ -15,7 +15,19 @@ async function main() {
 
   await prisma.tag.create({
     data: {
-      tag: "Bibou",
+      label: "Bibou",
+    },
+  });
+
+  await prisma.tag.create({
+    data: {
+      label: "Figo",
+    },
+  });
+
+  await prisma.tag.create({
+    data: {
+      label: "concours",
     },
   });
 
@@ -27,7 +39,7 @@ async function main() {
       published: true,
       tags: {
         connect: {
-          tag: "Bibou",
+          label: "Bibou",
         },
       },
     },
@@ -41,7 +53,7 @@ async function main() {
       published: true,
       tags: {
         connect: {
-          tag: "Bibou",
+          label: "Bibou",
         },
       },
     },

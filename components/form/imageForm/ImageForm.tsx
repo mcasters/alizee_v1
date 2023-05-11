@@ -1,21 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 
 import { HTMLInputEvent, Tag } from "@/interfaces/index";
 
 const ImageForm: React.FC<{
   isMulti: boolean;
-  handleImages: (fileTab: File[]) => void;
-}> = ({ isMulti, handleImages }) => {
+}> = ({ isMulti }) => {
   const [mainImageSrc, setMainImageSrc] = useState<string[]>([]);
   const [mainFile, setMainFile] = useState<File[]>([]);
   const [files, setFiles] = useState<File[]>([]);
-
-  useEffect(() => {
-    const fileToUpload = [...mainFile];
-    files.forEach((file) => fileToUpload.push(file));
-    handleImages(fileToUpload);
-  }, [mainFile, files]);
 
   const onCancelFile = (
     e: React.MouseEvent<HTMLButtonElement>,
