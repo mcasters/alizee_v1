@@ -10,7 +10,7 @@ export default function Header() {
           <Link href="/">Home</Link>
         </li>
         <li className={styles.navItem}>
-          <Link href="/admin">Admin</Link>
+          <Link href="/admin/index">Admin</Link>
         </li>
         <li className={styles.navItem}>
           <Link href="/actualites">Actualités</Link>

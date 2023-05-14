@@ -17,7 +17,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
         select: { filename: true, width: true, height: true },
       },
       tags: {
-        select: { id: true, tag: true },
+        select: { id: true, label: true },
       },
     },
   });

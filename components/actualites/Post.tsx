@@ -3,7 +3,10 @@ import { Post } from "@/interfaces/index";
 import AlbumComponent from "./Album";
 import Image from "next/image";
 
-const PostComponent: React.FC<{ post: Post }> = ({ post }) => {
+interface Props {
+  post: Post;
+}
+const PostComponent = ({ post }: Props) => {
   return (
     <article>
       <h1>{post.title}</h1>

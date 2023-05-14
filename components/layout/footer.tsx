@@ -24,36 +24,26 @@ export default function Footer() {
                     <small>You are not signed in</small>
                   </span>
                   <br />
-                  <Link href="/pages/admin" prefetch={false}>
+                  <Link href="/admin/index" prefetch={false}>
                     Admin in
                   </Link>
                 </>
               )}
               {session?.user && (
                 <>
-                  {session.user.image && (
-                    <span
-                      style={{
-                        backgroundImage: `url('${session.user.image}')`,
-                      }}
-                      className={styles.avatar}
-                    />
-                  )}
                   <span className={styles.signedInText}>
                     <small>Signed in as</small>
                     <br />
-                    <strong>{session.user.email ?? session.user.name}</strong>
+                    <strong>{session.user.email}</strong>
                   </span>
-                  <a
-                    // href={`/api/auth/signout`}
+                  <button
                     className={styles.button}
-                    onClick={(e) => {
-                      e.preventDefault();
+                    onClick={() => {
                       signOut();
                     }}
                   >
                     Admin out
-                  </a>
+                  </button>
                 </>
               )}
             </p>

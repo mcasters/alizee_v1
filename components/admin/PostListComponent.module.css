@@ -1,0 +1,56 @@
+.listContainer {
+  margin: 50px 0 10px;
+  position: relative;
+  font-size: 11px;
+  text-align: center;
+}
+
+.postList {
+  display: block;
+  margin-top: 2em;
+  width: 100%;
+  height: 300px;
+  overflow: scroll;
+  border-collapse: collapse;
+  table-layout: auto;
+  background-color: var(--color-xxlight);
+  border-bottom: 2px solid var(--color-light);
+  border-top: 2px solid var(--color-light);
+}
+
+.item {
+  border-bottom: 1px dotted var(--color-light);
+  margin: 0 3em;
+  padding-bottom: 1em;
+}
+
+.item li:first-of-type {
+  font-weight: bold;
+}
+
+.linkUpdate {
+  display: block;
+  cursor: pointer;
+  color: initial;
+  padding: 1em;
+}
+
+.linkUpdate:hover {
+  background-color: var(--red-light);
+}
+
+.trash {
+  width: initial;
+  text-align: center;
+  border: none;
+  background: none;
+  font-size: 1.4em;
+  margin: 0
+}
+
+.trash svg {
+}
+
+
+
+

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 
-import { HTMLInputEvent, Tag } from "@/interfaces/index";
+import { HTMLInputEvent } from "@/interfaces/index";
 
 const ImageForm: React.FC<{
   isMulti: boolean;
@@ -45,7 +45,7 @@ const ImageForm: React.FC<{
 
   return (
     <>
-      {mainImageSrc.length && (
+      {mainImageSrc.length > 0 && (
         <Image
           src={mainImageSrc[0]}
           alt="image principale"
@@ -53,7 +53,7 @@ const ImageForm: React.FC<{
           height={100}
         />
       )}
-      <h4>Image principale</h4>
+      <h4>Image principale :</h4>
       <input
         type="file"
         name="mainFile"
@@ -61,7 +61,7 @@ const ImageForm: React.FC<{
       />
       {isMulti && (
         <>
-          <h4>Album images</h4>
+          <h4>Album images :</h4>
           <input
             type="file"
             name="albumFiles"

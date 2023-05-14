@@ -19,16 +19,18 @@ const CloseIcon = () => {
   );
 };
 
-const Dropdown: React.FC<{
-  placeHolder: string;
-  options: { id: number; label: string }[];
+interface Props {
   isMulti: boolean;
+  options: Option[];
   isSearchable: boolean;
-}> = ({ placeHolder, options, isMulti, isSearchable }) => {
+  placeHolder: string;
+}
+
+const Dropdown = ({ isMulti, options, isSearchable, placeHolder }: Props) => {
   const [showMenu, setShowMenu] = useState<boolean>(false);
   const [selectedValue, setSelectedValue] = useState<Option[]>([]);
   const [searchValue, setSearchValue] = useState<string>("");
-  const searchRef = useRef<HTMLInputElement>();
+  const searchRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const handler = () => setShowMenu(false);
@@ -123,7 +125,6 @@ const Dropdown: React.FC<{
     );
   };
 
-  // @ts-ignore
   return (
     <div className={s.dropdownContainer}>
       <div onClick={handleInputClick} className={s.dropdownInput}>
@@ -134,7 +135,6 @@ const Dropdown: React.FC<{
                 <input
                   onChange={onSearch}
                   value={searchValue}
-                  // @ts-ignore
                   ref={searchRef}
                 />
               </div>
@@ -157,7 +157,7 @@ const Dropdown: React.FC<{
           name="tags"
           type="hidden"
           value={selectedValue.map((option) => {
-            return option.id;
+            return option.id.toString();
           })}
         />
         <div className={s.dropdownTools}>

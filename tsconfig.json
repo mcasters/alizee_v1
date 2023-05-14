@@ -13,8 +13,9 @@
       "@/lib/*": ["lib/*"],
       "@/styles/*": ["styles/*"],
       "@/interfaces/*": ["interfaces/*"],
-      "@/utils_client/*": ["utils_client/*"],
-      "@/utils_server/*": ["utils_server/*"]
+      "@/utils/*": ["utils/*"],
+      "@/constants/*": ["constants/*"],
+      "@/pages/*": ["pages/*"]
     },
     "lib": ["dom", "dom.iterable", "esnext" ],
     "allowJs": true,

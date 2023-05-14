@@ -26,10 +26,10 @@ const DraftComponent = ({ tags }: Props) => {
       <form
         encType="multipart/form-data"
         method="post"
-        action="/api/post"
+        action="/api/post/add"
         className={s.form}
       >
-        <h1>Create Draft</h1>
+        <h2>Créer un post</h2>
         <input
           autoFocus
           onChange={(e) => setTitle(e.target.value)}
@@ -66,13 +66,7 @@ const DraftComponent = ({ tags }: Props) => {
           type="submit"
           value={published ? "Publier" : "Enregistrer le Brouillon"}
         />
-        <a
-          className={s.black}
-          href="components/admin#"
-          onClick={() => Router.push("/")}
-        >
-          or Cancel
-        </a>
+        <input type="reset" />
       </form>
     </>
   );
