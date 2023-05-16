@@ -11,6 +11,7 @@ import { getDirnameFromTitle } from "@/utils/common/post";
 import { Prisma } from ".prisma/client";
 // @ts-ignore
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import { Image } from "@/interfaces/index";
 
 const serverLibraryPath = process.env.PHOTOS_PATH;
 
@@ -38,30 +39,38 @@ export default async function handler(
         date: parse(fields.date, "dd/MM/yyyy", new Date()),
         content: fields.content,
         published: fields.published === "on",
-        tags: {
-          connect: tags,
-        },
       },
     });
 
-    const images: Enumerable<any> = [];
+    let albumImages: Enumerable<any> = [];
 
     for await (const file of files) {
       const filepath = `${postDir}/${file.originalname}`;
       const fileInfo = await resizeAndSaveImage(file.buffer, filepath);
-      images.push({
-        filename: file.originalname,
-        width: fileInfo.width,
-        height: fileInfo.height,
-        isMain: file.fieldname === "mainFile",
-        postId: newPost.id,
-      });
+      if (file.fieldname === "mainFile") {
+        await prisma.image.create({
+          data: {
+            filename: file.originalname,
+            width: fileInfo.width,
+            height: fileInfo.height,
+            postImgId: newPost.id,
+          },
+        });
+      } else {
+        albumImages.push({
+          filename: file.originalname,
+          width: fileInfo.width,
+          height: fileInfo.height,
+          postAlbumId: newPost.id,
+        });
+      }
     }
 
-    await prisma.image.createMany({
-      data: images,
-    });
-
+    if (albumImages.length > 0) {
+      await prisma.image.createMany({
+        data: albumImages,
+      });
+    }
     return res.status(200).redirect("/admin");
   } else {
     return res.status(401).send({ message: "Unauthorized" });

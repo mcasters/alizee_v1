@@ -15,37 +15,25 @@ interface Props {
 }
 
 function PostListRawComponent({ post }: Props) {
-  const [mainImageFilename, setMainImageFilename] = useState<string>("");
-  const [hasAlbum, setHasAlbum] = useState<boolean>(false);
-
-  useEffect(() => {
-    if (post.images.length > 0) {
-      post.images.forEach((image) => {
-        if (image.isMain) setMainImageFilename(image.filename);
-        else if (!hasAlbum) setHasAlbum(true);
-      });
-    }
-  });
-
-  const openUpdate = () => {};
-
   return (
     <ul className={s.item}>
       <Link
-        href="/admin/update/[pid]"
+        href="/admin/update/[id]"
         as={`/admin/update/${post.id}`}
         className={s.linkUpdate}
       >
-        <li>{post.title}</li>
-        <li>{format(new Date(post.date), POST.FORMAT_DATE)}</li>
+        <li>
+          <span className={s.title}>{post.title}</span> -{" "}
+          {format(new Date(post.date), POST.FORMAT_DATE)}
+        </li>
         <li>
           <span>Thumbnail : </span>
-          {mainImageFilename !== "" ? <FiCheck /> : <FiX />}
+          {post.mainImage ? <FiCheck /> : <FiX />}
         </li>
-        <li>Album photo : {hasAlbum ? <FiCheck /> : <FiX />}</li>
+        <li>Album photo : {post.images.length > 0 ? <FiCheck /> : <FiX />}</li>
       </Link>
       <li>
-        <PostDeleteButton postId={post.id} />
+        <PostDeleteButton id={post.id} />
       </li>
     </ul>
   );

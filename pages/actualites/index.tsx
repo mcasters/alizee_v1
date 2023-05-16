@@ -3,7 +3,7 @@ import { GetServerSideProps } from "next";
 
 import prisma from "@/lib/prisma";
 import Layout from "@/components/layout/layout";
-import ItemListComponent from "@/components/actualites/ItemList";
+import ItemComponent from "@/components/actualites/ItemComponent";
 import { Post } from "@/interfaces/index";
 
 export type PostProps = {
@@ -13,11 +13,8 @@ export type PostProps = {
 export const getServerSideProps: GetServerSideProps = async () => {
   const res = await prisma.post.findMany({
     include: {
-      images: {
-        select: { filename: true, width: true, height: true },
-      },
-      tags: {
-        select: { id: true, label: true },
+      mainImage: {
+        select: { filename: true },
       },
     },
   });
@@ -29,17 +26,14 @@ export const getServerSideProps: GetServerSideProps = async () => {
   };
 };
 
-const PostListPage: React.FC<PostProps> = ({ posts }) => {
-  return (
-    <Layout>
-      <h1>Actualités</h1>
-      <ul>
-        {posts.map((post) => (
-          <ItemListComponent key={post.id} post={post} />
-        ))}
-      </ul>
-    </Layout>
-  );
-};
+const PostListPage = ({ posts }: PostProps) => (
+  <Layout>
+    <h1>Actualités</h1>
+    <ul>
+      {posts &&
+        posts.map((post) => <ItemComponent key={post.id} post={post} />)}
+    </ul>
+  </Layout>
+);
 
 export default PostListPage;

@@ -1,11 +1,12 @@
-import Router from "next/router";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import toast from "react-hot-toast";
 
 import s from "@/styles/Draft.module.css";
 import Dropdown from "../form/dropdown/dropdown";
-import { Option, Post } from "@/interfaces/index";
+import { Option } from "@/interfaces/index";
 import DayPickerComponent from "../form/daypicker/DayPickerComponent";
 import ImageForm from "../form/imageForm/ImageForm";
+import { useSWRConfig } from "swr";
 
 interface Props {
   tags: Option[];
@@ -16,19 +17,29 @@ const DraftComponent = ({ tags }: Props) => {
   const [content, setContent] = useState<string>("");
   const [date, setDate] = useState<Date>(new Date());
   const [published, setPublished] = useState<boolean>(true);
+  const form = useRef(null);
+  const { mutate } = useSWRConfig();
 
   const handleDayChange = (date: any) => {
     setDate(date);
   };
 
+  const submit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (form.current && confirm("Tu confirmes ?")) {
+      const formData = new FormData(form.current);
+      fetch("/api/post/add", { method: "POST", body: formData }).then((res) => {
+        if (res.ok) {
+          toast(published ? "Post publié" : "Brouillon enregistré");
+          mutate("/api/post");
+        } else toast("Erreur à l'enregistrement");
+      });
+    }
+  };
+
   return (
     <>
-      <form
-        encType="multipart/form-data"
-        method="post"
-        action="/api/post/add"
-        className={s.form}
-      >
+      <form ref={form} className={s.form} onSubmit={submit}>
         <h2>Créer un post</h2>
         <input
           autoFocus
@@ -60,7 +71,7 @@ const DraftComponent = ({ tags }: Props) => {
         />
         <label htmlFor="published">Publier</label>
         <Dropdown placeHolder="Tags..." options={tags} isMulti isSearchable />
-        <ImageForm isMulti />
+        <ImageForm />
         <input
           disabled={!content || !title || !date}
           type="submit"

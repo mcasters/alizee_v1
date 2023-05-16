@@ -3,25 +3,23 @@ import Image from "next/image";
 
 import { Image as ImageType } from "@/interfaces/index";
 
-const AlbumComponent: React.FC<{ images: [ImageType]; title: string }> = ({
-  images,
-  title,
-}) => {
+type props = {
+  images: ImageType[];
+  dirname: string;
+  title: string;
+};
+const AlbumComponent = ({ images, dirname, title }: props) => {
   return (
     <>
-      {images.map((image, index) => {
-        if (index === 0) return null;
-        else
-          return (
-            <Image
-              key={index}
-              src={`/images/actu/${image.filename}`}
-              height={200}
-              width={200}
-              alt={`Alizée Roussel - ${title}`}
-            />
-          );
-      })}
+      {images.map((image) => (
+        <Image
+          key={image.filename}
+          src={`/images/actu/${dirname}/${image.filename}`}
+          height={200}
+          width={200}
+          alt={`Alizée Roussel - ${title}`}
+        />
+      ))}
     </>
   );
 };

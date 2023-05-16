@@ -9,14 +9,14 @@ import prisma from "@/lib/prisma";
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const res = await prisma.post.findUnique({
     where: {
-      id: Number(params?.pid) || -1,
+      id: Number(params?.id) || -1,
     },
     include: {
-      images: {
+      mainImage: {
         select: { filename: true, width: true, height: true },
       },
-      tags: {
-        select: { label: true },
+      images: {
+        select: { filename: true, width: true, height: true },
       },
     },
   });
@@ -28,7 +28,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   };
 };
 
-const PostPage: React.FC<Post> = (props) => {
+const PostPage = (props: Post) => {
   return (
     <Layout>
       <PostComponent post={props} />

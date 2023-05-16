@@ -15,7 +15,7 @@ export const authOptions = {
         },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials, _) {
+      async authorize(credentials, req) {
         const { email, password } = credentials;
         if (!email || !password) {
           throw new Error("Missing email or password");
@@ -38,7 +38,9 @@ export const authOptions = {
   },
   jwt: {
     maxAge: 24 * 60 * 60,
+    secret: process.env.JWT_SECRET,
   },
+  debug: false,
 };
 
 export default NextAuth(authOptions);
