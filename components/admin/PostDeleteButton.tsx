@@ -1,14 +1,28 @@
 import s from "./PostListComponent.module.css";
 import { FiTrash2 } from "react-icons/fi";
+import toast from "react-hot-toast";
+import useSWR, { useSWRConfig } from "swr";
 
-function PostDeleteButton(props: { postId: number }) {
+type props = {
+  id: number;
+};
+function PostDeleteButton({ id }: props) {
+  const { mutate } = useSWRConfig();
+  const handleDelete = async () => {
+    if (confirm("Sûr de vouloir supprimer ?")) {
+      fetch(`/api/post/delete/${id}`).then((res) => {
+        if (res.ok) {
+          toast("Post effacé");
+          mutate("/api/post");
+        } else toast("Erreur à la suppression");
+      });
+    }
+  };
+
   return (
-    <form method="post" action="/api/post/delete" className={s.deleteForm}>
-      <input id="id" name="id" type="hidden" value={props.postId} />
-      <button type="submit" className={s.trash}>
-        <FiTrash2 />
-      </button>
-    </form>
+    <button onClick={handleDelete} className={s.trash}>
+      <FiTrash2 />
+    </button>
   );
 }
 
