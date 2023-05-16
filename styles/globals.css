@@ -385,7 +385,12 @@ body {
 html {
     line-height: 1.375; /* ~22px */
     box-sizing: border-box;
-    margin: 20vh var(--max-content-width) 20vh;
+}
+
+#__next {
+    max-width: var(--max-content-width);
+    text-align: center;
+    margin: auto;
 }
 
 html,

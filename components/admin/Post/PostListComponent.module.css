@@ -1,6 +1,5 @@
 .listContainer {
   margin: 50px 0 10px;
-  position: relative;
   font-size: 11px;
   text-align: center;
 }
@@ -20,8 +19,6 @@
 
 .item {
   border-bottom: 1px dotted var(--color-light);
-  margin: 0 3em;
-  padding-bottom: 1em;
 }
 
 .title {
@@ -29,6 +26,8 @@
 }
 
 .linkUpdate {
+  all: unset;
+  width: 100%;
   display: block;
   cursor: pointer;
   color: initial;
@@ -45,7 +44,7 @@
   border: none;
   background: none;
   font-size: 1.4em;
-  margin: 0
+  padding: 0 0.4em 0.4em;
 }
 
 .trash svg {

@@ -24,11 +24,20 @@ interface Props {
   options: Option[];
   isSearchable: boolean;
   placeHolder: string;
+  selectedValues: Option[];
 }
 
-const Dropdown = ({ isMulti, options, isSearchable, placeHolder }: Props) => {
+const Dropdown = ({
+  isMulti,
+  options,
+  isSearchable,
+  placeHolder,
+  selectedValues,
+}: Props) => {
   const [showMenu, setShowMenu] = useState<boolean>(false);
-  const [selectedValue, setSelectedValue] = useState<Option[]>([]);
+  const [selectedValue, setSelectedValue] = useState<Option[]>(
+    selectedValues.length > 0 ? selectedValues : []
+  );
   const [searchValue, setSearchValue] = useState<string>("");
   const searchRef = useRef<HTMLInputElement>(null);
 

@@ -3,11 +3,11 @@ import { GetServerSideProps } from "next";
 import { useSession } from "next-auth/react";
 
 import Layout from "@/components/layout/layout";
-import DraftComponent from "@/components/admin/DraftComponent";
+import AddPostComponent from "@/components/admin/Post/AddPostComponent";
 import prisma from "@/lib/prisma";
 import AccessDenied from "@/components/auth/access-denied";
 import { Option } from "@/interfaces/index";
-import PostListComponent from "@/components/admin/PostListComponent";
+import ListPostComponent from "@/components/admin/Post/ListPostComponent";
 
 interface Props {
   tags: Option[];
@@ -36,8 +36,8 @@ const Index = ({ tags }: Props) => {
 
   return (
     <Layout>
-      <DraftComponent tags={tags} />
-      <PostListComponent />
+      <AddPostComponent tags={tags} />
+      <ListPostComponent />
     </Layout>
   );
 };

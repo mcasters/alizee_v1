@@ -1,11 +1,11 @@
 import useSWR from "swr";
 
 import s from "./PostListComponent.module.css";
-import PostListRawComponent from "@/components/admin/PostListRawComponent";
+import RowListPostComponent from "@/components/admin/Post/RowListPostComponent";
 import LoadingDots from "@/components/loading-dots";
 import { Post } from "@/interfaces/index";
 
-const PostListComponent = () => {
+const ListPostComponent = () => {
   const { data, error, isLoading } = useSWR("/api/post", (apiURL: string) =>
     fetch(apiURL).then((res) => res.json())
   );
@@ -18,11 +18,11 @@ const PostListComponent = () => {
         {isLoading && <LoadingDots />}
         {data &&
           data.map((post: Post) => {
-            return <PostListRawComponent key={post.id} post={post} />;
+            return <RowListPostComponent key={post.id} post={post} />;
           })}
       </div>
     </div>
   );
 };
 
-export default PostListComponent;
+export default ListPostComponent;

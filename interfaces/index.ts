@@ -11,7 +11,7 @@ export type Post = {
   createdAt: string;
   updatedAt: string;
   content: string;
-  published: string;
+  published: boolean;
   tags: [Option];
   viewCount: string;
   mainImage: Image;

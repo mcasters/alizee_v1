@@ -6,7 +6,7 @@ import useSWR, { useSWRConfig } from "swr";
 type props = {
   id: number;
 };
-function PostDeleteButton({ id }: props) {
+function DeletePostButton({ id }: props) {
   const { mutate } = useSWRConfig();
   const handleDelete = async () => {
     if (confirm("Sûr de vouloir supprimer ?")) {
@@ -26,4 +26,4 @@ function PostDeleteButton({ id }: props) {
   );
 }
 
-export default PostDeleteButton;
+export default DeletePostButton;
