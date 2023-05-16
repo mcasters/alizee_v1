@@ -12,9 +12,10 @@ export type Post = {
   updatedAt: string;
   content: string;
   published: string;
-  images: [Image];
   tags: [Option];
   viewCount: string;
+  mainImage: Image;
+  images: [Image];
 };
 
 export type Image = {
@@ -22,9 +23,10 @@ export type Image = {
   filename: string;
   width: number;
   height: number;
-  isMain: boolean;
-  postId: string;
-  post: Post;
+  postImge: Post;
+  postImgId: string;
+  postAlbum: Post;
+  postAlbumId: string;
 };
 
 export type ResponseError = {

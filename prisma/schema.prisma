@@ -25,19 +25,21 @@ model Post {
   updatedAt DateTime @updatedAt
   content   String?
   published Boolean  @default(false)
-  images    Image[]
   tags      Tag[]
   viewCount Int      @default(0)
+  mainImage Image?   @relation("mainImage")
+  images    Image[]  @relation("albumImages")
 }
 
 model Image {
-  id        Int     @id @default(autoincrement())
-  filename  String
-  isMain    Boolean @default(false)
-  width     Int
-  height    Int
-  postId    Int
-  post      Post    @relation(fields: [postId], references: [id], onUpdate: NoAction)
+  id          Int     @id @default(autoincrement())
+  filename    String
+  width       Int
+  height      Int
+  postImg     Post?   @relation("mainImage", fields: [postImgId], references: [id], onUpdate: NoAction)
+  postImgId   Int?    @unique
+  postAlbum   Post?    @relation("albumImages", fields: [postAlbumId], references: [id], onUpdate: NoAction)
+  postAlbumId Int?
 }
 
 model Tag {

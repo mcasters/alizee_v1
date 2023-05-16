@@ -10,9 +10,6 @@ async function main() {
   await prisma.$queryRaw`ALTER TABLE tag AUTO_INCREMENT = 1`;
   await prisma.$queryRaw`ALTER TABLE post AUTO_INCREMENT = 1`;
 
-  const allUsers = await prisma.user.findMany();
-  console.log(allUsers);
-
   await prisma.tag.create({
     data: {
       label: "Bibou",

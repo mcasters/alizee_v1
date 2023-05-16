@@ -24,7 +24,7 @@ export default function Footer() {
                     <small>You are not signed in</small>
                   </span>
                   <br />
-                  <Link href="/admin/index" prefetch={false}>
+                  <Link href="/admin" prefetch={false}>
                     Admin in
                   </Link>
                 </>
