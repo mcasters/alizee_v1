@@ -5,12 +5,13 @@ import DayPickerComponent from "@/components/form/daypicker/DayPickerComponent";
 import Dropdown from "@/components/form/dropdown/dropdown";
 import ImageForm from "@/components/form/imageForm/ImageForm";
 
-function PostForm(props: {
+interface PostFormProps {
   formRef: React.MutableRefObject<null>;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   options: Option[];
   post?: Post;
-}) {
+}
+function PostForm(props: PostFormProps) {
   const [title, setTitle] = useState<string>(props.post?.title || "");
   const [content, setContent] = useState<string>(props.post?.content || "");
   const [date, setDate] = useState<Date>(
@@ -28,7 +29,7 @@ function PostForm(props: {
 
   return (
     <form ref={props.formRef} className={s.form} onSubmit={props.onSubmit}>
-      <h2>Créer un post</h2>
+      <h2>{props.post ? "Modifier un post" : "Créer un post"}</h2>
       <input
         autoFocus
         onChange={(e) => setTitle(e.target.value)}

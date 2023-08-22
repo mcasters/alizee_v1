@@ -1,6 +1,5 @@
 import Link from "next/link";
 import styles from "./footer.module.css";
-import packageJSON from "../../package.json";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 export default function Footer() {
@@ -24,9 +23,14 @@ export default function Footer() {
                     <small>You are not signed in</small>
                   </span>
                   <br />
-                  <Link href="/admin" prefetch={false}>
+                  <button
+                    className={styles.button}
+                    onClick={() => {
+                      signIn();
+                    }}
+                  >
                     Admin in
-                  </Link>
+                  </button>
                 </>
               )}
               {session?.user && (

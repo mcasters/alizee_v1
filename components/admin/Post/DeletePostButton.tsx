@@ -1,7 +1,7 @@
 import s from "./PostListComponent.module.css";
 import { FiTrash2 } from "react-icons/fi";
 import toast from "react-hot-toast";
-import useSWR, { useSWRConfig } from "swr";
+import { useSWRConfig } from "swr";
 
 type props = {
   id: number;
