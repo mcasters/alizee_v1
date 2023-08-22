@@ -59,7 +59,7 @@ model Horse {
   sex         String
   colour      String
   dateOfBirth DateTime
-  heigth      Int
+  height      Int
   sire        String
   dam         String
   damSire     String

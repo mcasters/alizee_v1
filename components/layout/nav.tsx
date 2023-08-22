@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import styles from "./header.module.css";
 
-export default function Header() {
+export default function Nav() {
   return (
     <nav>
       <ul className={styles.navItems}>

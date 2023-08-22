@@ -21,22 +21,23 @@ export default async function handler(
 
   if (session) {
     const { fields, files } = await parseFormData(req, res);
-    const dirName = getDirnameFromTitle(fields.title);
-    const postDir = join(`${serverLibraryPath}`, "actu", `${dirName}`);
+    const dirName = getDirnameFromTitle(fields.name);
+    const postDir = join(`${serverLibraryPath}`, "chevaux", `${dirName}`);
 
     createPostDir(postDir);
 
-    const tagsToArray = fields.tags.split(",").map(Number);
-    const tags = tagsToArray.map((tid: number) => {
-      return { id: tid };
-    });
-
-    const newPost = await prisma.post.create({
+    const newHorse = await prisma.horse.create({
       data: {
-        title: fields.title,
-        date: parse(fields.date, "dd/MM/yyyy", new Date()),
-        content: fields.content,
-        published: fields.published === "on",
+        name: fields.name,
+        description: fields.description,
+        dateOfBirth: parse(fields.dateOfBirth, "dd/MM/yyyy", new Date()),
+        sire: fields.sire,
+        dam: fields.dam,
+        damSire: fields.damSire,
+        owner: fields.owner,
+        sex: fields.sex,
+        colour: fields.colour,
+        height: fields.height,
       },
     });
 
@@ -51,7 +52,7 @@ export default async function handler(
             filename: file.originalname,
             width: fileInfo.width,
             height: fileInfo.height,
-            postImgId: newPost.id,
+            horseImgId: newHorse.id,
           },
         });
       } else {
@@ -59,7 +60,7 @@ export default async function handler(
           filename: file.originalname,
           width: fileInfo.width,
           height: fileInfo.height,
-          postAlbumId: newPost.id,
+          horseAlbumId: newHorse.id,
         });
       }
     }

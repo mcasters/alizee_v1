@@ -25,7 +25,7 @@ export type Horse = {
   sex: string;
   colour: string;
   dateOfBirth: string;
-  heigth: number;
+  height: number;
   sire: string;
   dam: string;
   damSire: string;

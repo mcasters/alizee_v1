@@ -2,9 +2,11 @@ import { GetServerSideProps } from "next";
 import { useSession } from "next-auth/react";
 
 import Layout from "@/components/layout/layout";
+import AddPostComponent from "@/components/admin/Post/AddPostComponent";
 import prisma from "@/lib/prisma";
 import AccessDenied from "@/components/auth/access-denied";
 import { Option } from "@/interfaces/index";
+import ListPostComponent from "@/components/admin/Post/ListPostComponent";
 import AdminNav from "@/components/layout/AdminNav";
 
 interface Props {
@@ -21,7 +23,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   };
 };
 
-const Index = ({ tags }: Props) => {
+export default function Actualites({ tags }: Props) {
   const { data: session } = useSession();
 
   if (!session) {
@@ -35,8 +37,8 @@ const Index = ({ tags }: Props) => {
   return (
     <Layout>
       <AdminNav />
+      <ListPostComponent />
+      <AddPostComponent tags={tags} />
     </Layout>
   );
-};
-
-export default Index;
+}
