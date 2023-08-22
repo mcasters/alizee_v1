@@ -5,18 +5,18 @@ import { Image as ImageType } from "@/interfaces/index";
 
 type props = {
   images: ImageType[];
-  dirname: string;
+  path: string;
   title: string;
 };
-const AlbumComponent = ({ images, dirname, title }: props) => {
+const AlbumComponent = ({ images, path, title }: props) => {
   return (
     <>
-      {images.map((image) => (
+      {images.map((image: ImageType) => (
         <Image
           key={image.filename}
-          src={`/images/actu/${dirname}/${image.filename}`}
-          height={200}
-          width={200}
+          src={`${path}/${image.filename}`}
+          height={image.height}
+          width={image.width}
           alt={`Alizée Roussel - ${title}`}
         />
       ))}

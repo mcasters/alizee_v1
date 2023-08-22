@@ -27,8 +27,8 @@ model Post {
   published Boolean  @default(false)
   tags      Tag[]
   viewCount Int      @default(0)
-  mainImage Image?   @relation("mainImage")
-  images    Image[]  @relation("albumImages")
+  mainImage Image?   @relation("postImage")
+  images    Image[]  @relation("postAlbumImages")
 }
 
 model Image {
@@ -36,14 +36,36 @@ model Image {
   filename    String
   width       Int
   height      Int
-  postImg     Post?   @relation("mainImage", fields: [postImgId], references: [id], onUpdate: NoAction)
+  postImg     Post?   @relation("postImage", fields: [postImgId], references: [id], onUpdate: NoAction)
   postImgId   Int?    @unique
-  postAlbum   Post?    @relation("albumImages", fields: [postAlbumId], references: [id], onUpdate: NoAction)
+  postAlbum   Post?    @relation("postAlbumImages", fields: [postAlbumId], references: [id], onUpdate: NoAction)
   postAlbumId Int?
+  horseImg     Horse?   @relation("horseImage", fields: [horseImgId], references: [id], onUpdate: NoAction)
+  horseImgId   Int?    @unique
+  horseAlbum   Horse?    @relation("horseAlbumImages", fields: [horseAlbumId], references: [id], onUpdate: NoAction)
+  horseAlbumId Int?
 }
 
 model Tag {
   id    Int    @id @default(autoincrement())
   label String @unique
   posts Post[]
+}
+
+model Horse {
+  id          Int     @id @default(autoincrement())
+  name        String
+  owner       String
+  sex         String
+  colour      String
+  dateOfBirth DateTime
+  heigth      Int
+  sire        String
+  dam         String
+  damSire     String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  mainImage   Image?   @relation("horseImage")
+  images      Image[]  @relation("horseAlbumImages")
 }

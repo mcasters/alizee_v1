@@ -7,7 +7,10 @@ type PostProps = {
   post: Post;
 };
 
-export default function ItemComponent({ post }: PostProps) {
+export default function PostListComponent({ post }: PostProps) {
+  const imageDirname = getDirnameFromTitle(post.title);
+  const path = `/images/actu/${imageDirname}`;
+
   return (
     <li>
       <Link href="/actualites/[id]" as={`/actualites/${post.id}`}>
@@ -16,11 +19,9 @@ export default function ItemComponent({ post }: PostProps) {
       <time>{new Date(post.date).toLocaleDateString()}</time>
       {post.mainImage && (
         <Image
-          src={`/images/actu/${getDirnameFromTitle(post.title)}/${
-            post.mainImage.filename
-          }`}
-          width={100}
-          height={100}
+          src={`${path}/${post.mainImage.filename}`}
+          width={post.mainImage.width}
+          height={post.mainImage.height}
           alt={`Alizée Roussel - ${post.title}`}
         />
       )}

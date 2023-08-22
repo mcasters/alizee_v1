@@ -2,25 +2,26 @@ import React from "react";
 import Image from "next/image";
 
 import { Post } from "@/interfaces/index";
-import AlbumComponent from "./Album";
+import AlbumComponent from "../common/AlbumComponent";
 import { getDirnameFromTitle } from "@/utils/common/post";
 
 interface Props {
   post: Post;
 }
-const PostComponent = ({ post }: Props) => {
+export default function PostComponent({ post }: Props) {
   const mainImageFilename = post.mainImage?.filename || "";
   const albumsImages = post.images;
   const imageDirname = getDirnameFromTitle(post.title);
+  const path = `/images/actu/${imageDirname}`;
 
   return (
     <article>
       <h1>{post.title}</h1>
       {mainImageFilename !== "" && (
         <Image
-          src={`/images/actu/${imageDirname}/${mainImageFilename}`}
-          width={100}
-          height={100}
+          src={`${path}/${mainImageFilename}`}
+          width={post.mainImage.width}
+          height={post.mainImage.height}
           alt={`Alizée Roussel - ${post.title}`}
         />
       )}
@@ -28,15 +29,9 @@ const PostComponent = ({ post }: Props) => {
       <p>{post.content}</p>
       <div>
         {albumsImages.length > 0 && (
-          <AlbumComponent
-            images={post.images}
-            dirname={imageDirname}
-            title={post.title}
-          />
+          <AlbumComponent images={post.images} path={path} title={post.title} />
         )}
       </div>
     </article>
   );
-};
-
-export default PostComponent;
+}

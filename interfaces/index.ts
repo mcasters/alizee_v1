@@ -18,12 +18,30 @@ export type Post = {
   images: [Image];
 };
 
+export type Horse = {
+  id: number;
+  name: string;
+  owner: string;
+  sex: string;
+  colour: string;
+  dateOfBirth: string;
+  heigth: number;
+  sire: string;
+  dam: string;
+  damSire: string;
+  createdAt: string;
+  updatedAt: string;
+  description: string;
+  mainImage: Image;
+  images: [Image];
+};
+
 export type Image = {
   id: number;
   filename: string;
   width: number;
   height: number;
-  postImge: Post;
+  postImg: Post;
   postImgId: string;
   postAlbum: Post;
   postAlbumId: string;
@@ -41,7 +59,7 @@ export type Option = {
 export const DataType = {
   POST: "post",
   HORSE: "horse",
-  HORSE_TO_SELL: "horse-to-sell",
+  HORSE_TO_SELL: "post-to-sell",
 };
 
 export interface HTMLInputEvent extends Event {

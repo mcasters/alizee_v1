@@ -3,36 +3,38 @@ import { GetServerSideProps } from "next";
 
 import prisma from "@/lib/prisma";
 import Layout from "@/components/layout/layout";
-import PostListComponent from "@/components/actualites/PostListComponent";
-import { Post } from "@/interfaces/index";
+import HorseListComponent from "@/components/horse/HorseListComponent";
+import { Horse } from "@/interfaces/index";
 
 export type PostProps = {
-  posts: [Post];
+  horses: [Horse];
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const res = await prisma.post.findMany({
     include: {
       mainImage: {
-        select: { filename: true, width: true, height: true },
+        select: { filename: true },
       },
     },
   });
-  const posts = JSON.parse(JSON.stringify(res));
+  const horses = JSON.parse(JSON.stringify(res));
   return {
     props: {
-      posts,
+      horses,
     },
   };
 };
 
-export default function PostListPage({ posts }: PostProps) {
+export default function HorseListPage({ horses }: PostProps) {
   return (
     <Layout>
-      <h1>Actualités</h1>
+      <h1>Chevaux</h1>
       <ul>
-        {posts &&
-          posts.map((post) => <PostListComponent key={post.id} post={post} />)}
+        {horses &&
+          horses.map((horse) => (
+            <HorseListComponent key={horse.id} horse={horse} />
+          ))}
       </ul>
     </Layout>
   );

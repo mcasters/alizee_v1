@@ -15,6 +15,12 @@ export default function Header() {
         <li className={styles.navItem}>
           <Link href="/actualites">Actualités</Link>
         </li>
+        <li className={styles.navItem}>
+          <Link href="/chevaux">Chevaux</Link>
+        </li>
+        <li className={styles.navItem}>
+          <Link href="/chevaux-a-vendre">Chevaux à vendre</Link>
+        </li>
       </ul>
     </nav>
   );
