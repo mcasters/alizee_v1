@@ -11,7 +11,7 @@ export type PostProps = {
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await prisma.post.findMany({
+  const res = await prisma.horse.findMany({
     include: {
       mainImage: {
         select: { filename: true },

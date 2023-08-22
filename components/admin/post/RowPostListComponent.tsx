@@ -2,11 +2,11 @@ import React from "react";
 import { format } from "date-fns";
 import { FiCheck, FiX } from "react-icons/fi";
 
-import s from "./PostListComponent.module.css";
+import s from "@/components/admin/common/ListComponent.module.css";
 import { Post, Option } from "@/interfaces/index";
 import POST from "@/constants/post";
-import DeletePostButton from "@/components/admin/Post/DeletePostButton";
-import UpdatePostComponent from "@/components/admin/Post/UpdatePostComponent";
+import DeletePostButton from "@/components/admin/post/DeletePostButton";
+import UpdatePostComponent from "@/components/admin/post/UpdatePostComponent";
 import useModal from "@/components/form/modal/useModal";
 import Modal from "@/components/form/modal/Modal";
 
@@ -15,7 +15,7 @@ interface RawListProps {
   tags: Option[];
 }
 
-function RowListPostComponent(props: RawListProps) {
+function RowPostListComponent(props: RawListProps) {
   const { isOpen, toggle } = useModal();
 
   return (
@@ -43,4 +43,4 @@ function RowListPostComponent(props: RawListProps) {
   );
 }
 
-export default RowListPostComponent;
+export default RowPostListComponent;

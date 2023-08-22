@@ -29,7 +29,7 @@ function PostForm(props: PostFormProps) {
 
   return (
     <form ref={props.formRef} className={s.form} onSubmit={props.onSubmit}>
-      <h2>{props.post ? "Modifier un post" : "Créer un post"}</h2>
+      <h2>{props.post ? "Modifier un post" : "Ajouter un post"}</h2>
       <input
         autoFocus
         onChange={(e) => setTitle(e.target.value)}

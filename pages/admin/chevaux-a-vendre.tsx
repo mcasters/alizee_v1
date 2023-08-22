@@ -2,7 +2,7 @@ import { useSession } from "next-auth/react";
 
 import Layout from "@/components/layout/layout";
 import AccessDenied from "@/components/auth/access-denied";
-import AddHorseComponent from "@/components/horse/AddHorseComponent";
+import AddHorseComponent from "@/components/admin/horse/AddHorseComponent";
 import AdminNav from "@/components/layout/AdminNav";
 
 export default function ChevauxAVendre() {

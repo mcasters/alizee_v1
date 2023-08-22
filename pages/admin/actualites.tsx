@@ -2,11 +2,11 @@ import { GetServerSideProps } from "next";
 import { useSession } from "next-auth/react";
 
 import Layout from "@/components/layout/layout";
-import AddPostComponent from "@/components/admin/Post/AddPostComponent";
+import AddPostComponent from "@/components/admin/post/AddPostComponent";
 import prisma from "@/lib/prisma";
 import AccessDenied from "@/components/auth/access-denied";
 import { Option } from "@/interfaces/index";
-import ListPostComponent from "@/components/admin/Post/ListPostComponent";
+import PostListComponent from "@/components/admin/post/PostListComponent";
 import AdminNav from "@/components/layout/AdminNav";
 
 interface Props {
@@ -37,7 +37,7 @@ export default function Actualites({ tags }: Props) {
   return (
     <Layout>
       <AdminNav />
-      <ListPostComponent />
+      <PostListComponent />
       <AddPostComponent tags={tags} />
     </Layout>
   );

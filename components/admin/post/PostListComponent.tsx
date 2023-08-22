@@ -1,11 +1,11 @@
 import useSWR from "swr";
 
-import s from "./PostListComponent.module.css";
-import RowListPostComponent from "@/components/admin/Post/RowListPostComponent";
+import s from "@/components/admin/common/ListComponent.module.css";
+import RowPostListComponent from "@/components/admin/post/RowPostListComponent";
 import LoadingDots from "@/components/loading-dots";
 import { Post } from "@/interfaces/index";
 
-const ListPostComponent = () => {
+export default function PostListComponent() {
   const {
     data: posts,
     error,
@@ -21,18 +21,16 @@ const ListPostComponent = () => {
 
   return (
     <div className={s.listContainer}>
-      <h2>Liste de posts</h2>
-      <div className={s.postList}>
+      <h2>Liste des posts</h2>
+      <div className={s.list}>
         {isLoading && <LoadingDots />}
         {posts &&
           posts.map((post: Post) => {
             return (
-              <RowListPostComponent key={post.id} post={post} tags={tags} />
+              <RowPostListComponent key={post.id} post={post} tags={tags} />
             );
           })}
       </div>
     </div>
   );
-};
-
-export default ListPostComponent;
+}

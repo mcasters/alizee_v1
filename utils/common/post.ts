@@ -1,5 +1,3 @@
-import { Image, Post } from "@/interfaces/index";
-
 export const getDirnameFromTitle = (title: string) => {
   return title
     .toLowerCase()

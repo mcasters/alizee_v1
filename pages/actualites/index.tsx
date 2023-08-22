@@ -3,7 +3,7 @@ import { GetServerSideProps } from "next";
 
 import prisma from "@/lib/prisma";
 import Layout from "@/components/layout/layout";
-import PostListComponent from "@/components/actualites/PostListComponent";
+import PostListComponent from "@/components/post/PostListComponent";
 import { Post } from "@/interfaces/index";
 
 export type PostProps = {
