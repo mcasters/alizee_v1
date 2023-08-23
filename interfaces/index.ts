@@ -15,7 +15,7 @@ export type Post = {
   tags: [Option];
   viewCount: string;
   mainImage: Image;
-  images: [Image];
+  images: Image[];
 };
 
 export type Horse = {
@@ -24,23 +24,23 @@ export type Horse = {
   owner: string;
   sex: string;
   colour: string;
-  dateOfBirth: string;
+  dateOfBirth: Date;
   height: number;
   sire: string;
   dam: string;
   damSire: string;
-  createdAt: string;
-  updatedAt: string;
-  description: string;
-  mainImage: Image;
-  images: [Image];
+  createdAt: Date;
+  updatedAt: Date;
+  description: string | null;
+  mainImage: Image | null;
+  images: Image[] | null;
 };
 
 export type Image = {
-  id: number;
+  id: number | null;
   filename: string;
-  width: number;
-  height: number;
+  width: number | null;
+  height: number | null;
 };
 
 export type ResponseError = {

@@ -36,20 +36,20 @@ model PostImage {
   filename    String
   width       Int
   height      Int
-  postImg     Post?   @relation("postImage", fields: [postImgId], references: [id], onUpdate: NoAction)
+  postImg     Post?   @relation("postImage", fields: [postImgId], references: [id], onDelete: Cascade, onUpdate: NoAction)
   postImgId   Int?    @unique
-  postAlbum   Post?    @relation("postAlbumImages", fields: [postAlbumId], references: [id], onUpdate: NoAction)
+  postAlbum   Post?    @relation("postAlbumImages", fields: [postAlbumId], references: [id], onDelete: Cascade, onUpdate: NoAction)
   postAlbumId Int?
 }
 
 model HorseImage {
-  id          Int     @id @default(autoincrement())
-  filename    String
-  width       Int
-  height      Int
-  horseImg     Horse?   @relation("horseImage", fields: [horseImgId], references: [id], onUpdate: NoAction)
+  id           Int     @id @default(autoincrement())
+  filename     String
+  width        Int
+  height       Int
+  horseImg     Horse?   @relation("horseImage", fields: [horseImgId], references: [id], onDelete: Cascade, onUpdate: NoAction)
   horseImgId   Int?    @unique
-  horseAlbum   Horse?    @relation("horseAlbumImages", fields: [horseAlbumId], references: [id], onUpdate: NoAction)
+  horseAlbum   Horse?    @relation("horseAlbumImages", fields: [horseAlbumId], references: [id], onDelete: Cascade, onUpdate: NoAction)
   horseAlbumId Int?
 }
 
