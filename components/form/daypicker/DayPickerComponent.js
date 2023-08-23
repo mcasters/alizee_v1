@@ -25,7 +25,7 @@ function useOnClickOutside(ref, handler) {
   }, [ref, handler]);
 }
 
-function DayPickerComponent({ handleDayChange, alreadyDay }) {
+function DayPickerComponent({ handleDayChange, alreadyDay, fieldName }) {
   const FORMAT = "dd/MM/yyyy";
   const [inputValue, setInputValue] = useState(format(alreadyDay, FORMAT));
   const [selected, setSelected] = useState(alreadyDay);
@@ -69,7 +69,7 @@ function DayPickerComponent({ handleDayChange, alreadyDay }) {
         <input
           className={s.input}
           type="text"
-          name="date"
+          name={fieldName}
           placeholder={inputValue}
           value={inputValue}
           onChange={handleInputChange}

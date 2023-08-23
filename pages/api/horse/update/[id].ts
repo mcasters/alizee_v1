@@ -7,16 +7,17 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  // @ts-ignore
   const session = await getServerSession(req, res, authOptions);
   if (session) {
     const id = req.query.id;
 
-    const post = await prisma.post.update({
+    const horse = await prisma.horse.update({
       data: { id: Number(id) },
     });
-    return post
+    return horse
       ? res.status(200).redirect("/admin")
-      : res.status(404).json({ error: `No post found.` });
+      : res.status(404).json({ error: `No horse found.` });
   } else {
     return res.status(401).send({ error: "Unauthorized" });
   }

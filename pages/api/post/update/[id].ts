@@ -7,6 +7,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  // @ts-ignore
   const session = await getServerSession(req, res, authOptions);
   if (session) {
     const id = req.query.id;

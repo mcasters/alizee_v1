@@ -13,9 +13,6 @@ const ImageForm = () => {
         reader.onload = () => {
           setMainImageSrc(reader.result as string);
         };
-        reader.onerror = () => {
-          console.log(reader.error);
-        };
       }
     }
   };
@@ -32,7 +29,7 @@ const ImageForm = () => {
       )}
       <h4>Image principale :</h4>
       <input type="file" name="mainFile" onChange={onMainChange} />
-      <h4>Album images :</h4>
+      <h4>Album :</h4>
       <input type="file" name="albumFiles" multiple />
     </>
   );

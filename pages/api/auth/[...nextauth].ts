@@ -15,7 +15,9 @@ export const authOptions = {
         },
         password: { label: "Password", type: "password" },
       },
+      // @ts-ignore
       async authorize(credentials, req) {
+        // @ts-ignore
         const { email, password } = credentials;
         if (!email || !password) {
           throw new Error("Missing email or password");
@@ -43,4 +45,5 @@ export const authOptions = {
   debug: true,
 };
 
+// @ts-ignore
 export default NextAuth(authOptions);

@@ -4,7 +4,9 @@
 }
 
 .command {
-  padding: 0.4em 1em;
+  line-height: 2.3;
+  padding: 0.5em 1em;
+  border: solid 2px lightgrey;
   margin: 0;
   display: inline-block;
   width: 20%;

@@ -26,8 +26,6 @@ function HorseForm(props: HorseFormProps) {
     props.horse?.description || ""
   );
 
-  if (props.horse) {
-  }
   const handleDayChange = (date: any) => {
     setDateOfBirth(date);
   };
@@ -70,6 +68,7 @@ function HorseForm(props: HorseFormProps) {
       <DayPickerComponent
         handleDayChange={handleDayChange}
         alreadyDay={dateOfBirth}
+        fieldName="dateOfBirth"
       />
       <input
         autoFocus
@@ -98,7 +97,7 @@ function HorseForm(props: HorseFormProps) {
       <input
         autoFocus
         onChange={(e) => setDamSire(e.target.value)}
-        placeholder="DamSire"
+        placeholder="Dam sire"
         name="damSire"
         type="text"
         value={damSire}
@@ -114,16 +113,7 @@ function HorseForm(props: HorseFormProps) {
       <ImageForm />
       <input
         disabled={
-          !name ||
-          !description ||
-          !dateOfBirth ||
-          !sire ||
-          !dam ||
-          !damSire ||
-          !owner ||
-          !sex ||
-          !colour ||
-          !height
+          !name || !description || !dateOfBirth || !sex || !colour || !height
         }
         type="submit"
         value={"Enregistrer"}

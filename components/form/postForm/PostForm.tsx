@@ -38,7 +38,11 @@ function PostForm(props: PostFormProps) {
         type="text"
         value={title}
       />
-      <DayPickerComponent handleDayChange={handleDayChange} alreadyDay={date} />
+      <DayPickerComponent
+        handleDayChange={handleDayChange}
+        alreadyDay={date}
+        fieldName="date"
+      />
       <textarea
         cols={80}
         onChange={(e) => setContent(e.target.value)}

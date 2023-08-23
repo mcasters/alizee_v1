@@ -6,7 +6,7 @@ import Enumerable = Prisma.Enumerable;
 import { getServerSession } from "next-auth/next";
 
 import { resizeAndSaveImage } from "@/utils/serverSide/image";
-import { createPostDir, parseFormData } from "@/utils/serverSide/post";
+import { createPostDir, parseFormData } from "@/utils/serverSide/form";
 import { getDirnameFromTitle } from "@/utils/common/post";
 import { Prisma } from ".prisma/client";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
@@ -17,6 +17,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  // @ts-ignore
   const session = await getServerSession(req, res, authOptions);
 
   if (session) {
