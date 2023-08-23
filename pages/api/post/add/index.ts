@@ -47,7 +47,7 @@ export default async function handler(
       const filepath = `${postDir}/${file.originalname}`;
       const fileInfo = await resizeAndSaveImage(file.buffer, filepath);
       if (file.fieldname === "mainFile") {
-        await prisma.image.create({
+        await prisma.postImage.create({
           data: {
             filename: file.originalname,
             width: fileInfo.width,
@@ -66,7 +66,7 @@ export default async function handler(
     }
 
     if (albumImages.length > 0) {
-      await prisma.image.createMany({
+      await prisma.postImage.createMany({
         data: albumImages,
       });
     }

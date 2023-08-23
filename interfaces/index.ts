@@ -41,10 +41,6 @@ export type Image = {
   filename: string;
   width: number;
   height: number;
-  postImg: Post;
-  postImgId: string;
-  postAlbum: Post;
-  postAlbumId: string;
 };
 
 export type ResponseError = {

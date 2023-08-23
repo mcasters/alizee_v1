@@ -116,7 +116,7 @@ function HorseForm(props: HorseFormProps) {
           !name || !description || !dateOfBirth || !sex || !colour || !height
         }
         type="submit"
-        value={"Enregistrer"}
+        value="Enregistrer"
       />
       <input type="reset" />
     </form>

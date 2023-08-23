@@ -14,7 +14,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const res = await prisma.horse.findMany({
     include: {
       mainImage: {
-        select: { filename: true },
+        select: { filename: true, height: true, width: true },
       },
     },
   });

@@ -17,9 +17,6 @@ function PostForm(props: PostFormProps) {
   const [date, setDate] = useState<Date>(
     props.post?.date ? new Date(props.post?.date) : new Date()
   );
-  const [published, setPublished] = useState<boolean>(
-    props.post?.published || false
-  );
 
   if (props.post) {
   }
@@ -51,14 +48,6 @@ function PostForm(props: PostFormProps) {
         rows={10}
         value={content}
       />
-      <input
-        id="published"
-        type="checkbox"
-        name="published"
-        checked={published}
-        onChange={(e) => setPublished(e.target.checked)}
-        style={{ width: "initial", marginRight: "10px" }}
-      />
       <label htmlFor="published">Publier</label>
       <Dropdown
         placeHolder="Tags..."
@@ -71,7 +60,7 @@ function PostForm(props: PostFormProps) {
       <input
         disabled={!title || !content || !date}
         type="submit"
-        value={published ? "Publier" : "Enregistrer le Brouillon"}
+        value="Enregistrer"
       />
       <input type="reset" />
     </form>
