@@ -6,10 +6,10 @@ import { Option } from "@/interfaces/index";
 import PostForm from "@/components/form/postForm/PostForm";
 import { Post } from "@/interfaces/index";
 
-interface UpdateProps {
+type UpdateProps = {
   post: Post;
   tags: Option[];
-}
+};
 
 const UpdatePostComponent = (props: UpdateProps) => {
   const form = useRef(null);

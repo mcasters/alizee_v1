@@ -1,17 +1,13 @@
 import prisma from "@/lib/prisma";
 import { NextApiRequest, NextApiResponse } from "next";
-import { join } from "path";
 import { parse } from "date-fns";
 import Enumerable = Prisma.Enumerable;
 import { getServerSession } from "next-auth/next";
 
-import { resizeAndSaveImage } from "@/utils/serverSide/image";
-import { createPostDir, parseFormData } from "@/utils/serverSide/form";
-import { getDirnameFromTitle } from "@/utils/common/post";
+import { getActuPath, resizeAndSaveImage } from "@/utils/serverSideUtils";
+import { createDir, parseFormData } from "@/utils/serverSideUtils";
 import { Prisma } from ".prisma/client";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
-
-const serverLibraryPath = process.env.PHOTOS_PATH;
 
 export default async function handler(
   req: NextApiRequest,
@@ -22,29 +18,31 @@ export default async function handler(
 
   if (session) {
     const { fields, files } = await parseFormData(req, res);
-    const dirName = getDirnameFromTitle(fields.title);
-    const postDir = join(`${serverLibraryPath}`, "actu", `${dirName}`);
+    const dir = getActuPath(fields.title);
 
-    createPostDir(postDir);
+    createDir(dir);
+
+    /*
 
     const tagsToArray = fields.tags.split(",").map(Number);
     const tags = tagsToArray.map((tid: number) => {
       return { id: tid };
     });
 
+     */
+
     const newPost = await prisma.post.create({
       data: {
         title: fields.title,
         date: parse(fields.date, "dd/MM/yyyy", new Date()),
         content: fields.content,
-        published: fields.published === "on",
       },
     });
 
     let albumImages: Enumerable<any> = [];
 
     for await (const file of files) {
-      const filepath = `${postDir}/${file.originalname}`;
+      const filepath = `${dir}/${file.originalname}`;
       const fileInfo = await resizeAndSaveImage(file.buffer, filepath);
       if (file.fieldname === "mainFile") {
         await prisma.postImage.create({

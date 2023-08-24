@@ -5,9 +5,9 @@ import { parse } from "date-fns";
 import Enumerable = Prisma.Enumerable;
 import { getServerSession } from "next-auth/next";
 
-import { resizeAndSaveImage } from "@/utils/serverSide/image";
-import { createPostDir, parseFormData } from "@/utils/serverSide/form";
-import { getDirnameFromTitle } from "@/utils/common/post";
+import { resizeAndSaveImage } from "@/utils/serverSideUtils";
+import { createDir, parseFormData } from "@/utils/serverSideUtils";
+import { getDirnameFromString } from "@/utils/commonUtils";
 import { Prisma } from ".prisma/client";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
@@ -22,10 +22,10 @@ export default async function handler(
 
   if (session) {
     const { fields, files } = await parseFormData(req, res);
-    const dirName = getDirnameFromTitle(fields.name);
+    const dirName = getDirnameFromString(fields.name);
     const postDir = join(`${serverLibraryPath}`, "chevaux", `${dirName}`);
 
-    createPostDir(postDir);
+    createDir(postDir);
 
     const newHorse = await prisma.horse.create({
       data: {

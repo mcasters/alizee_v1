@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import { Post } from "@/interfaces/index";
 import AlbumComponent from "../common/AlbumComponent";
-import { getDirnameFromTitle } from "@/utils/common/post";
+import { getPath } from "@/utils/commonUtils";
 
 interface Props {
   post: Post;
@@ -11,8 +11,7 @@ interface Props {
 export default function PostComponent({ post }: Props) {
   const mainImageFilename = post.mainImage?.filename || "";
   const albumsImages = post.images;
-  const imageDirname = getDirnameFromTitle(post.title);
-  const path = `/images/actu/${imageDirname}`;
+  const path = getPath(post);
 
   return (
     <article>

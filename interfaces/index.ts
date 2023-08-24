@@ -32,15 +32,15 @@ export type Horse = {
   createdAt: Date;
   updatedAt: Date;
   description: string | null;
-  mainImage: Image | null;
-  images: Image[] | null;
+  mainImage: Image;
+  images: Image[];
 };
 
 export type Image = {
-  id: number | null;
+  id: number;
   filename: string;
-  width: number | null;
-  height: number | null;
+  width: number;
+  height: number;
 };
 
 export type ResponseError = {

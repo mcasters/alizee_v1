@@ -1,0 +1,12 @@
+.imageContainer {
+ display: inline-block;
+}
+
+.trash {
+    width: 100%;
+    text-align: center;
+    border: none;
+    background: none;
+    font-size: 1.4em;
+    padding: 0 0.4em 0.4em;
+}

@@ -5,12 +5,11 @@ import { Option } from "@/interfaces/index";
 import { useSWRConfig } from "swr";
 import PostForm from "@/components/form/postForm/PostForm";
 
-interface AddPostProps {
+type AddPostProps = {
   tags: Option[];
-}
+};
 
 const AddPostComponent = (props: AddPostProps) => {
-  const [published, setPublished] = useState<boolean>(true);
   const form = useRef(null);
   const { mutate } = useSWRConfig();
 
@@ -20,7 +19,7 @@ const AddPostComponent = (props: AddPostProps) => {
       const formData = new FormData(form.current);
       fetch("/api/post/add", { method: "POST", body: formData }).then((res) => {
         if (res.ok) {
-          toast(published ? "Post publié" : "Brouillon enregistré");
+          toast("Post publié");
           mutate("/api/post");
         } else toast("Erreur à l'enregistrement");
       });

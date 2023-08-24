@@ -3,23 +3,20 @@ import Image from "next/image";
 
 import { Horse } from "@/interfaces/index";
 import AlbumComponent from "@/components/common/AlbumComponent";
-import { getDirnameFromTitle } from "@/utils/common/post";
+import { getPath } from "@/utils/commonUtils";
 
 interface Props {
   horse: Horse;
 }
 export default function HorseComponent({ horse }: Props) {
-  const mainImageFilename = horse.mainImage?.filename || "";
-  const albumsImages = horse.images;
-  const imageDirname = getDirnameFromTitle(horse.name);
-  const path = `/images/chevaux/${imageDirname}`;
+  const path = getPath(horse);
 
   return (
     <article>
       <h1>{horse.name}</h1>
-      {mainImageFilename !== "" && (
+      {horse.mainImage && (
         <Image
-          src={`${path}/${mainImageFilename}`}
+          src={`${path}/${horse.mainImage.filename}`}
           width={horse.mainImage.width}
           height={horse.mainImage.height}
           alt={`Alizée Roussel - ${horse.name}`}
@@ -28,7 +25,7 @@ export default function HorseComponent({ horse }: Props) {
       <time>{new Date(horse.dateOfBirth).toLocaleDateString()}</time>
       <p>{horse.description}</p>
       <div>
-        {albumsImages.length > 0 && (
+        {horse.images && (
           <AlbumComponent
             images={horse.images}
             path={path}

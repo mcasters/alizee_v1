@@ -110,7 +110,7 @@ function HorseForm(props: HorseFormProps) {
         rows={10}
         value={description}
       />
-      <ImageForm />
+      <ImageForm item={props.horse ? props.horse : null} />
       <input
         disabled={
           !name || !description || !dateOfBirth || !sex || !colour || !height

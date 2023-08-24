@@ -2,9 +2,9 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth/next";
 import prisma from "@/lib/prisma";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
-import { getDirnameFromTitle } from "@/utils/common/post";
+import { getDirnameFromString } from "@/utils/commonUtils";
 import { join } from "path";
-import { deleteImages } from "@/utils/serverSide/image";
+import { deleteAllFiles, getActuPath } from "@/utils/serverSideUtils";
 
 const serverLibraryPath = process.env.PHOTOS_PATH;
 
@@ -23,9 +23,8 @@ export default async function handler(
     });
 
     if (post) {
-      const dirName = getDirnameFromTitle(post.title);
-      const pathDir = join(`${serverLibraryPath}`, "actu", `${dirName}`);
-      if (deleteImages(pathDir)) {
+      const dir = getActuPath(post.title);
+      if (deleteAllFiles(dir)) {
         postDeleted = await prisma.post.delete({
           where: { id: Number(id) },
         });

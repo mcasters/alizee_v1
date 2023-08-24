@@ -1,15 +1,14 @@
 import Link from "next/link";
 import type { Post } from "@/interfaces/index";
 import Image from "next/image";
-import { getDirnameFromTitle } from "@/utils/common/post";
+import { getPath } from "@/utils/commonUtils";
 
 type PostProps = {
   post: Post;
 };
 
 export default function PostListComponent({ post }: PostProps) {
-  const imageDirname = getDirnameFromTitle(post.title);
-  const path = `/images/actu/${imageDirname}`;
+  const path = getPath(post);
 
   return (
     <li>

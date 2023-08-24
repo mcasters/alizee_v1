@@ -1,15 +1,14 @@
 import Link from "next/link";
 import type { Horse } from "@/interfaces/index";
 import Image from "next/image";
-import { getDirnameFromTitle } from "@/utils/common/post";
+import { getPath } from "@/utils/commonUtils";
 
 type PostProps = {
   horse: Horse;
 };
 
 export default function HorseListComponent({ horse }: PostProps) {
-  const imageDirname = getDirnameFromTitle(horse.name);
-  const path = `/images/chevaux/${imageDirname}`;
+  const path = getPath(horse);
 
   return (
     <li>

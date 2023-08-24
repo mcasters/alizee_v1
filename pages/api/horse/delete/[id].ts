@@ -2,8 +2,8 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth/next";
 import prisma from "@/lib/prisma";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
-import { deleteImages } from "@/utils/serverSide/image";
-import { getDirnameFromTitle } from "@/utils/common/post";
+import { deleteAllFiles } from "@/utils/serverSideUtils";
+import { getDirnameFromString } from "@/utils/commonUtils";
 import { join } from "path";
 
 const serverLibraryPath = process.env.PHOTOS_PATH;
@@ -23,9 +23,9 @@ export default async function handler(
     });
 
     if (horse) {
-      const dirName = getDirnameFromTitle(horse.name);
+      const dirName = getDirnameFromString(horse.name);
       const pathDir = join(`${serverLibraryPath}`, "chevaux", `${dirName}`);
-      if (deleteImages(pathDir)) {
+      if (deleteAllFiles(pathDir)) {
         horseDeleted = await prisma.horse.delete({
           where: { id: Number(id) },
         });
