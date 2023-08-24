@@ -36,6 +36,25 @@ export type Horse = {
   images: Image[];
 };
 
+export type HorseToSell = {
+  id: number;
+  name: string;
+  breed: string | null;
+  price: string;
+  sex: string;
+  colour: string;
+  dateOfBirth: Date;
+  height: number;
+  sire: string;
+  dam: string;
+  damSire: string;
+  createdAt: Date;
+  updatedAt: Date;
+  description: string | null;
+  mainImage: Image;
+  images: Image[];
+};
+
 export type Image = {
   id: number;
   filename: string;
