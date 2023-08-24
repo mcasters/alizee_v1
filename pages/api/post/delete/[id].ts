@@ -2,11 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth/next";
 import prisma from "@/lib/prisma";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
-import { getDirnameFromString } from "@/utils/commonUtils";
-import { join } from "path";
 import { deleteAllFiles, getActuPath } from "@/utils/serverSideUtils";
-
-const serverLibraryPath = process.env.PHOTOS_PATH;
 
 export default async function handler(
   req: NextApiRequest,
@@ -15,18 +11,18 @@ export default async function handler(
   // @ts-ignore
   const session = await getServerSession(req, res, authOptions);
   if (session) {
-    const id = req.query.id;
+    const id = Number(req.query.id);
 
     let postDeleted = null;
     const post = await prisma.post.findUnique({
-      where: { id: Number(id) },
+      where: { id },
     });
 
     if (post) {
       const dir = getActuPath(post.title);
       if (deleteAllFiles(dir)) {
         postDeleted = await prisma.post.delete({
-          where: { id: Number(id) },
+          where: { id },
         });
       }
     }

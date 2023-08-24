@@ -23,19 +23,20 @@ export default async function handler(
   if (session) {
     const { fields, files } = await parseFormData(req, res);
     const dirName = getDirnameFromString(fields.name);
-    const dir = join(`${serverLibraryPath}`, "chevaux", `${dirName}`);
+    const dir = join(`${serverLibraryPath}`, "chevaux_a_vendre", `${dirName}`);
 
     createDir(dir);
 
-    const newHorse = await prisma.horse.create({
+    const newHorse = await prisma.horseToSell.create({
       data: {
         name: fields.name,
+        price: fields.price,
+        breed: fields.breed,
         description: fields.description,
         dateOfBirth: parse(fields.dateOfBirth, "dd/MM/yyyy", new Date()),
         sire: fields.sire,
         dam: fields.dam,
         damSire: fields.damSire,
-        owner: fields.owner,
         sex: fields.sex,
         colour: fields.colour,
         height: Number(fields.height),
@@ -48,12 +49,12 @@ export default async function handler(
       const filepath = `${dir}/${file.originalname}`;
       const fileInfo = await resizeAndSaveImage(file.buffer, filepath);
       if (file.fieldname === "mainFile") {
-        await prisma.horseImage.create({
+        await prisma.horseToSellImage.create({
           data: {
             filename: file.originalname,
             width: fileInfo.width,
             height: fileInfo.height,
-            horseImgId: newHorse.id,
+            horseToSellImgId: newHorse.id,
           },
         });
       } else {
@@ -61,13 +62,13 @@ export default async function handler(
           filename: file.originalname,
           width: fileInfo.width,
           height: fileInfo.height,
-          horseAlbumId: newHorse.id,
+          horseToSellAlbumId: newHorse.id,
         });
       }
     }
 
     if (albumImages.length > 0) {
-      await prisma.horseImage.createMany({
+      await prisma.horseToSellImage.createMany({
         data: albumImages,
       });
     }

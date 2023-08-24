@@ -14,14 +14,14 @@ export default async function handler(
     const id = Number(req.query.id);
 
     let horseDeleted = null;
-    const horse = await prisma.horse.findUnique({
+    const horse = await prisma.horseToSell.findUnique({
       where: { id },
     });
 
     if (horse) {
       const dir = getHorsePath(horse.name);
       if (deleteAllFiles(dir)) {
-        horseDeleted = await prisma.horse.delete({
+        horseDeleted = await prisma.horseToSell.delete({
           where: { id },
         });
       }

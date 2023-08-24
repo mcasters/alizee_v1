@@ -38,6 +38,11 @@ export const getHorsePath = (name: string) => {
   return join(`${serverLibraryPath}`, "chevaux", `${dirName}`);
 };
 
+export const getHorseToSellPath = (name: string) => {
+  const dirName = getDirnameFromString(name);
+  return join(`${serverLibraryPath}`, "chevaux-a-vendre", `${dirName}`);
+};
+
 export const createDir = (dir: string) => {
   stat(dir, (err) => {
     if (err?.code === "ENOENT")

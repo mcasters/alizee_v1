@@ -42,17 +42,6 @@ model PostImage {
   postAlbumId Int?
 }
 
-model HorseImage {
-  id           Int     @id @default(autoincrement())
-  filename     String
-  width        Int
-  height       Int
-  horseImg     Horse?   @relation("horseImage", fields: [horseImgId], references: [id], onDelete: Cascade, onUpdate: NoAction)
-  horseImgId   Int?    @unique
-  horseAlbum   Horse?    @relation("horseAlbumImages", fields: [horseAlbumId], references: [id], onDelete: Cascade, onUpdate: NoAction)
-  horseAlbumId Int?
-}
-
 model Tag {
   id    Int    @id @default(autoincrement())
   label String @unique
@@ -75,4 +64,45 @@ model Horse {
   updatedAt   DateTime @updatedAt
   mainImage   HorseImage?   @relation("horseImage")
   images      HorseImage[]  @relation("horseAlbumImages")
+}
+
+model HorseImage {
+  id           Int     @id @default(autoincrement())
+  filename     String
+  width        Int
+  height       Int
+  horseImg     Horse?   @relation("horseImage", fields: [horseImgId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  horseImgId   Int?    @unique
+  horseAlbum   Horse?    @relation("horseAlbumImages", fields: [horseAlbumId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  horseAlbumId Int?
+}
+
+model HorseToSell {
+  id          Int     @id @default(autoincrement())
+  name        String
+  price       String
+  sex         String
+  colour      String
+  breed       String?
+  dateOfBirth DateTime
+  height      Int
+  sire        String
+  dam         String
+  damSire     String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  mainImage   HorseToSellImage?   @relation("horseToSellImage")
+  images      HorseToSellImage[]  @relation("horseToSellAlbumImages")
+}
+
+model HorseToSellImage {
+  id                 Int     @id @default(autoincrement())
+  filename           String
+  width              Int
+  height             Int
+  horseToSellImg     HorseToSell?   @relation("horseToSellImage", fields: [horseToSellImgId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  horseToSellImgId   Int?    @unique
+  horseToSellAlbum   HorseToSell?    @relation("horseToSellAlbumImages", fields: [horseToSellAlbumId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  horseToSellAlbumId Int?
 }
