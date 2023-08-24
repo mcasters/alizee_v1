@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth/next";
 import prisma from "@/lib/prisma";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
-import { deleteAllFiles } from "@/utils/serverSideUtils";
+import { deleteAllFiles, getHorsePath } from "@/utils/serverSideUtils";
 import { getDirnameFromString } from "@/utils/commonUtils";
 import { join } from "path";
 
@@ -23,9 +23,8 @@ export default async function handler(
     });
 
     if (horse) {
-      const dirName = getDirnameFromString(horse.name);
-      const pathDir = join(`${serverLibraryPath}`, "chevaux", `${dirName}`);
-      if (deleteAllFiles(pathDir)) {
+      const dir = getHorsePath(horse.name);
+      if (deleteAllFiles(dir)) {
         horseDeleted = await prisma.horse.delete({
           where: { id: Number(id) },
         });

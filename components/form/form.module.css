@@ -10,3 +10,8 @@
     font-size: 1.4em;
     padding: 0 0.4em 0.4em;
 }
+
+.separate {
+    padding-top: 3em;
+    border-bottom: 1px solid black;
+}

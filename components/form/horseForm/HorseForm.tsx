@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { Horse } from "@/interfaces/index";
-import s from "@/styles/Draft.module.css";
+import s from "../form.module.css";
 import DayPickerComponent from "@/components/form/daypicker/DayPickerComponent";
 import ImageForm from "@/components/form/imageForm/ImageForm";
 
@@ -33,6 +33,7 @@ function HorseForm(props: HorseFormProps) {
   return (
     <form ref={props.formRef} className={s.form} onSubmit={props.onSubmit}>
       <h2>{props.horse ? "Modifier un cheval" : "Ajouter un cheval"}</h2>
+      {props.horse && <input type="hidden" name="id" value={props.horse.id} />}
       <input
         autoFocus
         onChange={(e) => setName(e.target.value)}
@@ -111,14 +112,16 @@ function HorseForm(props: HorseFormProps) {
         value={description}
       />
       <ImageForm item={props.horse ? props.horse : null} />
-      <input
-        disabled={
-          !name || !description || !dateOfBirth || !sex || !colour || !height
-        }
-        type="submit"
-        value="Enregistrer"
-      />
-      <input type="reset" />
+      <div className={s.separate}>
+        <input
+          disabled={
+            !name || !description || !dateOfBirth || !sex || !colour || !height
+          }
+          type="submit"
+          value="Enregistrer"
+        />
+        <input type="reset" />
+      </div>
     </form>
   );
 }

@@ -6,7 +6,7 @@ import { getServerSession } from "next-auth/next";
 
 import {
   deleteFile,
-  getActuPath,
+  getHorsePath,
   renameDir,
   resizeAndSaveImage,
 } from "@/utils/serverSideUtils";
@@ -24,29 +24,36 @@ export default async function handler(
 
   if (session) {
     const { fields, files } = await parseFormData(req, res);
-    const postId = Number(fields.id);
+    const horseId = Number(fields.id);
 
-    const oldPost = await prisma.post.findUnique({
-      where: { id: postId },
+    const oldHorse = await prisma.horse.findUnique({
+      where: { id: horseId },
     });
 
-    if (oldPost) {
-      const dir = getActuPath(fields.title);
+    if (oldHorse) {
+      const dir = getHorsePath(fields.name);
       const oldMainFileToKeep = fields.existentMainFile;
       const oldAlbumFilesToKeep: string[] =
         fields.existentAlbumFiles.split(",");
 
-      if (oldPost.title !== fields.title) {
-        const oldDir = getActuPath(oldPost.title);
+      if (oldHorse.name !== fields.name) {
+        const oldDir = getHorsePath(oldHorse.name);
         renameDir(oldDir, dir);
       }
 
-      const post = await prisma.post.update({
-        where: { id: postId },
+      const horse = await prisma.horse.update({
+        where: { id: horseId },
         data: {
-          title: fields.title,
-          date: parse(fields.date, "dd/MM/yyyy", new Date()),
-          content: fields.content,
+          name: fields.name,
+          description: fields.description,
+          dateOfBirth: parse(fields.dateOfBirth, "dd/MM/yyyy", new Date()),
+          sire: fields.sire,
+          dam: fields.dam,
+          damSire: fields.damSire,
+          owner: fields.owner,
+          sex: fields.sex,
+          colour: fields.colour,
+          height: Number(fields.height),
         },
         select: {
           mainImage: true,
@@ -54,30 +61,30 @@ export default async function handler(
         },
       });
 
-      if (oldMainFileToKeep === "" && post.mainImage !== null) {
-        await prisma.postImage.delete({
+      if (oldMainFileToKeep === "" && horse.mainImage !== null) {
+        await prisma.horseImage.delete({
           where: {
-            postImgId: postId,
+            horseImgId: horseId,
           },
         });
-        const path = join(`${dir}`, `${post.mainImage.filename}`);
+        const path = join(`${dir}`, `${horse.mainImage.filename}`);
         deleteFile(path);
       }
 
-      if (oldAlbumFilesToKeep.length === 0 && post.images.length > 0) {
-        await prisma.postImage.deleteMany({
+      if (oldAlbumFilesToKeep.length === 0 && horse.images.length > 0) {
+        await prisma.horseImage.deleteMany({
           where: {
-            postAlbumId: postId,
+            horseAlbumId: horseId,
           },
         });
-        for (const image of post.images) {
+        for (const image of horse.images) {
           const path = join(`${dir}`, `${image.filename}`);
           deleteFile(path);
         }
       } else {
-        for (const image of post.images) {
+        for (const image of horse.images) {
           if (!oldAlbumFilesToKeep.find((f) => f === image.filename)) {
-            await prisma.postImage.delete({
+            await prisma.horseImage.delete({
               where: {
                 id: Number(image.id),
               },
@@ -94,12 +101,12 @@ export default async function handler(
         const path = join(`${dir}`, `${file.originalname}`);
         const fileInfo = await resizeAndSaveImage(file.buffer, path);
         if (file.fieldname === "mainFile") {
-          await prisma.postImage.create({
+          await prisma.horseImage.create({
             data: {
               filename: file.originalname,
               width: fileInfo.width,
               height: fileInfo.height,
-              postImgId: postId,
+              horseImgId: horseId,
             },
           });
         } else {
@@ -107,19 +114,19 @@ export default async function handler(
             filename: file.originalname,
             width: fileInfo.width,
             height: fileInfo.height,
-            postAlbumId: postId,
+            horseAlbumId: horseId,
           });
         }
       }
 
       if (albumImages.length > 0) {
-        await prisma.postImage.createMany({
+        await prisma.horseImage.createMany({
           data: albumImages,
         });
       }
       return res.status(200).redirect("/admin");
     } else {
-      return res.status(404).json({ error: `No post found.` });
+      return res.status(404).json({ error: `No horse found.` });
     }
   } else {
     return res.status(401).send({ message: "Unauthorized" });

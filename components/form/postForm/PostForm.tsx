@@ -55,12 +55,14 @@ function PostForm(props: PostFormProps) {
         selectedValues={props.post?.tags || []}
       />
       <ImageForm item={props.post ? props.post : null} />
-      <input
-        disabled={!title || !content || !date}
-        type="submit"
-        value="Enregistrer"
-      />
-      <input type="reset" />
+      <div className={s.separate}>
+        <input
+          disabled={!title || !content || !date}
+          type="submit"
+          value="Enregistrer"
+        />
+        <input type="reset" />
+      </div>
     </form>
   );
 }

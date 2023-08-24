@@ -41,6 +41,7 @@ export default function ImageForm({ item }: ImageFormProps) {
       const mainFile = e.target.files[0];
       if (mainFile) {
         setNewMain(URL.createObjectURL(mainFile));
+        setExistantMain("");
       }
     }
   };
@@ -61,7 +62,7 @@ export default function ImageForm({ item }: ImageFormProps) {
 
   return (
     <>
-      <h4>Image principale :</h4>
+      <h4 className={s.separate}>Image principale :</h4>
       {existantMain !== "" && (
         <>
           <Image
@@ -80,8 +81,7 @@ export default function ImageForm({ item }: ImageFormProps) {
       {newMain !== "" && (
         <Image src={newMain} alt="image principale" width={100} height={100} />
       )}
-
-      <h4>Album :</h4>
+      <h4 className={s.separate}>Album :</h4>
       {existantAlbum.length > 0 &&
         existantAlbum.map((filename) => (
           <div key={filename} className={s.imageContainer}>
