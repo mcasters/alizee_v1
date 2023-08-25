@@ -1,5 +1,7 @@
 .footer {
-    margin-top: 2rem;
+    padding-top: 2rem;
+    height: 300px;
+    background-color: var(--red);
 }
 
 .navItems {

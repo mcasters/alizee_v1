@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import s from "./header.module.css";
+import s from "./nav.module.css";
 
 export default function Nav() {
   return (
