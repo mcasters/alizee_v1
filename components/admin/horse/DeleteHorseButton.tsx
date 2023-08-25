@@ -4,16 +4,19 @@ import toast from "react-hot-toast";
 import { useSWRConfig } from "swr";
 
 type props = {
+  isToSell: boolean;
   id: number;
 };
-export default function DeleteHorseButton({ id }: props) {
+export default function DeleteHorseButton({ id, isToSell }: props) {
   const { mutate } = useSWRConfig();
+  const api = isToSell ? "/api/horse-to-sell/delete" : "/api/horse/delete";
+  const apiToUpdate = isToSell ? "/api/horse-to-sell" : "/api/horse";
   const handleDelete = async () => {
     if (confirm("Sûr de vouloir supprimer ?")) {
-      fetch(`/api/horse/delete/${id}`).then((res) => {
+      fetch(`${api}/${id}`).then((res) => {
         if (res.ok) {
           toast("Cheval effacé");
-          mutate("/api/horse");
+          mutate(apiToUpdate);
         } else toast("Erreur à la suppression");
       });
     }

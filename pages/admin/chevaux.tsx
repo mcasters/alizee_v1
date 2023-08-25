@@ -20,8 +20,8 @@ export default function Chevaux() {
   return (
     <Layout>
       <AdminNav />
-      <HorseListComponent />
-      <AddHorseComponent />
+      <HorseListComponent isToSell={false} />
+      <AddHorseComponent isToSell={false} />
     </Layout>
   );
 }

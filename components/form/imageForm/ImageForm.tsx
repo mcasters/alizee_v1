@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { FiTrash2 } from "react-icons/fi";
 
-import { Horse, Post } from "@/interfaces/index";
+import { Horse, HorseToSell, Post } from "@/interfaces/index";
 import { getPath } from "@/utils/commonUtils";
 import s from "@/components/form/form.module.css";
 
 type ImageFormProps = {
-  item: Horse | Post | null;
+  item: Horse | Post | HorseToSell | null;
 };
 
 export default function ImageForm({ item }: ImageFormProps) {

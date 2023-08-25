@@ -2,8 +2,9 @@ import { useSession } from "next-auth/react";
 
 import Layout from "@/components/layout/layout";
 import AccessDenied from "@/components/auth/access-denied";
-import AddHorseComponent from "@/components/admin/horse/AddHorseComponent";
 import AdminNav from "@/components/layout/AdminNav";
+import HorseListComponent from "@/components/admin/horse/HorseListComponent";
+import AddHorseComponent from "@/components/admin/horse/AddHorseComponent";
 
 export default function ChevauxAVendre() {
   const { data: session } = useSession();
@@ -19,7 +20,8 @@ export default function ChevauxAVendre() {
   return (
     <Layout>
       <AdminNav />
-      <AddHorseComponent />
+      <HorseListComponent isToSell={true} />
+      <AddHorseComponent isToSell={true} />
     </Layout>
   );
 }

@@ -2,14 +2,15 @@ import React from "react";
 import { FiCheck, FiX } from "react-icons/fi";
 
 import s from "@/components/admin/common/ListComponent.module.css";
-import { Horse } from "@/interfaces/index";
+import { Horse, HorseToSell } from "@/interfaces/index";
 import useModal from "@/components/form/modal/useModal";
 import Modal from "@/components/form/modal/Modal";
 import DeleteHorseButton from "@/components/admin/horse/DeleteHorseButton";
 import UpdateHorseComponent from "@/components/admin/horse/UpdateHorseComponent";
 
 interface RawListProps {
-  horse: Horse;
+  isToSell: boolean;
+  horse: Horse | HorseToSell;
 }
 
 export default function RowHorseListComponent(props: RawListProps) {
@@ -30,10 +31,10 @@ export default function RowHorseListComponent(props: RawListProps) {
         </li>
       </button>
       <li>
-        <DeleteHorseButton id={props.horse.id} />
+        <DeleteHorseButton id={props.horse.id} isToSell />
       </li>
       <Modal isOpen={isOpen} toggle={toggle}>
-        <UpdateHorseComponent horse={props.horse} />
+        <UpdateHorseComponent horse={props.horse} isToSell />
       </Modal>
     </ul>
   );

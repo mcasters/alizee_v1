@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Horse } from "@/interfaces/index";
+import { HorseToSell } from "@/interfaces/index";
 import s from "../form.module.css";
 import DayPickerComponent from "@/components/form/daypicker/DayPickerComponent";
 import ImageForm from "@/components/form/imageForm/ImageForm";
@@ -8,12 +8,13 @@ import ImageForm from "@/components/form/imageForm/ImageForm";
 interface HorseFormProps {
   formRef: React.MutableRefObject<null>;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  horse?: Horse;
+  horse?: HorseToSell;
 }
-export default function HorseForm(props: HorseFormProps) {
+export default function HorseToSellForm(props: HorseFormProps) {
   const [name, setName] = useState<string>(props.horse?.name || "");
-  const [owner, setOwner] = useState<string>(props.horse?.owner || "");
-  const [sex, setsex] = useState<string>(props.horse?.sex || "");
+  const [breed, setBreed] = useState<string>(props.horse?.breed || "");
+  const [price, setPrice] = useState<string>(props.horse?.price || "");
+  const [sex, setSex] = useState<string>(props.horse?.sex || "");
   const [colour, setColour] = useState<string>(props.horse?.colour || "");
   const [dateOfBirth, setDateOfBirth] = useState<Date>(
     props.horse?.dateOfBirth ? new Date(props.horse?.dateOfBirth) : new Date()
@@ -32,10 +33,13 @@ export default function HorseForm(props: HorseFormProps) {
 
   return (
     <form ref={props.formRef} className={s.form} onSubmit={props.onSubmit}>
-      <h2>{props.horse ? "Modifier un cheval" : "Ajouter un cheval"}</h2>
+      <h2>
+        {props.horse
+          ? "Modifier un cheval à vendre"
+          : "Ajouter un cheval à vendre"}
+      </h2>
       {props.horse && <input type="hidden" name="id" value={props.horse.id} />}
       <input
-        autoFocus
         onChange={(e) => setName(e.target.value)}
         placeholder="Name"
         name="name"
@@ -43,14 +47,21 @@ export default function HorseForm(props: HorseFormProps) {
         value={name}
       />
       <input
-        onChange={(e) => setOwner(e.target.value)}
-        placeholder="Owner"
-        name="owner"
+        onChange={(e) => setBreed(e.target.value)}
+        placeholder="Breed"
+        name="breed"
         type="text"
-        value={owner}
+        value={breed}
       />
       <input
-        onChange={(e) => setsex(e.target.value)}
+        onChange={(e) => setPrice(e.target.value)}
+        placeholder="Price"
+        name="price"
+        type="text"
+        value={price}
+      />
+      <input
+        onChange={(e) => setSex(e.target.value)}
         placeholder="Sex"
         name="sex"
         type="text"
@@ -104,11 +115,11 @@ export default function HorseForm(props: HorseFormProps) {
         rows={10}
         value={description}
       />
-      <ImageForm item={props.horse ? props.horse : null} />
+      <ImageForm item={props.horse || null} />
       <div className={s.separate}>
         <input
           disabled={
-            !name || !description || !dateOfBirth || !sex || !colour || !height
+            !name || !dateOfBirth || !sex || !colour || !height || !price
           }
           type="submit"
           value="Enregistrer"
