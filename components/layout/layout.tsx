@@ -6,12 +6,10 @@ import Nav from "./nav";
 import AuthStatus from "../auth/auth-status";
 
 export default function Layout({ children }: { children: ReactNode }) {
-  const AuthStatusDiv = AuthStatus();
   return (
     <>
       <Header />
       <Nav />
-      {AuthStatusDiv}
       <main>{children}</main>
       <Footer />
     </>

@@ -1,5 +1,6 @@
-import { useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 import LoadingDots from "@/components/loading-dots";
+import s from "./authStatus.module.css";
 
 export default function AuthStatus() {
   const { data: session, status } = useSession();
@@ -8,11 +9,38 @@ export default function AuthStatus() {
   if (loading) return <LoadingDots />;
 
   return (
-    <div className="absolute top-5 w-full flex justify-center items-center">
-      {session && (
-        <p className="text-stone-200 text-sm">
-          Signed in as {session.user?.email}
-        </p>
+    <div className={s.authContainer}>
+      {!session && (
+        <>
+          <span>
+            <small>You are not signed in</small>
+          </span>
+          <br />
+          <button
+            onClick={() => {
+              signIn();
+            }}
+          >
+            Admin in
+          </button>
+        </>
+      )}
+      {session?.user && (
+        <>
+          <span>
+            <small>Signed in as</small>
+            <br />
+            <strong>{session.user.email}</strong>
+          </span>
+          <br />
+          <button
+            onClick={() => {
+              signOut();
+            }}
+          >
+            Admin out
+          </button>
+        </>
       )}
     </div>
   );
