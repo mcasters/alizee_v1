@@ -4,6 +4,13 @@
     background-color: var(--red);
 }
 
+.leftPart, .middlePart, .rightPart {
+    text-align: center;
+    display: inline-block;
+    width: 33%;
+}
+
+
 .navItems {
     margin-bottom: 1rem;
     padding: 0;
@@ -13,4 +20,8 @@
 .navItem {
     display: inline-block;
     margin-right: 1rem;
+}
+
+.footer a, .footer button {
+    color: var(--yellow);
 }

@@ -430,12 +430,12 @@ a,
 
 .buttonLink {
     font-family: var(--font-family-base) !important;
-    font-size: var(--font-size-current-plus-plus);
     color: var(--red);
     padding: 2px 5px;
     display: inline;
     margin: 0;
     background: none;
+    box-shadow: none;
     border: none;
     width: inherit;
     line-height: inherit;
@@ -551,7 +551,7 @@ input[type='file'] {
     cursor: pointer;
 }
 
-.button {
+button, .button {
     padding: 0 2em;
     margin: 2em auto;
     box-shadow: inset 0 0.8em 1em 0 #e2e2e2;

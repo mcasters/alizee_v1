@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import styles from "./header.module.css";
+import styles from "./nav.module.css";
 
 export default function AdminNav() {
   return (
