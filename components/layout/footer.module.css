@@ -37,7 +37,7 @@
   color: var(--yellow);
 }
 
-.ligne {
+.line {
   background-color: var(--yellow-dark);
   height: 2px;
 }

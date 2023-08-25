@@ -1,10 +1,15 @@
 import Link from "next/link";
 
 import s from "./nav.module.css";
+import React from "react";
+import { Horse } from "@/interfaces/index";
 
-export default function Nav() {
+interface NavProps {
+  isHome: boolean;
+}
+export default function Nav({ isHome }: NavProps) {
   return (
-    <nav>
+    <nav className={isHome ? s.homeNav : s.nav}>
       <ul className={s.navItems}>
         <li className={s.navItem}>
           <Link href="/">Home</Link>

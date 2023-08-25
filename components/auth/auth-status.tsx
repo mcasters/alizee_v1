@@ -17,6 +17,7 @@ export default function AuthStatus() {
           </span>
           <br />
           <button
+            className="buttonLink"
             onClick={() => {
               signIn();
             }}

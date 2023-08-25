@@ -11,13 +11,13 @@ export default function Footer() {
 
   return (
     <>
-      <div className={s.ligne}></div>
+      <div className={s.line}></div>
       <footer className={s.footer}>
         <div className={s.leftPart}>{AuthStatusDiv}</div>
         <div className={s.middlePart}>
           <ul className={s.navItems}>
             <li className={s.logo}>
-              <Link href="/home">
+              <Link href="/">
                 <Image
                   width={180}
                   height={180}
