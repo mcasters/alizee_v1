@@ -10,7 +10,7 @@ export default function Nav() {
           <Link href="/">Home</Link>
         </li>
         <li className={styles.navItem}>
-          <Link href="/admin">Admin</Link>
+          <Link href="/presentation">Présentation</Link>
         </li>
         <li className={styles.navItem}>
           <Link href="/actualites">Actualités</Link>
@@ -20,6 +20,9 @@ export default function Nav() {
         </li>
         <li className={styles.navItem}>
           <Link href="/chevaux-a-vendre">Chevaux à vendre</Link>
+        </li>
+        <li className={styles.navItem}>
+          <Link href="/admin">Admin</Link>
         </li>
       </ul>
     </nav>
