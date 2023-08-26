@@ -23,7 +23,7 @@ model Post {
   date      DateTime
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  content   String?
+  content   String?  @db.LongText
   published Boolean  @default(false)
   tags      Tag[]
   viewCount Int      @default(0)
@@ -59,7 +59,7 @@ model Horse {
   sire        String
   dam         String
   damSire     String
-  description String?
+  description String? @db.LongText
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   mainImage   HorseImage?   @relation("horseImage")
@@ -89,7 +89,7 @@ model HorseToSell {
   sire        String
   dam         String
   damSire     String
-  description String?
+  description String? @db.LongText
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   mainImage   HorseToSellImage?   @relation("horseToSellImage")
