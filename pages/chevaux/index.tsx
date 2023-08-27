@@ -33,8 +33,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
 export default function HorsePage({ horses }: PostProps) {
   return (
     <Layout>
-      <h1>Les chevaux</h1>
       <section className={s.horseListSection}>
+        <h1>Les chevaux</h1>
         {horses &&
           horses.map((horse) => (
             <button

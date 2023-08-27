@@ -1,3 +1,10 @@
 .horseListSection {
-    padding: 3em 0 5em;
+    padding: 5em 0 15em;
+}
+
+.horseListSection button {
+    border: solid var(--yellow-dark) 1px;
+    padding: 10px;
+    margin: 10px;
+    background-color: var(--yellow);
 }

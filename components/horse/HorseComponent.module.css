@@ -1,6 +1,26 @@
-.horseSection {
-    margin: 8em 0;
+.section {
+    transform-origin: center top;
+    transform: scaleY(calc(1 - var(--scale)));
+}
+
+.section > * {
+    transform-origin: center top;
+    transform: scaleY(calc(1 / (1 - var(--scale))));
+}
+
+.content {
+    color: hsl(0, 0%, 95%);
+    position: relative;
+    margin: -70vh auto 0;
+    padding: var(--space);
+    max-width: 55ch;
+    width: calc(100% - var(--space));
+    background: hsla(5, 15%, 5%, 0.9);
     border-top: solid 1px black;
+}
+
+.content > * + * {
+    margin-top: 2rem;
 }
 
 .info {
@@ -22,4 +42,55 @@
     white-space: pre-line;
 }
 
+.imageContainer {
+    position: sticky;
+    top: 0;
+    width: 100vw;
+    height: 80vh;
+    z-index: -2;
+}
 
+.imageContainer img {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(
+            to bottom,
+            hsla(5, 15%, 5%, 0) 0%,
+            hsla(5, 15%, 5%, 0.013) 8.1%,
+            hsla(5, 15%, 5%, 0.049) 15.5%,
+            hsla(5, 15%, 5%, 0.104) 22.5%,
+            hsla(5, 15%, 5%, 0.175) 29%,
+            hsla(5, 15%, 5%, 0.259) 35.3%,
+            hsla(5, 15%, 5%, 0.352) 41.2%,
+            hsla(5, 15%, 5%, 0.45) 47.1%,
+            hsla(5, 15%, 5%, 0.55) 52.9%,
+            hsla(5, 15%, 5%, 0.648) 58.8%,
+            hsla(5, 15%, 5%, 0.741) 64.7%,
+            hsla(5, 15%, 5%, 0.825) 71%,
+            hsla(5, 15%, 5%, 0.896) 77.5%,
+            hsla(5, 15%, 5%, 0.951) 84.5%,
+            hsla(5, 15%, 5%, 0.987) 91.9%,
+            hsl(5, 15%, 5%) 100%
+    );
+}
+
+@keyframes fadein {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

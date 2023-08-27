@@ -39,7 +39,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       <div className={s.line}></div>
       <div className={s.content}>
         <Header />
-        <Nav />
+        <Nav isHome={false} />
         <main>{children}</main>
       </div>
       <Footer />

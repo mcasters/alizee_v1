@@ -379,7 +379,7 @@ template {
  * ========================================================================== */
 
 body {
-    background-color: var(--color-xxlight);
+    background-color: var(--yellow);
 }
 
 html {
@@ -396,10 +396,11 @@ button,
 .button,
 select,
 textarea {
-    font-family: var(--font-family-base);
+    font-family: var(--font-primary);
     -webkit-font-smoothing: antialiased;
-    font-size: var(--font-size-current);
+    font-size: var(--font-size-current-plus);
     color: var(--color-xdark);
+    line-height: 1.6;
 }
 
 button {
@@ -539,16 +540,6 @@ input {
 
 input[type='file'] {
     padding: 0;
-    cursor: pointer;
-}
-
-button, .button {
-    padding: 0 2em;
-    margin: 2em auto;
-    box-shadow: inset 0 0.8em 1em 0 #e2e2e2;
-    border: solid 1px #aaaaaa;
-    line-height: 2.7;
-    outline: none;
     cursor: pointer;
 }
 

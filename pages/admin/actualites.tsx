@@ -8,6 +8,7 @@ import AccessDenied from "@/components/auth/access-denied";
 import { Option } from "@/interfaces/index";
 import PostListComponent from "@/components/admin/post/PostListComponent";
 import AdminNav from "@/components/layout/AdminNav";
+import s from "@/pages/admin/admin.module.css";
 
 interface Props {
   tags: Option[];
@@ -36,9 +37,11 @@ export default function Actualites({ tags }: Props) {
 
   return (
     <Layout>
-      <AdminNav />
-      <PostListComponent />
-      <AddPostComponent tags={tags} />
+      <div className={s.container}>
+        <AdminNav />
+        <PostListComponent />
+        <AddPostComponent tags={tags} />
+      </div>
     </Layout>
   );
 }
