@@ -25,6 +25,8 @@ export type Horse = {
   sex: string;
   colour: string;
   dateOfBirth: Date;
+  breed: Breed | null;
+  breeder: string | null;
   height: number;
   sire: string;
   dam: string;
@@ -34,15 +36,17 @@ export type Horse = {
   description: string | null;
   mainImage: Image;
   images: Image[];
+  achievements: Achievements[];
 };
 
 export type HorseToSell = {
   id: number;
   name: string;
-  breed: string | null;
   price: string;
   sex: string;
   colour: string;
+  breed: Breed | null;
+  breeder: string | null;
   dateOfBirth: Date;
   height: number;
   sire: string;
@@ -53,6 +57,7 @@ export type HorseToSell = {
   description: string | null;
   mainImage: Image;
   images: Image[];
+  achievements: Achievements[];
 };
 
 export type Image = {
@@ -69,6 +74,18 @@ export type ResponseError = {
 export type Option = {
   id: number;
   label: string;
+};
+
+export type Breed = {
+  id: number;
+  title: string;
+};
+
+export type Achievements = {
+  id: number;
+  year: number;
+  title: string;
+  location: string;
 };
 
 export const DataType = {
