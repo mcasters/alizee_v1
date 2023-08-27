@@ -13,28 +13,29 @@ interface RawListProps {
   horse: Horse | HorseToSell;
 }
 
-export default function RowHorseListComponent(props: RawListProps) {
+export default function RowHorseListComponent({
+  horse,
+  isToSell,
+}: RawListProps) {
   const { isOpen, toggle } = useModal();
 
   return (
     <ul className={s.item}>
       <button onClick={() => toggle()} className={s.linkUpdate}>
         <li>
-          <span className={s.name}>{props.horse.name}</span>
+          <span className={s.name}>{horse.name}</span>
         </li>
         <li>
           <span>Thumbnail : </span>
-          {props.horse.mainImage ? <FiCheck /> : <FiX />}
+          {horse.mainImage ? <FiCheck /> : <FiX />}
         </li>
-        <li>
-          Album photo : {props.horse.images.length > 0 ? <FiCheck /> : <FiX />}
-        </li>
+        <li>Album photo : {horse.images.length > 0 ? <FiCheck /> : <FiX />}</li>
       </button>
       <li>
-        <DeleteHorseButton id={props.horse.id} isToSell />
+        <DeleteHorseButton id={horse.id} isToSell={isToSell} />
       </li>
       <Modal isOpen={isOpen} toggle={toggle}>
-        <UpdateHorseComponent horse={props.horse} isToSell />
+        <UpdateHorseComponent horse={horse} isToSell={isToSell} />
       </Modal>
     </ul>
   );

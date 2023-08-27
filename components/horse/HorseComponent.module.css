@@ -1,0 +1,25 @@
+.horseSection {
+    margin: 8em 0;
+    border-top: solid 1px black;
+}
+
+.info {
+    display: inline-block;
+    width: 50%;
+    text-align: left;
+    vertical-align: top;
+}
+
+.mainImage {
+    display: inline-block;
+    width: 50%;
+    height: auto;
+    margin: auto;
+}
+
+.description {
+    text-align: right;
+    white-space: pre-line;
+}
+
+

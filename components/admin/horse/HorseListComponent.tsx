@@ -28,7 +28,11 @@ export default function HorseListComponent({ isToSell }: HorseListProps) {
         {horses &&
           horses.map((horse: Horse) => {
             return (
-              <RowHorseListComponent key={horse.id} horse={horse} isToSell />
+              <RowHorseListComponent
+                key={horse.id}
+                horse={horse}
+                isToSell={isToSell}
+              />
             );
           })}
       </div>

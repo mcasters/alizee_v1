@@ -1,8 +1,6 @@
 import Image from "next/image";
 
 import Layout from "@/components/layout/layout";
-import ReactPlayer from "react-player";
-import s from "./index.module.css";
 
 export default function Index() {
   return (

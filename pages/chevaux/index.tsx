@@ -3,8 +3,9 @@ import { GetServerSideProps } from "next";
 
 import prisma from "@/lib/prisma";
 import Layout from "@/components/layout/layout";
-import HorseListComponent from "@/components/horse/HorseListComponent";
+import HorseComponent from "@/components/horse/HorseComponent";
 import { Horse } from "@/interfaces/index";
+import s from "./horsePage.module.css";
 
 export type PostProps = {
   horses: [Horse];
@@ -16,6 +17,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
       mainImage: {
         select: { filename: true, height: true, width: true },
       },
+      images: {
+        select: { filename: true, width: true, height: true },
+      },
     },
   });
   const horses = JSON.parse(JSON.stringify(res));
@@ -26,16 +30,28 @@ export const getServerSideProps: GetServerSideProps = async () => {
   };
 };
 
-export default function HorseListPage({ horses }: PostProps) {
+export default function HorsePage({ horses }: PostProps) {
   return (
     <Layout>
-      <h1>Chevaux</h1>
-      <ul>
+      <h1>Les chevaux</h1>
+      <section className={s.horseListSection}>
         {horses &&
           horses.map((horse) => (
-            <HorseListComponent key={horse.id} horse={horse} />
+            <button
+              key={horse.id}
+              onClick={() =>
+                document
+                  .getElementById(`${horse.id}`)
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
+            >
+              {horse.name}
+            </button>
           ))}
-      </ul>
+      </section>
+      {horses.map((horse) => (
+        <HorseComponent key={horse.id} horse={horse} />
+      ))}
     </Layout>
   );
 }

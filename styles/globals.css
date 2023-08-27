@@ -657,3 +657,21 @@ button, .button {
         page-break-after: avoid;
     }
 }
+
+
+.image-gallery {
+    width: auto;
+    height: 35vh;
+}
+
+.image-gallery-slide img {
+    width: auto;
+    height: 35vh;
+    object-fit: cover;
+    overflow: hidden;
+    object-position: center center;
+}
+
+.fullscreen .image-gallery-slide img {
+    height: 90vh;
+}
