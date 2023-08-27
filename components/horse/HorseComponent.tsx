@@ -14,10 +14,10 @@ export default function HorseComponent({ horse }: Props) {
 
   return (
     <section className={s.section}>
-      <figure className={s.imageContainer}>
+      <figure className={s.figure}>
         <img src={`/${horse.name}.jpeg`} />
       </figure>
-      <article id={`${horse.id}`} className={s.content}>
+      <article id={`${horse.id}`} className={s.article}>
         <h1>{horse.name}</h1>
         <p className={s.info}>
           {horse.sex} {horse.colour.toLowerCase()}, {horse.height} cm,{" "}

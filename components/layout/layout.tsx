@@ -17,7 +17,7 @@ export default function Layout({ children }: { children: ReactNode }) {
   }, []);
 
   return isHome ? (
-    <div className={s.main}>
+    <div className={s.homeContainer}>
       <div className={s.overlay}></div>
       <video
         ref={videoRef}
@@ -28,8 +28,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         muted
       />
       <div className={s.homeContent}>
-        <Header />
-        <main>{children}</main>
+        <main className={s.homeMain}>{children}</main>
         <Nav isHome={true} />
       </div>
       <Footer />
@@ -37,11 +36,10 @@ export default function Layout({ children }: { children: ReactNode }) {
   ) : (
     <>
       <div className={s.line}></div>
-      <div className={s.content}>
-        <Header />
+      <Header>
         <Nav isHome={false} />
-        <main>{children}</main>
-      </div>
+      </Header>
+      <main className={s.main}>{children}</main>
       <Footer />
     </>
   );

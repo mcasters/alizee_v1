@@ -4,6 +4,8 @@
   background-color: var(--red);
   display: flex;
   justify-content: space-between;
+  padding: 6rem;
+  text-align: left;
 }
 
 .leftPart,
@@ -18,10 +20,6 @@
   text-align: center;
 }
 
-.logo {
-  margin-bottom: 50px;
-}
-
 .navItems {
   margin-bottom: 1rem;
   padding: 0;
@@ -29,7 +27,7 @@
 }
 
 .navItem {
-  display: inline-block;
+  text-align: left;
   margin-right: 1rem;
 }
 

@@ -401,6 +401,7 @@ textarea {
     font-size: var(--font-size-current-plus);
     color: var(--color-xdark);
     line-height: 1.6;
+    text-align: center;
 }
 
 button {

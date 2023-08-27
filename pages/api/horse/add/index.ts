@@ -39,8 +39,15 @@ export default async function handler(
         sex: fields.sex,
         colour: fields.colour,
         height: Number(fields.height),
+        breeder: fields.breeder,
       },
     });
+
+    /* todo
+    breed
+    achievements
+
+     */
 
     let albumImages: Enumerable<any> = [];
 

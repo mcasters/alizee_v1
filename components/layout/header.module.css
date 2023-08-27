@@ -1,0 +1,11 @@
+.container {
+  position: fixed;
+  top: var(--red-line-height);
+  background-color: var(--yellow);
+  height: var(--header-height);
+  line-height: var(--header-height);
+  width: 100%;
+  border-bottom: solid var(--color-xdark) 1px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.8);
+  z-index: 5;
+}

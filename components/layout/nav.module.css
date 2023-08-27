@@ -2,8 +2,11 @@
     padding-top: 150px;
 }
 
+.homeNav a {
+    color: var(--yellow-dark);
+}
+
 .navItems {
-    margin: 2rem;
     padding: 0;
     list-style: none;
 }
