@@ -73,6 +73,7 @@ function DayPickerComponent({ handleDayChange, alreadyDay, fieldName }) {
           placeholder={inputValue}
           value={inputValue}
           onChange={handleInputChange}
+          required
         />
         <button
           ref={buttonRef}

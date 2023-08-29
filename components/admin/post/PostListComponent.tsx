@@ -1,9 +1,9 @@
 import useSWR from "swr";
 
-import s from "@/components/admin/common/ListComponent.module.css";
 import RowPostListComponent from "@/components/admin/post/RowPostListComponent";
 import LoadingDots from "@/components/loading-dots";
 import { Post } from "@/interfaces/index";
+import s from "@/components/admin/common/ListComponent.module.css";
 
 export default function PostListComponent() {
   const {

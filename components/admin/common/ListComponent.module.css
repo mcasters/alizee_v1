@@ -1,10 +1,14 @@
 .listContainer {
   margin: 50px 0 10px;
-  font-size: 11px;
   text-align: center;
 }
 
+.listContainer h2 {
+  font-size: var(--font-size-title);
+}
+
 .list {
+  font-size: var(--font-size-min);
   display: block;
   margin-top: 2em;
   width: 100%;
@@ -42,7 +46,7 @@
   text-align: center;
   border: none;
   background: none;
-  font-size: 1.4em;
+  font-size: var(--font-size);
   padding: 0 0.4em 0.4em;
   margin: 0;
   box-shadow: none;

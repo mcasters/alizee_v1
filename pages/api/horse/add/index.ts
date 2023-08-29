@@ -40,6 +40,7 @@ export default async function handler(
         colour: fields.colour,
         height: Number(fields.height),
         breeder: fields.breeder,
+        breed: fields.breed,
       },
     });
 

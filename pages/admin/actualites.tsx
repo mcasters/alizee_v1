@@ -37,7 +37,7 @@ export default function Actualites({ tags }: Props) {
 
   return (
     <Layout>
-      <div className={s.container}>
+      <div className={s.adminContainer}>
         <AdminNav />
         <PostListComponent />
         <AddPostComponent tags={tags} />

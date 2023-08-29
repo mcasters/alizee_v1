@@ -3,7 +3,6 @@ import toast from "react-hot-toast";
 
 import { useSWRConfig } from "swr";
 import HorseForm from "@/components/form/horseForm/HorseForm";
-import HorseToSellForm from "@/components/form/horseForm/HorseToSellForm";
 
 interface AddHorseProps {
   isToSell: boolean;
@@ -11,8 +10,8 @@ interface AddHorseProps {
 export default function AddHorseComponent({ isToSell }: AddHorseProps) {
   const form = useRef(null);
   const { mutate } = useSWRConfig();
-  const api = isToSell ? "/api/horse-to-sell/add" : "/api/horse/add";
-  const apiToUpdate = isToSell ? "/api/horse-to-sell" : "/api/horse";
+  const api = "/api/horse/add";
+  const apiToUpdate = "/api/horse";
 
   const submit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -27,9 +26,5 @@ export default function AddHorseComponent({ isToSell }: AddHorseProps) {
     }
   };
 
-  return isToSell ? (
-    <HorseToSellForm formRef={form} onSubmit={submit} />
-  ) : (
-    <HorseForm formRef={form} onSubmit={submit} />
-  );
+  return <HorseForm formRef={form} onSubmit={submit} isToSell />;
 }

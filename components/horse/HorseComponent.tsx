@@ -3,8 +3,8 @@ import Image from "next/image";
 
 import { Horse } from "@/interfaces/index";
 import { getPath } from "@/utils/commonUtils";
-import s from "./HorseComponent.module.css";
 import Slider from "@/components/image/Slider";
+import s from "./HorseComponent.module.css";
 
 interface Props {
   horse: Horse;
@@ -20,10 +20,12 @@ export default function HorseComponent({ horse }: Props) {
       <article id={`${horse.id}`} className={s.article}>
         <h1>{horse.name}</h1>
         <p className={s.info}>
-          {horse.sex} {horse.colour.toLowerCase()}, {horse.height} cm,{" "}
-          {horse.sex === "jument" ? "née le " : "né en "}
-          <time>{new Date(horse.dateOfBirth).getFullYear()}</time>, appartenant
-          à {horse.owner}. <br />
+          {horse.sex} {horse.colour.toLowerCase()}, {horse.breed},{" "}
+          {horse.height} cm, {horse.sex === "jument" ? "née en " : "né en "}
+          <time>{new Date(horse.dateOfBirth).getFullYear()}</time>
+          {horse.breeder ? ` chez ${horse.breeder}` : ""}
+          {horse.owner ? `, et appartenant à ${horse.owner}.` : "."}
+          <br />
           <br />
           Par {horse.sire} et {horse.dam} par {horse.damSire}
         </p>

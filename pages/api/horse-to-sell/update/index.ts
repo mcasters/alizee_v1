@@ -51,6 +51,7 @@ export default async function handler(
           dam: fields.dam,
           damSire: fields.damSire,
           breed: fields.breed,
+          breeder: fields.breeder,
           price: fields.price,
           sex: fields.sex,
           colour: fields.colour,

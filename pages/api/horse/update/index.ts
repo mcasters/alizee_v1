@@ -54,6 +54,8 @@ export default async function handler(
           sex: fields.sex,
           colour: fields.colour,
           height: Number(fields.height),
+          breeder: fields.breeder,
+          breed: fields.breed,
         },
         select: {
           mainImage: true,

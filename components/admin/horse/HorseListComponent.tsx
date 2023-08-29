@@ -1,10 +1,10 @@
 import useSWR from "swr";
 
-import s from "@/components/admin/common/ListComponent.module.css";
 import LoadingDots from "@/components/loading-dots";
 import { Horse } from "@/interfaces/index";
 import RowHorseListComponent from "@/components/admin/horse/RowHorseListComponent";
 import React from "react";
+import s from "@/components/admin/common/ListComponent.module.css";
 
 interface HorseListProps {
   isToSell: boolean;

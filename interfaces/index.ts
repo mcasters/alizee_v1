@@ -21,12 +21,13 @@ export type Post = {
 export type Horse = {
   id: number;
   name: string;
-  owner: string;
+  owner: string | null;
   sex: string;
   colour: string;
   dateOfBirth: Date;
-  breed: Breed | null;
+  breed: string;
   breeder: string | null;
+  price: string | null;
   height: number;
   sire: string;
   dam: string;
@@ -36,28 +37,8 @@ export type Horse = {
   description: string | null;
   mainImage: Image;
   images: Image[];
-  achievements: Achievements[];
-};
-
-export type HorseToSell = {
-  id: number;
-  name: string;
-  price: string;
-  sex: string;
-  colour: string;
-  breed: Breed | null;
-  breeder: string | null;
-  dateOfBirth: Date;
-  height: number;
-  sire: string;
-  dam: string;
-  damSire: string;
-  createdAt: Date;
-  updatedAt: Date;
-  description: string | null;
-  mainImage: Image;
-  images: Image[];
-  achievements: Achievements[];
+  achievements: Achievement[];
+  isToSell: boolean;
 };
 
 export type Image = {
@@ -76,12 +57,7 @@ export type Option = {
   label: string;
 };
 
-export type Breed = {
-  id: number;
-  title: string;
-};
-
-export type Achievements = {
+export type Achievement = {
   id: number;
   year: number;
   title: string;

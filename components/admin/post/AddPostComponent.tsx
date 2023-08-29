@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import toast from "react-hot-toast";
 
 import { Option } from "@/interfaces/index";

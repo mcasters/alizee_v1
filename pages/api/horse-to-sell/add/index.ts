@@ -32,6 +32,7 @@ export default async function handler(
         name: fields.name,
         price: fields.price,
         breed: fields.breed,
+        breeder: fields.breeder,
         description: fields.description,
         dateOfBirth: parse(fields.dateOfBirth, "dd/MM/yyyy", new Date()),
         sire: fields.sire,

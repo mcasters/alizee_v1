@@ -1,22 +1,20 @@
 import React from "react";
 import { FiCheck, FiX } from "react-icons/fi";
 
-import s from "@/components/admin/common/ListComponent.module.css";
-import { Horse, HorseToSell } from "@/interfaces/index";
+import { Horse } from "@/interfaces/index";
 import useModal from "@/components/form/modal/useModal";
 import Modal from "@/components/form/modal/Modal";
 import DeleteHorseButton from "@/components/admin/horse/DeleteHorseButton";
 import UpdateHorseComponent from "@/components/admin/horse/UpdateHorseComponent";
+import s from "@/components/admin/common/ListComponent.module.css";
+import AddAchievementButton from "@/components/admin/Achievement/AchievementButton";
 
 interface RawListProps {
   isToSell: boolean;
-  horse: Horse | HorseToSell;
+  horse: Horse;
 }
 
-export default function RowHorseListComponent({
-  horse,
-  isToSell,
-}: RawListProps) {
+export default function RowHorseListComponent({ horse }: RawListProps) {
   const { isOpen, toggle } = useModal();
 
   return (
@@ -25,17 +23,18 @@ export default function RowHorseListComponent({
         <li>
           <span className={s.name}>{horse.name}</span>
         </li>
-        <li>
-          <span>Thumbnail : </span>
-          {horse.mainImage ? <FiCheck /> : <FiX />}
-        </li>
+        <li>Thumbnail : {horse.mainImage ? <FiCheck /> : <FiX />}</li>
         <li>Album photo : {horse.images.length > 0 ? <FiCheck /> : <FiX />}</li>
       </button>
+      <li></li>
       <li>
-        <DeleteHorseButton id={horse.id} isToSell={isToSell} />
+        <DeleteHorseButton id={horse.id} />
+      </li>
+      <li>
+        <AddAchievementButton horse={horse} />
       </li>
       <Modal isOpen={isOpen} toggle={toggle}>
-        <UpdateHorseComponent horse={horse} isToSell={isToSell} />
+        <UpdateHorseComponent horse={horse} />
       </Modal>
     </ul>
   );
