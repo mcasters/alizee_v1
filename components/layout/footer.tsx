@@ -25,15 +25,17 @@ export default function Footer() {
           </ul>
         </div>
         <div className={s.middlePart}>
-          <Link href="/">
-            <Image
-              width={180}
-              height={180}
-              src="/logo-transparent-670.png"
-              alt="Alizée Roussel Dressage"
-              className="w-36 h-36"
-            />
-          </Link>
+          <div className={s.logoContainer}>
+            <Link href="/">
+              <Image
+                width={180}
+                height={180}
+                src="/logo-transparent-670.png"
+                alt="Alizée Roussel Dressage"
+                className="w-36 h-36"
+              />
+            </Link>
+          </div>
         </div>
         <div className={s.rightPart}>{ContactDiv}</div>
       </footer>

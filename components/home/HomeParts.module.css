@@ -1,13 +1,9 @@
-/*
-Parallax
- */
-
-.section {
+.parallaxGroup {
     transform-origin: center top;
     transform: scaleY(calc(1 - var(--scale)));
 }
 
-.section > * {
+.parallaxGroup > * {
     transform-origin: center top;
     transform: scaleY(calc(1 / (1 - var(--scale))));
 }
@@ -16,7 +12,7 @@ Parallax
     position: sticky;
     top: 0;
     width: 100vw;
-    height: 80vh;
+    height: 100vh;
     z-index: -2;
 }
 
@@ -58,47 +54,17 @@ Parallax
     );
 }
 
-@keyframes fadein {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 .article {
     position: relative;
-    margin: -70vh auto 10vh;
-    padding: var(--space);
-    max-width: 60ch;
-    width: calc(100% - var(--space));
-    color: hsl(0, 0%, 95%);
+    margin: 20vh auto 0;
+    padding: 8rem 30rem;
     background: hsla(5, 15%, 5%, 0.9);
 }
 
 .article > * + * {
-    margin-top: 2rem;
+    margin-top: 3rem;
 }
 
-
-/*
-Content
- */
-
-.info {
-    display: inline-block;
-    width: 50%;
-    text-align: left;
-    vertical-align: top;
-}
-
-.mainImage {
-    display: inline-block;
-    width: 50%;
-    height: auto;
-    margin: auto;
-}
-
-.description {
-    text-align: right;
-    white-space: pre-line;
+.articlePresentation {
+    padding: 8rem 30rem;
 }

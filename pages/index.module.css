@@ -1,0 +1,4 @@
+.container {
+    background-color: hsl(5, 15%, 5%);
+    color: var(--color-xlight);
+}

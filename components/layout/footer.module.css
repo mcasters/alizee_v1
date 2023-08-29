@@ -2,22 +2,30 @@
   font-size: 13px;
   height: 300px;
   background-color: var(--red);
-  display: flex;
-  justify-content: space-between;
-  padding: 6rem;
+  padding: 4rem;
   text-align: left;
 }
 
 .leftPart,
-.middlePart,
-.rightPart {
-  width: 300px;
-  padding-top: 2rem;
+.rightPart,
+.middlePart {
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: top;
+  width: 33%;
+  padding: 2rem 0 0 2rem;
 }
 
 .middlePart {
-  background-color: rgba(0, 0, 0, 0.4);
+  height: 300px;
+  vertical-align: top;
   text-align: center;
+}
+
+.logoContainer {
+  width: 200px;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .navItems {

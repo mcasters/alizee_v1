@@ -1,4 +1,4 @@
-@import 'variables.module.css';
+@import "variables.module.css";
 
 /*
  * normalize.css is imported in JS file.
@@ -16,8 +16,8 @@
  */
 
 html {
-    line-height: 1.15; /* 1 */
-    -webkit-text-size-adjust: 100%; /* 2 */
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
 }
 
 /* Sections
@@ -28,7 +28,7 @@ html {
  */
 
 body {
-    margin: 0;
+  margin: 0;
 }
 
 /**
@@ -36,7 +36,7 @@ body {
  */
 
 main {
-    display: block;
+  display: block;
 }
 
 /**
@@ -45,8 +45,8 @@ main {
  */
 
 h1 {
-    font-size: 2em;
-    margin-bottom: 2em;
+  font-size: 2em;
+  margin-bottom: 2em;
 }
 
 /* Grouping content
@@ -58,9 +58,9 @@ h1 {
  */
 
 hr {
-    box-sizing: content-box; /* 1 */
-    height: 0; /* 1 */
-    overflow: visible; /* 2 */
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
 }
 
 /**
@@ -69,8 +69,8 @@ hr {
  */
 
 pre {
-    font-family: monospace, monospace; /* 1 */
-    font-size: 1em; /* 2 */
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
 }
 
 /* Text-level semantics
@@ -81,7 +81,7 @@ pre {
  */
 
 a {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 /**
@@ -90,8 +90,8 @@ a {
  */
 
 abbr[title] {
-    border-bottom: none; /* 1 */
-    text-decoration: underline; /* 2 */
+  border-bottom: none; /* 1 */
+  text-decoration: underline; /* 2 */
 }
 
 /**
@@ -100,7 +100,7 @@ abbr[title] {
 
 b,
 strong {
-    font-weight: bolder;
+  font-weight: bolder;
 }
 
 /**
@@ -111,8 +111,8 @@ strong {
 code,
 kbd,
 samp {
-    font-family: monospace, monospace; /* 1 */
-    font-size: 1em; /* 2 */
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
 }
 
 /**
@@ -120,7 +120,7 @@ samp {
  */
 
 small {
-    font-size: 80%;
+  font-size: 80%;
 }
 
 /**
@@ -130,18 +130,18 @@ small {
 
 sub,
 sup {
-    font-size: 75%;
-    line-height: 0;
-    position: relative;
-    vertical-align: baseline;
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
 }
 
 sub {
-    bottom: -0.25em;
+  bottom: -0.25em;
 }
 
 sup {
-    top: -0.5em;
+  top: -0.5em;
 }
 
 /* Embedded content
@@ -152,7 +152,7 @@ sup {
  */
 
 img {
-    border-style: none;
+  border-style: none;
 }
 
 /* Forms
@@ -168,10 +168,10 @@ input,
 optgroup,
 select,
 textarea {
-    font-family: inherit; /* 1 */
-    font-size: 100%; /* 1 */
-    line-height: 1.15; /* 1 */
-    margin: 0; /* 2 */
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
 }
 
 /**
@@ -181,8 +181,8 @@ textarea {
 
 button,
 input {
-    /* 1 */
-    overflow: visible;
+  /* 1 */
+  overflow: visible;
 }
 
 /**
@@ -192,8 +192,8 @@ input {
 
 button,
 select {
-    /* 1 */
-    text-transform: none;
+  /* 1 */
+  text-transform: none;
 }
 
 /**
@@ -201,10 +201,10 @@ select {
  */
 
 button,
-[type='button'],
-[type='reset'],
-[type='submit'] {
-    -webkit-appearance: button;
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
 }
 
 /**
@@ -212,11 +212,11 @@ button,
  */
 
 button::-moz-focus-inner,
-[type='button']::-moz-focus-inner,
-[type='reset']::-moz-focus-inner,
-[type='submit']::-moz-focus-inner {
-    border-style: none;
-    padding: 0;
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
 }
 
 /**
@@ -224,10 +224,10 @@ button::-moz-focus-inner,
  */
 
 button:-moz-focusring,
-[type='button']:-moz-focusring,
-[type='reset']:-moz-focusring,
-[type='submit']:-moz-focusring {
-    outline: 1px dotted ButtonText;
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
 }
 
 /**
@@ -235,7 +235,7 @@ button:-moz-focusring,
  */
 
 fieldset {
-    padding: 0.35em 0.75em 0.625em;
+  padding: 0.35em 0.75em 0.625em;
 }
 
 /**
@@ -246,12 +246,12 @@ fieldset {
  */
 
 legend {
-    box-sizing: border-box; /* 1 */
-    color: inherit; /* 2 */
-    display: table; /* 1 */
-    max-width: 100%; /* 1 */
-    padding: 0; /* 3 */
-    white-space: normal; /* 1 */
+  box-sizing: border-box; /* 1 */
+  color: inherit; /* 2 */
+  display: table; /* 1 */
+  max-width: 100%; /* 1 */
+  padding: 0; /* 3 */
+  white-space: normal; /* 1 */
 }
 
 /**
@@ -259,7 +259,7 @@ legend {
  */
 
 progress {
-    vertical-align: baseline;
+  vertical-align: baseline;
 }
 
 /**
@@ -267,7 +267,7 @@ progress {
  */
 
 textarea {
-    overflow: auto;
+  overflow: auto;
 }
 
 /**
@@ -275,19 +275,19 @@ textarea {
  * 2. Remove the padding in IE 10.
  */
 
-[type='checkbox'],
-[type='radio'] {
-    box-sizing: border-box; /* 1 */
-    padding: 0; /* 2 */
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
 }
 
 /**
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
 
-[type='number']::-webkit-inner-spin-button,
-[type='number']::-webkit-outer-spin-button {
-    height: auto;
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
 }
 
 /**
@@ -295,17 +295,17 @@ textarea {
  * 2. Correct the outline style in Safari.
  */
 
-[type='search'] {
-    -webkit-appearance: textfield; /* 1 */
-    outline-offset: -2px; /* 2 */
+[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
 }
 
 /**
  * Remove the inner padding in Chrome and Safari on macOS.
  */
 
-[type='search']::-webkit-search-decoration {
-    -webkit-appearance: none;
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
 }
 
 /**
@@ -314,8 +314,8 @@ textarea {
  */
 
 ::-webkit-file-upload-button {
-    -webkit-appearance: button; /* 1 */
-    font: inherit; /* 2 */
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
 }
 
 /* Interactive
@@ -326,7 +326,7 @@ textarea {
  */
 
 details {
-    display: block;
+  display: block;
 }
 
 /*
@@ -334,7 +334,7 @@ details {
  */
 
 summary {
-    display: list-item;
+  display: list-item;
 }
 
 /* Misc
@@ -345,7 +345,7 @@ summary {
  */
 
 template {
-    display: none;
+  display: none;
 }
 
 /**
@@ -353,7 +353,7 @@ template {
  */
 
 [hidden] {
-    display: none;
+  display: none;
 }
 /* =========================================================================
 * ==========================================================================
@@ -364,14 +364,6 @@ template {
 * ==========================================================================
 * ========================================================================== */
 
-
-
-
-
-
-
-
-
 /*
  * ==========================================================================
  * LAYOUT
@@ -379,12 +371,14 @@ template {
  * ========================================================================== */
 
 body {
-    background-color: var(--yellow);
+  overflow: visible;
+  min-height: 100%;
+  margin-bottom: 0px;
+  line-height: 1.375; /* ~22px */
+  box-sizing: border-box;
 }
 
 html {
-    line-height: 1.375; /* ~22px */
-    box-sizing: border-box;
 }
 
 html,
@@ -396,60 +390,61 @@ button,
 .button,
 select,
 textarea {
-    font-family: var(--font-primary);
-    -webkit-font-smoothing: antialiased;
-    font-size: var(--font-size-current-plus);
-    color: var(--color-xdark);
-    line-height: 1.6;
-    text-align: center;
+  font-family: var(--font-primary);
+  font-weight: lighter;
+  -webkit-font-smoothing: antialiased;
+  font-size: var(--font-size-current-plus);
+  color: var(--color-xdark);
+  line-height: 1.6;
+  text-align: center;
 }
 
 button {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 h1,
 h2 {
-    font-weight: lighter;
+  font-weight: lighter;
 }
 
 a,
 .buttonLink {
-    color: var(--red);
-    text-decoration: none;
-    outline: none;
-    transition: color 0.4s;
+  color: var(--red);
+  text-decoration: none;
+  outline: none;
+  transition: color 0.4s;
 }
 
 .buttonLink {
-    font-family: var(--font-family-base) !important;
-    color: var(--red);
-    padding: 2px 5px;
-    display: inline;
-    margin: 0;
-    background: none;
-    box-shadow: none;
-    border: none;
-    width: inherit;
-    line-height: inherit;
-    cursor: pointer;
+  font-family: var(--font-family-base) !important;
+  color: var(--red);
+  padding: 2px 5px;
+  display: inline;
+  margin: 0;
+  background: none;
+  box-shadow: none;
+  border: none;
+  width: inherit;
+  line-height: inherit;
+  cursor: pointer;
 }
 
 a:hover,
 .buttonLink:hover,
 a:focus,
 .buttonLink:focus {
-    color: var(--color-xdark);
-    transition: color 0.4s;
+  color: var(--color-xdark);
+  transition: color 0.4s;
 }
 
 li {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 ul {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 /*
@@ -461,8 +456,8 @@ ul {
  */
 
 ::selection {
-    background: var(--red);
-    text-shadow: none;
+  background: var(--red);
+  text-shadow: none;
 }
 
 .button,
@@ -470,11 +465,11 @@ button::selection,
 img::selection,
 button:focus,
 img:focus {
-    background: none;
+  background: none;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 /*
@@ -482,12 +477,12 @@ img:focus {
  */
 
 hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin: 1em 0;
-    padding: 0;
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
 }
 
 /*
@@ -502,7 +497,7 @@ iframe,
 img,
 svg,
 video {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 /*
@@ -510,13 +505,13 @@ video {
  */
 
 fieldset {
-    border: 0;
-    margin: 0;
-    padding: 0;
+  border: 0;
+  margin: 0;
+  padding: 0;
 }
 
 figure {
-    margin: 0 !important;
+  margin: 0 !important;
 }
 
 /*
@@ -524,29 +519,30 @@ figure {
  */
 
 textarea {
-    box-sizing: border-box;
-    padding: 0.5em;
-    resize: vertical;
-    line-height: 2.3;
-    width: 100%;
+  box-sizing: border-box;
+  padding: 0.5em;
+  resize: vertical;
+  line-height: 2.3;
+  width: 100%;
 }
 
 input {
-    box-sizing: border-box;
-    padding: 0.5em;
-    width: 100%;
-    line-height: 2.3;
-    margin-bottom: 1em;
+  box-sizing: border-box;
+  padding: 0.5em;
+  width: 100%;
+  line-height: 2.3;
+  margin-bottom: 1em;
 }
 
-input[type='file'] {
-    padding: 0;
-    cursor: pointer;
+input[type="file"] {
+  padding: 0;
+  cursor: pointer;
 }
 
-[type='submit'], [type='reset'] {
-    width: 48%;
-    margin: 2em 0.3em;
+[type="submit"],
+[type="reset"] {
+  width: 48%;
+  margin: 2em 0.3em;
 }
 
 /*
@@ -554,29 +550,29 @@ input[type='file'] {
  * ========================================================================== */
 
 :global(.browserupgrade) {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
 }
 
 @media (--sm) {
-    .listContainer {
-        padding: 2.5em 10em 0;
-    }
+  .listContainer {
+    padding: 2.5em 10em 0;
+  }
 }
 
 @media (--lg) {
-    html,
-    h3,
-    h4,
-    h5,
-    input,
-    button,
-    select,
-    textarea {
-        font-size: var(--font-size-current-plus);
-    }
+  html,
+  h3,
+  h4,
+  h5,
+  input,
+  button,
+  select,
+  textarea {
+    font-size: var(--font-size-current-plus);
+  }
 }
 
 /*
@@ -586,84 +582,83 @@ input[type='file'] {
  * ========================================================================== */
 
 @media print {
-    *,
-    *::before,
-    *::after {
-        background: transparent !important;
-        color: #000 !important; /* Black prints faster: http://www.sanbeiji.com/archives/953 */
-        box-shadow: none !important;
-        text-shadow: none !important;
-    }
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    color: #000 !important; /* Black prints faster: http://www.sanbeiji.com/archives/953 */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
 
-    a[href]::after {
-        content: ' (' attr(href) ')';
-    }
+  a[href]::after {
+    content: " (" attr(href) ")";
+  }
 
-    abbr[title]::after {
-        content: ' (' attr(title) ')';
-    }
+  abbr[title]::after {
+    content: " (" attr(title) ")";
+  }
 
-    /*
+  /*
        * Don't show links that are fragment identifiers,
        * or use the `javascript:` pseudo protocol
        */
 
-    a[href^='#']::after,
-    a[href^='javascript:']::after {
-        content: '';
-    }
+  a[href^="#"]::after,
+  a[href^="javascript:"]::after {
+    content: "";
+  }
 
-    pre,
-    blockquote {
-        border: 1px solid #999;
-        page-break-inside: avoid;
-    }
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
 
-    /*
+  /*
        * Printing Tables:
        * http://css-discuss.incutio.com/wiki/Printing_Tables
        */
 
-    thead {
-        display: table-header-group;
-    }
+  thead {
+    display: table-header-group;
+  }
 
-    tr,
-    img {
-        page-break-inside: avoid;
-    }
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
 
-    img {
-        max-width: 100% !important;
-    }
+  img {
+    max-width: 100% !important;
+  }
 
-    p,
-    h2,
-    h3 {
-        orphans: 3;
-        widows: 3;
-    }
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
 
-    h2,
-    h3 {
-        page-break-after: avoid;
-    }
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
 }
 
-
 .image-gallery {
-    width: auto;
-    height: 35vh;
+  width: auto;
+  height: 35vh;
 }
 
 .image-gallery-slide img {
-    width: auto;
-    height: 35vh;
-    object-fit: cover;
-    overflow: hidden;
-    object-position: center center;
+  width: auto;
+  height: 35vh;
+  object-fit: cover;
+  overflow: hidden;
+  object-position: center center;
 }
 
 .fullscreen .image-gallery-slide img {
-    height: 90vh;
+  height: 90vh;
 }
