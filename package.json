@@ -16,7 +16,8 @@
     "prebuild": "prisma generate",
     "predev": "prisma generate",
     "prisma:push": "dotenv -e .env.local -- prisma db push",
-    "prisma:migrate": "prisma migrate deploy"
+    "prisma:migrate": "prisma migrate deploy",
+    "prisma:format": "prisma format"
   },
   "dependencies": {
     "@next/font": "^13.0.5",
