@@ -1,3 +1,16 @@
+.nav {
+    position: fixed;
+    top: calc(var(--red-line-height) + var(--header-height));
+    left: 0;
+    height: var(--admin-nav-height);
+    line-height: var(--admin-nav-height);
+    width: 100%;
+    background-color: var(--red);
+    border-bottom: solid var(--color-xdark) 1px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
+    z-index: 4;
+}
+
 .navItems {
     margin-bottom: 2rem;
     padding: 0;
@@ -7,4 +20,8 @@
 .navItem {
     display: inline-block;
     margin-right: 1rem;
+}
+
+.navItem a {
+    color: var(--yellow-light);
 }

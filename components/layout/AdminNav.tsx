@@ -1,18 +1,18 @@
 import Link from "next/link";
 
-import styles from "./nav.module.css";
+import s from "./AdminNav.module.css";
 
 export default function AdminNav() {
   return (
-    <nav>
-      <ul className={styles.navItems}>
-        <li className={styles.navItem}>
+    <nav className={s.nav}>
+      <ul className={s.navItems}>
+        <li className={s.navItem}>
           <Link href="/admin/actualites">Actualités</Link>
         </li>
-        <li className={styles.navItem}>
+        <li className={s.navItem}>
           <Link href="/admin/chevaux">Chevaux</Link>
         </li>
-        <li className={styles.navItem}>
+        <li className={s.navItem}>
           <Link href="/admin/chevaux-a-vendre">Chevaux à vendre</Link>
         </li>
       </ul>

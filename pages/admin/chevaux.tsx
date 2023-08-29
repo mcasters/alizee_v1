@@ -5,7 +5,7 @@ import AccessDenied from "@/components/auth/access-denied";
 import AddHorseComponent from "@/components/admin/horse/AddHorseComponent";
 import AdminNav from "@/components/layout/AdminNav";
 import HorseListComponent from "@/components/admin/horse/HorseListComponent";
-import s from "./admin.module.css";
+import s from "@/pages/admin/admin.module.css";
 
 export default function Chevaux() {
   const { data: session } = useSession();
@@ -20,7 +20,7 @@ export default function Chevaux() {
 
   return (
     <Layout>
-      <div className={s.container}>
+      <div className={s.adminContainer}>
         <AdminNav />
         <HorseListComponent isToSell={false} />
         <AddHorseComponent isToSell={false} />

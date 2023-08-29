@@ -37,16 +37,6 @@ Home page
 Others pages
  */
 
-.line {
-  position: fixed;
-  height: var(--red-line-height);
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: var(--red);
-  z-index: 9999;
-}
-
 .container {
   position: fixed;
   top: var(--red-line-height);
@@ -55,7 +45,7 @@ Others pages
   line-height: var(--header-height);
   width: 100%;
   border-bottom: solid var(--color-xdark) 1px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
   z-index: 5;
 }
 

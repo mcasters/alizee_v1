@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import { useRef, useEffect } from "react";
 
 import Header from "./header";
 import Footer from "./footer";

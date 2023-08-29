@@ -20,7 +20,7 @@ export default function ChevauxAVendre() {
 
   return (
     <Layout>
-      <div className={s.container}>
+      <div className={s.adminContainer}>
         <AdminNav />
         <HorseListComponent isToSell={true} />
         <AddHorseComponent isToSell={true} />

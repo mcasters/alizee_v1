@@ -159,7 +159,7 @@ img {
    ========================================================================== */
 
 /**
- * 1. Change the font styles in all browsers.
+ * 1. Change the font s in all browsers.
  * 2. Remove the margin in Firefox and Safari.
  */
 
@@ -220,7 +220,7 @@ button::-moz-focus-inner,
 }
 
 /**
- * Restore the focus styles unset by the previous rule.
+ * Restore the focus s unset by the previous rule.
  */
 
 button:-moz-focusring,
@@ -367,7 +367,7 @@ template {
 /*
  * ==========================================================================
  * LAYOUT
- * Base styles
+ * Base s
  * ========================================================================== */
 
 body {
@@ -389,11 +389,13 @@ input,
 button,
 .button,
 select,
-textarea {
+textarea,
+p,
+span {
   font-family: var(--font-primary);
   font-weight: lighter;
   -webkit-font-smoothing: antialiased;
-  font-size: var(--font-size-current-plus);
+  font-size: var(--font-size-plus);
   color: var(--color-xdark);
   line-height: 1.6;
   text-align: center;
@@ -403,9 +405,14 @@ button {
   cursor: pointer;
 }
 
-h1,
 h2 {
   font-weight: lighter;
+  font-size: var(--font-size-plus-plus);
+}
+
+h1 {
+  font-weight: lighter;
+  font-size: var(--font-size-title);
 }
 
 a,
@@ -501,7 +508,7 @@ video {
 }
 
 /*
- * Remove default fieldset styles.
+ * Remove default fieldset s.
  */
 
 fieldset {
@@ -571,12 +578,12 @@ input[type="file"] {
   button,
   select,
   textarea {
-    font-size: var(--font-size-current-plus);
+    font-size: var(--font-size-plus);
   }
 }
 
 /*
- * Print styles
+ * Print s
  * Inlined to avoid the additional HTTP request:
  * http://www.phpied.com/delay-loading-your-print-css/
  * ========================================================================== */

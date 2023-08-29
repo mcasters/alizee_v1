@@ -1,3 +1,14 @@
+.adminContainer {
+    max-width: 55ch;
+    width: calc(100% - var(--space));
+    margin: calc(var(--red-line-height) + var(--header-height)) auto 8rem;
+    padding: var(--space);
+}
+
+.adminContainer h2 {
+    margin: 5em 0 2em;
+}
+
 .button {
     padding: 0 2em;
     margin: 2em auto;
@@ -6,12 +17,4 @@
     line-height: 2.7;
     outline: none;
     cursor: pointer;
-}
-
-.container {
-    margin: 10vh auto 0;
-    padding: var(--space);
-    max-width: 55ch;
-    width: calc(100% - var(--space));
-
 }

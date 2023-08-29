@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import s from "./header.module.css";
 import Nav from "@/components/layout/nav";
 import Image from "next/image";

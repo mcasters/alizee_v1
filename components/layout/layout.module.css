@@ -1,0 +1,17 @@
+.line {
+    position: fixed;
+    height: var(--red-line-height);
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--red);
+    z-index: 9999;
+}
+
+.homeMain {
+
+}
+
+.main {
+
+}
