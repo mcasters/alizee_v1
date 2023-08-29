@@ -37,7 +37,7 @@ export default async function handler(
           location: fields.location,
           horseId: fields.horseId,
         };
-    const achievement = await prisma.achievements.create({
+    const achievement = await prisma.achievement.create({
       data,
     });
 

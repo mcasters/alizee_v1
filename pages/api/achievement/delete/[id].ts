@@ -13,7 +13,7 @@ export default async function handler(
   if (session) {
     const id = Number(req.query.id);
 
-    const achievementDeleted = await prisma.achievements.delete({
+    const achievementDeleted = await prisma.achievement.delete({
       where: { id },
     });
 

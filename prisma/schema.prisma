@@ -11,34 +11,34 @@ datasource db {
 }
 
 model User {
-  id        Int     @id @default(autoincrement())
-  email     String  @unique
-  password  String
-  isAdmin   Boolean @default(true)
+  id       Int     @id @default(autoincrement())
+  email    String  @unique
+  password String
+  isAdmin  Boolean @default(true)
 }
 
 model Post {
-  id        Int     @id @default(autoincrement())
+  id        Int         @id @default(autoincrement())
   title     String
   date      DateTime
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  content   String?  @db.LongText
-  published Boolean  @default(false)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  content   String?     @db.LongText
+  published Boolean     @default(false)
   tags      Tag[]
-  viewCount Int      @default(0)
-  mainImage PostImage?   @relation("postImage")
-  images    PostImage[]  @relation("postAlbumImages")
+  viewCount Int         @default(0)
+  mainImage PostImage?  @relation("postImage")
+  images    PostImage[] @relation("postAlbumImages")
 }
 
 model PostImage {
-  id          Int     @id @default(autoincrement())
+  id          Int    @id @default(autoincrement())
   filename    String
   width       Int
   height      Int
-  postImg     Post?   @relation("postImage", fields: [postImgId], references: [id], onDelete: Cascade, onUpdate: NoAction)
-  postImgId   Int?    @unique
-  postAlbum   Post?    @relation("postAlbumImages", fields: [postAlbumId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  postImg     Post?  @relation("postImage", fields: [postImgId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  postImgId   Int?   @unique
+  postAlbum   Post?  @relation("postAlbumImages", fields: [postAlbumId], references: [id], onDelete: Cascade, onUpdate: NoAction)
   postAlbumId Int?
 }
 
@@ -49,85 +49,76 @@ model Tag {
 }
 
 model Horse {
-  id           Int     @id @default(autoincrement())
+  id           Int            @id @default(autoincrement())
   name         String
-  owner        String
+  owner        String?
   sex          String
   colour       String
-  breed        Breed? @relation("horseBreed")
+  breed        String
   breeder      String?
   dateOfBirth  DateTime
   height       Int
   sire         String
   dam          String
   damSire      String
-  description  String? @db.LongText
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-  mainImage    HorseImage?   @relation("horseImage")
-  images       HorseImage[]  @relation("horseAlbumImages")
-  achievements Achievements[] @relation("horseAchievements")
+  description  String?        @db.LongText
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  mainImage    HorseImage?    @relation("horseImage")
+  images       HorseImage[]   @relation("horseAlbumImages")
+  achievements Achievement[] @relation("horseAchievements")
 }
 
 model HorseImage {
-  id           Int     @id @default(autoincrement())
+  id           Int    @id @default(autoincrement())
   filename     String
   width        Int
   height       Int
-  horseImg     Horse?   @relation("horseImage", fields: [horseImgId], references: [id], onDelete: Cascade, onUpdate: NoAction)
-  horseImgId   Int?    @unique
-  horseAlbum   Horse?    @relation("horseAlbumImages", fields: [horseAlbumId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  horseImg     Horse? @relation("horseImage", fields: [horseImgId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  horseImgId   Int?   @unique
+  horseAlbum   Horse? @relation("horseAlbumImages", fields: [horseAlbumId], references: [id], onDelete: Cascade, onUpdate: NoAction)
   horseAlbumId Int?
 }
 
 model HorseToSell {
-  id           Int     @id @default(autoincrement())
+  id           Int                @id @default(autoincrement())
   name         String
   price        String
   sex          String
   colour       String
-  breed        Breed? @relation("horseToSellBreed")
+  breed        String
   breeder      String?
   dateOfBirth  DateTime
   height       Int
   sire         String
   dam          String
   damSire      String
-  description  String? @db.LongText
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-  mainImage    HorseToSellImage?   @relation("horseToSellImage")
-  images       HorseToSellImage[]  @relation("horseToSellAlbumImages")
-  achievements Achievements[]  @relation("horseToSellAchievements")
+  description  String?            @db.LongText
+  createdAt    DateTime           @default(now())
+  updatedAt    DateTime           @updatedAt
+  mainImage    HorseToSellImage?  @relation("horseToSellImage")
+  images       HorseToSellImage[] @relation("horseToSellAlbumImages")
+  achievements Achievement[]     @relation("horseToSellAchievements")
 }
 
 model HorseToSellImage {
-  id                 Int     @id @default(autoincrement())
+  id                 Int          @id @default(autoincrement())
   filename           String
   width              Int
   height             Int
-  horseToSellImg     HorseToSell?   @relation("horseToSellImage", fields: [horseToSellImgId], references: [id], onDelete: Cascade, onUpdate: NoAction)
-  horseToSellImgId   Int?    @unique
-  horseToSellAlbum   HorseToSell?    @relation("horseToSellAlbumImages", fields: [horseToSellAlbumId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  horseToSellImg     HorseToSell? @relation("horseToSellImage", fields: [horseToSellImgId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  horseToSellImgId   Int?         @unique
+  horseToSellAlbum   HorseToSell? @relation("horseToSellAlbumImages", fields: [horseToSellAlbumId], references: [id], onDelete: Cascade, onUpdate: NoAction)
   horseToSellAlbumId Int?
 }
 
-model Achievements {
-  id                 Int     @id @default(autoincrement())
-  year               Int
-  title              String
-  location           String
-  horse              Horse?    @relation("horseAchievements", fields: [horseId], references: [id], onDelete: Cascade, onUpdate: NoAction)
-  horseId            Int?
-  horseToSell        HorseToSell?    @relation("horseToSellAchievements", fields: [horseToSellId], references: [id], onDelete: Cascade, onUpdate: NoAction)
-  horseToSellId      Int?
-}
-
-model Breed {
-  id                 Int     @id @default(autoincrement())
-  title              String
-  horse              Horse?  @relation("horseBreed", fields: [horseId], references: [id], onUpdate: NoAction)
-  horseId            Int?   @unique
-  horseToSell        HorseToSell?  @relation("horseToSellBreed", fields: [horseToSellId], references: [id], onUpdate: NoAction)
-  horseToSellId      Int?   @unique
+model Achievement {
+  id            Int          @id @default(autoincrement())
+  year          Int
+  title         String
+  location      String
+  horse         Horse?       @relation("horseAchievements", fields: [horseId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  horseId       Int?
+  horseToSell   HorseToSell? @relation("horseToSellAchievements", fields: [horseToSellId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  horseToSellId Int?
 }
