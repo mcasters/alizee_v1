@@ -13,13 +13,13 @@ export default async function handler(
   if (session) {
     const id = Number(req.query.id);
 
-    const breedDeleted = await prisma.breed.delete({
+    const achievementDeleted = await prisma.achievements.delete({
       where: { id },
     });
 
-    return breedDeleted
+    return achievementDeleted
       ? res.status(200).redirect("/admin")
-      : res.status(404).json({ error: `No breed found.` });
+      : res.status(404).json({ error: `No achievement found.` });
   } else {
     return res.status(401).send({ error: "Unauthorized" });
   }

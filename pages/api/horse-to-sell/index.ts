@@ -20,6 +20,9 @@ export default async function handler(
         images: {
           select: { filename: true },
         },
+        achievements: {
+          select: { year: true, title: true, location: true },
+        },
       },
     });
     return horses
