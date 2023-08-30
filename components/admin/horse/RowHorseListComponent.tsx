@@ -6,11 +6,10 @@ import useModal from "@/components/form/modal/useModal";
 import Modal from "@/components/form/modal/Modal";
 import DeleteHorseButton from "@/components/admin/horse/DeleteHorseButton";
 import UpdateHorseComponent from "@/components/admin/horse/UpdateHorseComponent";
-import s from "@/components/admin/common/ListComponent.module.css";
 import AddAchievementButton from "@/components/admin/Achievement/AchievementButton";
+import s from "@/components/admin/common/ListComponent.module.css";
 
 interface RawListProps {
-  isToSell: boolean;
   horse: Horse;
 }
 

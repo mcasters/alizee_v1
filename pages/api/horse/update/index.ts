@@ -56,6 +56,8 @@ export default async function handler(
           height: Number(fields.height),
           breeder: fields.breeder,
           breed: fields.breed,
+          price: fields.price,
+          isToSell: fields.isToSell,
         },
         select: {
           mainImage: true,

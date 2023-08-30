@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 
 import { useSWRConfig } from "swr";
 import HorseForm from "@/components/form/horseForm/HorseForm";
+import { is } from "date-fns/locale";
 
 interface AddHorseProps {
   isToSell: boolean;
@@ -26,5 +27,5 @@ export default function AddHorseComponent({ isToSell }: AddHorseProps) {
     }
   };
 
-  return <HorseForm formRef={form} onSubmit={submit} isToSell />;
+  return <HorseForm formRef={form} onSubmit={submit} isToSell={isToSell} />;
 }

@@ -10,7 +10,7 @@ interface HorseListProps {
   isToSell: boolean;
 }
 export default function HorseListComponent({ isToSell }: HorseListProps) {
-  const api = isToSell ? "/api/horse-to-sell" : "/api/horse";
+  const api = "/api/horse";
   const title = isToSell ? "Liste des chevaux à vendre" : "Liste des chevaux";
   const {
     data: horses,
@@ -25,16 +25,20 @@ export default function HorseListComponent({ isToSell }: HorseListProps) {
       <h2>{title}</h2>
       <div className={s.list}>
         {isLoading && <LoadingDots />}
-        {horses &&
-          horses.map((horse: Horse) => {
-            return (
-              <RowHorseListComponent
-                key={horse.id}
-                horse={horse}
-                isToSell={isToSell}
-              />
-            );
-          })}
+        {isToSell &&
+          horses &&
+          horses
+            .filter((horse: Horse) => horse.isToSell)
+            .map((horse: Horse) => {
+              return <RowHorseListComponent key={horse.id} horse={horse} />;
+            })}
+        {!isToSell &&
+          horses &&
+          horses
+            .filter((horse: Horse) => !horse.isToSell)
+            .map((horse: Horse) => {
+              return <RowHorseListComponent key={horse.id} horse={horse} />;
+            })}
       </div>
     </div>
   );

@@ -1,6 +1,5 @@
-import { Post, Horse, HorseToSell } from "@/interfaces/index";
-const isHorse = (i: Horse | Post | HorseToSell): boolean => "name" in i;
-const isHorseToSell = (i: Horse | Post | HorseToSell): boolean => "price" in i;
+import { Post, Horse } from "@/interfaces/index";
+const isHorse = (i: Horse | Post): boolean => "name" in i;
 
 export const getDirnameFromString = (name: string) => {
   return name
@@ -16,14 +15,12 @@ export const getDirnameFromString = (name: string) => {
     .replace(/ç/gi, "c");
 };
 
-export const getDirname = (item: Horse | Post | HorseToSell) => {
+export const getDirname = (item: Horse | Post) => {
   const name = isHorse(item) ? item.name : item.title;
   return getDirnameFromString(name);
 };
 
-export const getPath = (item: Horse | Post | HorseToSell) => {
-  if (!isHorse(item)) return `/images/actu/${getDirname(item)}`;
-  if (isHorseToSell(item))
-    return `/images/chevaux-a-vendre/${getDirname(item)}`;
-  return `/images/chevaux/${getDirname(item)}`;
+export const getPath = (item: Horse | Post) => {
+  if (isHorse(item)) return `/images/chevaux/${getDirname(item)}`;
+  return `/images/actu/${getDirname(item)}`;
 };

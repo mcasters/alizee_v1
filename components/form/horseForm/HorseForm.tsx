@@ -41,7 +41,14 @@ export default function HorseForm({
 
   return (
     <form ref={formRef} className={s.form} onSubmit={onSubmit}>
-      <h2>{horse ? "Modifier un cheval" : "Ajouter un cheval"}</h2>
+      {isToSell && (
+        <h2>
+          {horse ? "Modifier un cheval à vendre" : "Ajouter un cheval à vendre"}
+        </h2>
+      )}
+      {!isToSell && (
+        <h2>{horse ? "Modifier un cheval" : "Ajouter un cheval"}</h2>
+      )}
       {horse && <input type="hidden" name="id" value={horse.id} />}
       <input type="hidden" name="isToSell" value={String(isToSell)} />
       <input

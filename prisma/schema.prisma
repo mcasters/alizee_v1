@@ -56,6 +56,7 @@ model Horse {
   colour       String
   breed        String
   breeder      String?
+  price        String?
   dateOfBirth  DateTime
   height       Int
   sire         String
@@ -67,6 +68,7 @@ model Horse {
   mainImage    HorseImage?    @relation("horseImage")
   images       HorseImage[]   @relation("horseAlbumImages")
   achievements Achievement[] @relation("horseAchievements")
+  isToSell     Boolean
 }
 
 model HorseImage {
@@ -80,38 +82,6 @@ model HorseImage {
   horseAlbumId Int?
 }
 
-model HorseToSell {
-  id           Int                @id @default(autoincrement())
-  name         String
-  price        String
-  sex          String
-  colour       String
-  breed        String
-  breeder      String?
-  dateOfBirth  DateTime
-  height       Int
-  sire         String
-  dam          String
-  damSire      String
-  description  String?            @db.LongText
-  createdAt    DateTime           @default(now())
-  updatedAt    DateTime           @updatedAt
-  mainImage    HorseToSellImage?  @relation("horseToSellImage")
-  images       HorseToSellImage[] @relation("horseToSellAlbumImages")
-  achievements Achievement[]     @relation("horseToSellAchievements")
-}
-
-model HorseToSellImage {
-  id                 Int          @id @default(autoincrement())
-  filename           String
-  width              Int
-  height             Int
-  horseToSellImg     HorseToSell? @relation("horseToSellImage", fields: [horseToSellImgId], references: [id], onDelete: Cascade, onUpdate: NoAction)
-  horseToSellImgId   Int?         @unique
-  horseToSellAlbum   HorseToSell? @relation("horseToSellAlbumImages", fields: [horseToSellAlbumId], references: [id], onDelete: Cascade, onUpdate: NoAction)
-  horseToSellAlbumId Int?
-}
-
 model Achievement {
   id            Int          @id @default(autoincrement())
   year          Int
@@ -119,6 +89,4 @@ model Achievement {
   location      String
   horse         Horse?       @relation("horseAchievements", fields: [horseId], references: [id], onDelete: Cascade, onUpdate: NoAction)
   horseId       Int?
-  horseToSell   HorseToSell? @relation("horseToSellAchievements", fields: [horseToSellId], references: [id], onDelete: Cascade, onUpdate: NoAction)
-  horseToSellId Int?
 }

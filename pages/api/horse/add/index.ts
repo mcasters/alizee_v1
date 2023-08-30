@@ -41,14 +41,10 @@ export default async function handler(
         height: Number(fields.height),
         breeder: fields.breeder,
         breed: fields.breed,
+        isToSell: fields.isToSell.toLowerCase() === "true",
+        price: fields.price,
       },
     });
-
-    /* todo
-    breed
-    achievements
-
-     */
 
     let albumImages: Enumerable<any> = [];
 
