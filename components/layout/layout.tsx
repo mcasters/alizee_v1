@@ -7,13 +7,20 @@ import { useRouter } from "next/router";
 
 export default function Layout({ children }: { children: ReactNode }) {
   const router = useRouter();
-  const isHome = router.pathname === "/";
+  const path = router.pathname;
+  const isHome = path === "/";
+  const isFullWidth = path.split("/")[1] !== "admin";
 
   return (
     <>
       {!isHome && <div className={s.line}></div>}
       <Header isHome={isHome} />
-      <main>{children}</main>
+      {!isFullWidth && (
+        <main className={s.mainWithMarge}>
+          <div className={s.wrapper}>{children}</div>
+        </main>
+      )}
+      {isFullWidth && <main>{children}</main>}
       <Footer />
     </>
   );

@@ -8,10 +8,13 @@
     z-index: 9999;
 }
 
-.homeMain {
-
+.mainWithMarge {
+    background-color: var(--color-xlight);
 }
 
-.main {
-
+.wrapper {
+    max-width: 55ch;
+    width: calc(100% - var(--space));
+    margin: calc(var(--red-line-height) + var(--header-height)) auto 8rem;
+    padding: var(--space);
 }

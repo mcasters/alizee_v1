@@ -23,7 +23,11 @@ export default function DeleteHorseButton({ id }: props) {
   };
 
   return (
-    <button onClick={handleDelete} className={s.iconButton}>
+    <button
+      onClick={handleDelete}
+      className={s.iconButton}
+      aria-label="Supprimer"
+    >
       <FiTrash2 />
     </button>
   );

@@ -57,7 +57,7 @@ export default async function handler(
           breeder: fields.breeder,
           breed: fields.breed,
           price: fields.price,
-          isToSell: fields.isToSell,
+          isToSell: fields.isToSell.toLowerCase() === "true",
         },
         select: {
           mainImage: true,

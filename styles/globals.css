@@ -390,15 +390,13 @@ button,
 .button,
 select,
 textarea,
-p,
-span {
+p {
   font-family: var(--font-primary);
   font-weight: lighter;
   -webkit-font-smoothing: antialiased;
   font-size: var(--font-size-plus);
   color: var(--color-xdark);
   line-height: 1.6;
-  text-align: center;
 }
 
 button {
@@ -408,11 +406,13 @@ button {
 h2 {
   font-weight: lighter;
   font-size: var(--font-size-plus-plus);
+  text-align: center;
 }
 
 h1 {
   font-weight: lighter;
   font-size: var(--font-size-title);
+  text-align: center;
 }
 
 a,

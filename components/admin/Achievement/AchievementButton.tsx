@@ -14,7 +14,11 @@ export default function AchievementsButton({ horse }: props) {
 
   return (
     <>
-      <button onClick={() => toggle()} className={s.iconButton}>
+      <button
+        onClick={() => toggle()}
+        className={s.iconButton}
+        aria-label="Palmarès"
+      >
         <FaAward />
       </button>
       <Modal isOpen={isOpen} toggle={toggle}>

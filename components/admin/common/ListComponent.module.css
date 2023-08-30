@@ -22,23 +22,19 @@
 
 .item {
   border-bottom: 1px dotted var(--color-light);
+  display: flex;
+  width: 100%;
+  align-items: center;
+  ;
+}
+
+.item li {
+  display: block;
+  flex: auto;
 }
 
 .title, .name {
   font-weight: bold;
-}
-
-.linkUpdate {
-  all: unset;
-  width: 100%;
-  display: block;
-  cursor: pointer;
-  color: initial;
-  padding: 1em;
-}
-
-.linkUpdate:hover {
-  background-color: var(--red-light);
 }
 
 .iconButton {
@@ -47,7 +43,7 @@
   border: none;
   background: none;
   font-size: var(--font-size-plus);
-  padding: 0 0.4em 0.4em;
+  padding: 0.3em;
   margin: 0;
   box-shadow: none;
 }

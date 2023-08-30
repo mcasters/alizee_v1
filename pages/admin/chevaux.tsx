@@ -20,11 +20,9 @@ export default function Chevaux() {
 
   return (
     <Layout>
-      <div className={s.adminContainer}>
-        <AdminNav />
-        <HorseListComponent isToSell={false} />
-        <AddHorseComponent isToSell={false} />
-      </div>
+      <AdminNav />
+      <HorseListComponent isToSell={false} />
+      <AddHorseComponent isToSell={false} />
     </Layout>
   );
 }

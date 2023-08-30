@@ -2,6 +2,11 @@
  display: inline-block;
 }
 
+.form {
+    margin: 50px 0 10px;
+    text-align: unset;
+}
+
 .form h2 {
     font-size: var(--font-size-title);
 }

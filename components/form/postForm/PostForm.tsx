@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Option, Post } from "@/interfaces/index";
-import s from "../form.module.css";
 import DayPickerComponent from "@/components/form/daypicker/DayPickerComponent";
 import Dropdown from "@/components/form/dropdown/dropdown";
 import ImageForm from "@/components/form/imageForm/ImageForm";
+import s from "../form.module.css";
 
 type PostFormProps = {
   formRef: React.MutableRefObject<null>;
