@@ -1,7 +1,8 @@
-import s from "@/components/admin/common/ListComponent.module.css";
 import { FiTrash2 } from "react-icons/fi";
 import toast from "react-hot-toast";
 import { useSWRConfig } from "swr";
+
+import s from "@/components/admin/common/ListComponent.module.css";
 
 type props = {
   id: number;
@@ -22,7 +23,7 @@ export default function DeleteHorseButton({ id }: props) {
   };
 
   return (
-    <button onClick={handleDelete} className={s.trash}>
+    <button onClick={handleDelete} className={s.iconButton}>
       <FiTrash2 />
     </button>
   );

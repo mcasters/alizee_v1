@@ -22,7 +22,7 @@ export default function AchievementComponent({ horse }: Props) {
       const formData = new FormData(form.current);
       fetch(api, { method: "POST", body: formData }).then((res) => {
         if (res.ok) {
-          toast("Palmarès ajouté");
+          toast("Résultat ajouté au palmarès");
           mutate(apiToUpdate);
         } else toast("Erreur à l'enregistrement");
       });

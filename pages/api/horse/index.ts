@@ -21,7 +21,7 @@ export default async function handler(
           select: { filename: true },
         },
         achievements: {
-          select: { year: true, title: true, location: true },
+          select: { id: true, year: true, title: true, location: true },
         },
       },
     });

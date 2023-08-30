@@ -26,16 +26,16 @@ export default async function handler(
 
     const data = isHorseToSell
       ? {
-          year: fields.year,
+          year: Number(fields.year),
           title: fields.title,
           location: fields.location,
-          horseToSellId: fields.horseToSellId,
+          horseToSellId: Number(fields.horseToSellId),
         }
       : {
-          year: fields.year,
+          year: Number(fields.year),
           title: fields.title,
           location: fields.location,
-          horseId: fields.horseId,
+          horseId: Number(fields.horseId),
         };
     const achievement = await prisma.achievement.create({
       data,

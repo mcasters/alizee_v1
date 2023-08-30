@@ -3,7 +3,7 @@ import { FaAward } from "react-icons/fa";
 import useModal from "@/components/form/modal/useModal";
 import Modal from "@/components/form/modal/Modal";
 import s from "@/components/admin/common/ListComponent.module.css";
-import { Horse, HorseToSell } from "@/interfaces/index";
+import { Horse } from "@/interfaces/index";
 import AchievementComponent from "@/components/admin/Achievement/AchievementComponent";
 
 type props = {
@@ -14,7 +14,7 @@ export default function AchievementsButton({ horse }: props) {
 
   return (
     <>
-      <button onClick={() => toggle()}>
+      <button onClick={() => toggle()} className={s.iconButton}>
         <FaAward />
       </button>
       <Modal isOpen={isOpen} toggle={toggle}>

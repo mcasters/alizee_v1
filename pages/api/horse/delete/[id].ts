@@ -19,6 +19,11 @@ export default async function handler(
     });
 
     if (horse) {
+      await prisma.achievement.deleteMany({
+        where: {
+          horseId: id,
+        },
+      });
       const dir = getHorsePath(horse.name);
       if (deleteAllFiles(dir)) {
         horseDeleted = await prisma.horse.delete({

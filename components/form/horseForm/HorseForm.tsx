@@ -25,7 +25,9 @@ export default function HorseForm({
   const [dateOfBirth, setDateOfBirth] = useState<Date>(
     horse?.dateOfBirth ? new Date(horse?.dateOfBirth) : new Date()
   );
-  const [height, setHeight] = useState<number>(horse?.height || 0);
+  const [height, setHeight] = useState<number | undefined>(
+    horse?.height || undefined
+  );
   const [sire, setSire] = useState<string>(horse?.sire || "");
   const [dam, setDam] = useState<string>(horse?.dam || "");
   const [damSire, setDamSire] = useState<string>(horse?.damSire || "");

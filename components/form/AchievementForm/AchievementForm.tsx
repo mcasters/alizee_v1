@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Horse } from "@/interfaces/index";
 import s from "../form.module.css";
@@ -9,20 +9,20 @@ interface Props {
   horse: Horse;
 }
 export default function AchievementForm(props: Props) {
-  const [year, setYear] = useState<number>(0);
+  const [year, setYear] = useState<number | undefined>(undefined);
   const [title, setTitle] = useState<string>("");
   const [location, setLocation] = useState<string>("");
 
   return (
     <form ref={props.formRef} className={s.form} onSubmit={props.onSubmit}>
-      <h2>Ajouter un palmarès à {props.horse.name}</h2>
+      <h2>Ajouter un résultat au palmarès de {props.horse.name}</h2>
       <input type="hidden" name="horseId" value={props.horse.id} />
       <input
         autoFocus
         onChange={(e) => setYear(Number(e.target.value))}
         placeholder="Year"
         name="year"
-        type="text"
+        type="number"
         value={year}
         required
       />

@@ -41,19 +41,21 @@
   background-color: var(--red-light);
 }
 
-.trash {
+.iconButton {
   width: initial;
   text-align: center;
   border: none;
   background: none;
-  font-size: var(--font-size);
+  font-size: var(--font-size-plus);
   padding: 0 0.4em 0.4em;
   margin: 0;
   box-shadow: none;
 }
 
-.trash svg {
+.iconButton svg {
+
 }
+
 
 
 
