@@ -3,42 +3,30 @@ import { format } from "date-fns";
 import { FiCheck, FiX } from "react-icons/fi";
 
 import s from "@/components/admin/common/ListComponent.module.css";
-import { Post, Option } from "@/interfaces/index";
+import { Post } from "@/interfaces/index";
 import POST from "@/constants/post";
 import DeletePostButton from "@/components/admin/post/DeletePostButton";
-import UpdatePostComponent from "@/components/admin/post/UpdatePostComponent";
-import useModal from "@/components/form/modal/useModal";
-import Modal from "@/components/form/modal/Modal";
+import UpdatePostButton from "./UpdatePostButton";
 
-interface RawListProps {
+interface Props {
   post: Post;
-  tags: Option[];
 }
 
-function RowPostListComponent(props: RawListProps) {
-  const { isOpen, toggle } = useModal();
-
+function RowPostListComponent({ post }: Props) {
   return (
     <ul className={s.item}>
-      <button onClick={() => toggle()} className={s.linkUpdate}>
-        <li>
-          <span className={s.title}>{props.post.title}</span> -{" "}
-          {format(new Date(props.post.date), POST.FORMAT_DATE)}
-        </li>
-        <li>
-          <span>Thumbnail : </span>
-          {props.post.mainImage ? <FiCheck /> : <FiX />}
-        </li>
-        <li>
-          Album photo : {props.post.images.length > 0 ? <FiCheck /> : <FiX />}
-        </li>
-      </button>
       <li>
-        <DeletePostButton id={props.post.id} />
+        <span className={s.title}>{post.title}</span> -{" "}
+        {format(new Date(post.date), POST.FORMAT_DATE)} (Thumbnail :{" "}
+        {post.mainImage ? <FiCheck /> : <FiX />} Album photo :{" "}
+        {post.images.length > 0 ? <FiCheck /> : <FiX />})
       </li>
-      <Modal isOpen={isOpen} toggle={toggle}>
-        <UpdatePostComponent post={props.post} tags={props.tags} />
-      </Modal>
+      <li>
+        <UpdatePostButton post={post} />
+      </li>
+      <li>
+        <DeletePostButton id={post.id} />
+      </li>
     </ul>
   );
 }

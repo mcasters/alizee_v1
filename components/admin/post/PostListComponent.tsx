@@ -1,21 +1,17 @@
-import useSWR from "swr";
-
 import RowPostListComponent from "@/components/admin/post/RowPostListComponent";
-import LoadingDots from "@/components/loading-dots";
-import { Post } from "@/interfaces/index";
+import { Option, Post } from "@/interfaces/index";
 import s from "@/components/admin/common/ListComponent.module.css";
+import useSWR from "swr";
+import React from "react";
+import LoadingDots from "@/components/loading-dots";
 
 export default function PostListComponent() {
+  const api = "/api/post";
   const {
     data: posts,
     error,
     isLoading,
-  } = useSWR("/api/post", (apiURL: string) =>
-    fetch(apiURL).then((res) => res.json())
-  );
-  const { data: tags } = useSWR("/api/post/tag", (apiURL: string) =>
-    fetch(apiURL).then((res) => res.json())
-  );
+  } = useSWR(api, (apiURL: string) => fetch(apiURL).then((res) => res.json()));
 
   if (error) return <div>failed to load</div>;
 
@@ -26,9 +22,7 @@ export default function PostListComponent() {
         {isLoading && <LoadingDots />}
         {posts &&
           posts.map((post: Post) => {
-            return (
-              <RowPostListComponent key={post.id} post={post} tags={tags} />
-            );
+            return <RowPostListComponent key={post.id} post={post} />;
           })}
       </div>
     </div>

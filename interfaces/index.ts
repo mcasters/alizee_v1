@@ -5,6 +5,7 @@ export type User = {
 };
 
 export type Post = {
+  type: string;
   id: number;
   title: string;
   date: string;
@@ -19,6 +20,7 @@ export type Post = {
 };
 
 export type Horse = {
+  type: string;
   id: number;
   name: string;
   owner: string | null;
@@ -58,6 +60,7 @@ export type Option = {
 };
 
 export type Achievement = {
+  type: string;
   id: number;
   year: number;
   title: string;

@@ -3,13 +3,9 @@ import toast from "react-hot-toast";
 
 import { Option } from "@/interfaces/index";
 import { useSWRConfig } from "swr";
-import PostForm from "@/components/form/postForm/PostForm";
+import PostForm from "@/components/admin/form/postForm/PostForm";
 
-type AddPostProps = {
-  tags: Option[];
-};
-
-const AddPostComponent = (props: AddPostProps) => {
+const AddPostComponent = () => {
   const form = useRef(null);
   const { mutate } = useSWRConfig();
 
@@ -26,7 +22,7 @@ const AddPostComponent = (props: AddPostProps) => {
     }
   };
 
-  return <PostForm formRef={form} onSubmit={submit} options={props.tags} />;
+  return <PostForm formRef={form} onSubmit={submit} />;
 };
 
 export default AddPostComponent;

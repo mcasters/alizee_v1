@@ -47,5 +47,6 @@ Others pages
   border-bottom: solid var(--color-xdark) 1px;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
   z-index: 5;
+  text-align: center;
 }
 

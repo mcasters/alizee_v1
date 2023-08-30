@@ -1,5 +1,5 @@
 import { Post, Horse } from "@/interfaces/index";
-const isHorse = (i: Horse | Post): boolean => "name" in i;
+export const getIsHorse = (i: Horse | Post): boolean => "name" in i;
 
 export const getDirnameFromString = (name: string) => {
   return name
@@ -16,11 +16,11 @@ export const getDirnameFromString = (name: string) => {
 };
 
 export const getDirname = (item: Horse | Post) => {
-  const name = isHorse(item) ? item.name : item.title;
+  const name = getIsHorse(item) ? item.name : item.title;
   return getDirnameFromString(name);
 };
 
 export const getPath = (item: Horse | Post) => {
-  if (isHorse(item)) return `/images/chevaux/${getDirname(item)}`;
+  if (getIsHorse(item)) return `/images/chevaux/${getDirname(item)}`;
   return `/images/actu/${getDirname(item)}`;
 };

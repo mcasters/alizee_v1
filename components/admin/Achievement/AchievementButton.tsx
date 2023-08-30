@@ -1,7 +1,7 @@
 import { FaAward } from "react-icons/fa";
 
-import useModal from "@/components/form/modal/useModal";
-import Modal from "@/components/form/modal/Modal";
+import useModal from "@/components/admin/form/modal/useModal";
+import Modal from "@/components/admin/form/modal/Modal";
 import s from "@/components/admin/common/ListComponent.module.css";
 import { Horse } from "@/interfaces/index";
 import AchievementComponent from "@/components/admin/Achievement/AchievementComponent";

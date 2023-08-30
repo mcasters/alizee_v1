@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import toast from "react-hot-toast";
 
 import { useSWRConfig } from "swr";
-import HorseForm from "@/components/form/horseForm/HorseForm";
+import HorseForm from "@/components/admin/form/horseForm/HorseForm";
 import { is } from "date-fns/locale";
 
 interface AddHorseProps {

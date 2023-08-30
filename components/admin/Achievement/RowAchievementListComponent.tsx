@@ -13,7 +13,7 @@ interface Props {
 export default function RowAchievementListComponent({ achievement }: Props) {
   const { mutate } = useSWRConfig();
   const api = "/api/achievement/delete";
-  const apiToUpdate = "/api/horse";
+  const apiToUpdate = "/api/achievement";
 
   const handleDelete = async () => {
     if (confirm("Sûr de vouloir supprimer ?")) {

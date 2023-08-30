@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { useSWRConfig } from "swr";
 
 import { Horse } from "@/interfaces/index";
-import AchievementForm from "@/components/form/AchievementForm/AchievementForm";
+import AchievementForm from "@/components/admin/form/AchievementForm/AchievementForm";
 import AchievementListComponent from "./AchievementListComponent";
 
 interface Props {
@@ -14,7 +14,7 @@ export default function AchievementComponent({ horse }: Props) {
   const form = useRef(null);
   const { mutate } = useSWRConfig();
   const api = "/api/achievement/add";
-  const apiToUpdate = "/api/horse";
+  const apiToUpdate = "/api/achievement";
 
   const submit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

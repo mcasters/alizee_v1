@@ -4,7 +4,7 @@ import { FiTrash2 } from "react-icons/fi";
 
 import { Horse, HorseToSell, Post } from "@/interfaces/index";
 import { getPath } from "@/utils/commonUtils";
-import s from "@/components/form/form.module.css";
+import s from "@/components/admin/form/form.module.css";
 
 type ImageFormProps = {
   item: Horse | Post | HorseToSell | null;

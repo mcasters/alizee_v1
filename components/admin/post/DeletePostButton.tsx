@@ -1,7 +1,8 @@
-import s from "@/components/admin/common/ListComponent.module.css";
 import { FiTrash2 } from "react-icons/fi";
-import toast from "react-hot-toast";
 import { useSWRConfig } from "swr";
+import toast from "react-hot-toast";
+
+import s from "@/components/admin/common/ListComponent.module.css";
 
 type props = {
   id: number;
@@ -12,7 +13,7 @@ function DeletePostButton({ id }: props) {
     if (confirm("Sûr de vouloir supprimer ?")) {
       fetch(`/api/post/delete/${id}`).then((res) => {
         if (res.ok) {
-          toast("Post effacé");
+          toast("Post supprimé");
           mutate("/api/post");
         } else toast("Erreur à la suppression");
       });
@@ -20,7 +21,7 @@ function DeletePostButton({ id }: props) {
   };
 
   return (
-    <button onClick={handleDelete} className={s.trash}>
+    <button onClick={handleDelete} className={s.iconButton}>
       <FiTrash2 />
     </button>
   );

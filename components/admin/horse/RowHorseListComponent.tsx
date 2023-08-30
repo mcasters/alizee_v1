@@ -4,7 +4,7 @@ import { FiCheck, FiX } from "react-icons/fi";
 import { Horse } from "@/interfaces/index";
 import DeleteHorseButton from "@/components/admin/horse/DeleteHorseButton";
 import AddAchievementButton from "@/components/admin/Achievement/AchievementButton";
-import UpdateButton from "@/components/admin/horse/UpdateButton";
+import UpdateHorseButton from "@/components/admin/horse/UpdateHorseButton";
 import s from "@/components/admin/common/ListComponent.module.css";
 
 interface RawListProps {
@@ -20,7 +20,7 @@ export default function RowHorseListComponent({ horse }: RawListProps) {
         Album photo : {horse.images.length > 0 ? <FiCheck /> : <FiX />})
       </li>
       <li>
-        <UpdateButton horse={horse} />
+        <UpdateHorseButton horse={horse} />
       </li>
       <li>
         <AddAchievementButton horse={horse} />

@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { useSWRConfig } from "swr";
 
 import { Option } from "@/interfaces/index";
-import PostForm from "@/components/form/postForm/PostForm";
+import PostForm from "@/components/admin/form/postForm/PostForm";
 import { Post } from "@/interfaces/index";
 
 type UpdateProps = {
@@ -30,14 +30,7 @@ const UpdatePostComponent = (props: UpdateProps) => {
     }
   };
 
-  return (
-    <PostForm
-      formRef={form}
-      onSubmit={submit}
-      options={props.tags}
-      post={props.post}
-    />
-  );
+  return <PostForm formRef={form} onSubmit={submit} post={props.post} />;
 };
 
 export default UpdatePostComponent;

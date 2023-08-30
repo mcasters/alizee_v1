@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 import { Horse } from "@/interfaces/index";
-import DayPickerComponent from "@/components/form/daypicker/DayPickerComponent";
-import ImageForm from "@/components/form/imageForm/ImageForm";
+import DayPickerComponent from "@/components/admin/form/daypicker/DayPickerComponent";
+import ImageForm from "@/components/admin/form/imageForm/ImageForm";
 import s from "../form.module.css";
 
 interface HorseFormProps {

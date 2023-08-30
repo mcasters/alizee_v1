@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { Option, Post } from "@/interfaces/index";
-import DayPickerComponent from "@/components/form/daypicker/DayPickerComponent";
-import Dropdown from "@/components/form/dropdown/dropdown";
-import ImageForm from "@/components/form/imageForm/ImageForm";
+import DayPickerComponent from "@/components/admin/form/daypicker/DayPickerComponent";
+import Dropdown from "@/components/admin/form/dropdown/dropdown";
+import ImageForm from "@/components/admin/form/imageForm/ImageForm";
 import s from "../form.module.css";
 
 type PostFormProps = {
   formRef: React.MutableRefObject<null>;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  options: Option[];
   post?: Post;
 };
 function PostForm(props: PostFormProps) {
@@ -47,15 +46,8 @@ function PostForm(props: PostFormProps) {
         rows={10}
         value={content}
       />
-      <Dropdown
-        placeHolder="Tags..."
-        options={props.options}
-        isMulti
-        isSearchable
-        selectedValues={props.post?.tags || []}
-      />
       <ImageForm item={props.post ? props.post : null} />
-      <div className={s.separate}>
+      <div>
         <input
           disabled={!title || !content || !date}
           type="submit"
