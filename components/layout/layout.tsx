@@ -10,18 +10,21 @@ export default function Layout({ children }: { children: ReactNode }) {
   const path = router.pathname;
   const rootPath = path.split("/")[1];
   const isHome = rootPath === "";
-  const isFullWidth = rootPath !== "admin" && rootPath !== "actualites";
+  const fullWidth =
+    rootPath === "admin" || rootPath === "actualites" || rootPath === "chevaux";
+  console.log(rootPath);
+  console.log(fullWidth);
 
   return (
     <>
       {!isHome && <div className={s.line}></div>}
       <Header isHome={isHome} />
-      {!isFullWidth && (
+      {!fullWidth && (
         <main className={s.mainWithMarge}>
           <div className={s.wrapper}>{children}</div>
         </main>
       )}
-      {isFullWidth && <main>{children}</main>}
+      {fullWidth && <main>{children}</main>}
       <Footer />
     </>
   );

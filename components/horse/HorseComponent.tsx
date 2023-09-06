@@ -15,7 +15,11 @@ export default function HorseComponent({ horse }: Props) {
   return (
     <section className={s.section}>
       <figure className={s.figure}>
-        <img src={`/${horse.name}.jpeg`} />
+        <Image
+          src={`${path}/${horse.mainImage.filename}`}
+          fill
+          alt={horse.name}
+        />
       </figure>
       <article id={`${horse.id}`} className={s.article}>
         <h1>{horse.name}</h1>
