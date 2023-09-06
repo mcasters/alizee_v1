@@ -12,6 +12,9 @@ export default async function handler(
 
   if (session) {
     const posts = await prisma.post.findMany({
+      orderBy: {
+        date: "desc",
+      },
       include: {
         mainImage: {
           select: { filename: true },

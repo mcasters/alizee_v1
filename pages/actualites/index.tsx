@@ -3,8 +3,9 @@ import { GetServerSideProps } from "next";
 
 import prisma from "@/lib/prisma";
 import Layout from "@/components/layout/layout";
-import PostListComponent from "@/components/post/PostListComponent";
+import PostResumeComponent from "@/components/post/PostResumeComponent";
 import { Post } from "@/interfaces/index";
+import s from "./post.module.css";
 
 export type PostProps = {
   posts: [Post];
@@ -12,6 +13,9 @@ export type PostProps = {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const res = await prisma.post.findMany({
+    orderBy: {
+      date: "desc",
+    },
     include: {
       mainImage: {
         select: { filename: true, width: true, height: true },
@@ -32,7 +36,9 @@ export default function PostListPage({ posts }: PostProps) {
       <h1>Actualités</h1>
       <ul>
         {posts &&
-          posts.map((post) => <PostListComponent key={post.id} post={post} />)}
+          posts.map((post) => (
+            <PostResumeComponent key={post.id} post={post} />
+          ))}
       </ul>
     </Layout>
   );

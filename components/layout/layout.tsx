@@ -8,8 +8,9 @@ import { useRouter } from "next/router";
 export default function Layout({ children }: { children: ReactNode }) {
   const router = useRouter();
   const path = router.pathname;
-  const isHome = path === "/";
-  const isFullWidth = path.split("/")[1] !== "admin";
+  const rootPath = path.split("/")[1];
+  const isHome = rootPath === "";
+  const isFullWidth = rootPath !== "admin" && rootPath !== "actualites";
 
   return (
     <>
