@@ -389,14 +389,14 @@ input,
 button,
 .button,
 select,
-textarea,
-p {
+textarea {
   font-family: var(--font-primary);
   font-weight: lighter;
   -webkit-font-smoothing: antialiased;
   font-size: var(--font-size-plus);
-  color: var(--color-xdark);
+  color: var(--color-xlight);
   line-height: 1.6;
+  background-color: hsl(5, 15%, 5%);
 }
 
 button {

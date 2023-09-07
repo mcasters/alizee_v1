@@ -11,9 +11,7 @@ export default function Layout({ children }: { children: ReactNode }) {
   const rootPath = path.split("/")[1];
   const isHome = rootPath === "";
   const fullWidth =
-    rootPath === "admin" || rootPath === "actualites" || rootPath === "chevaux";
-  console.log(rootPath);
-  console.log(fullWidth);
+    isHome || rootPath === "chevaux" || rootPath === "chevaux-a-vendre";
 
   return (
     <>

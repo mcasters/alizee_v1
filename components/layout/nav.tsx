@@ -15,9 +15,6 @@ export default function Nav({ isHome }: NavProps) {
           <Link href="/">Home</Link>
         </li>
         <li className={s.navItem}>
-          <Link href="/presentation">Présentation</Link>
-        </li>
-        <li className={s.navItem}>
           <Link href="/actualites">Actualités</Link>
         </li>
         <li className={s.navItem}>
