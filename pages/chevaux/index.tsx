@@ -13,6 +13,9 @@ export type PostProps = {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const res = await prisma.horse.findMany({
+    where: {
+      isToSell: false,
+    },
     include: {
       mainImage: {
         select: { filename: true, height: true, width: true },
@@ -51,7 +54,7 @@ export default function HorsePage({ horses }: PostProps) {
             ))}
         </section>
         {horses.map((horse) => (
-          <HorseComponent key={horse.id} horse={horse} />
+          <HorseComponent key={horse.id} horse={horse} isToSell={false} />
         ))}
       </div>
     </Layout>

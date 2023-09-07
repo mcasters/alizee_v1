@@ -8,8 +8,9 @@ import s from "./HorseComponent.module.css";
 
 interface Props {
   horse: Horse;
+  isToSell: boolean;
 }
-export default function HorseComponent({ horse }: Props) {
+export default function HorseComponent({ horse, isToSell }: Props) {
   const path = getPath(horse);
 
   return (
@@ -26,12 +27,29 @@ export default function HorseComponent({ horse }: Props) {
         <p className={s.info}>
           {horse.sex} {horse.colour.toLowerCase()}, {horse.breed},{" "}
           {horse.height} cm, {horse.sex === "jument" ? "née en " : "né en "}
-          <time>{new Date(horse.dateOfBirth).getFullYear()}</time>
-          {horse.breeder ? ` chez ${horse.breeder}` : ""}
-          {horse.owner ? `, et appartenant à ${horse.owner}.` : "."}
+          <time>{new Date(horse.dateOfBirth).getFullYear()}.</time>
           <br />
           <br />
-          Par {horse.sire} et {horse.dam} par {horse.damSire}
+          Par {horse.sire} et {horse.dam} par {horse.damSire}.
+          {horse.breeder && (
+            <>
+              <br />
+              <br />
+              Éleveur : {horse.breeder}
+            </>
+          )}
+          {!isToSell && horse.owner && (
+            <>
+              <br /> Propriétaire : {horse.owner}
+            </>
+          )}
+          {isToSell && (
+            <>
+              <br />
+              <br />
+              <br /> Prix : {horse.price}
+            </>
+          )}
         </p>
         {horse.mainImage && (
           <Image

@@ -58,27 +58,18 @@ Parallax
     );
 }
 
-@keyframes fadein {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 .article {
     position: relative;
-    margin: -70vh auto 10vh;
+    margin: -70vh auto 20vh;
     padding: var(--space);
     max-width: 60ch;
     width: calc(100% - var(--space));
-    color: hsl(0, 0%, 95%);
     background: hsla(5, 15%, 5%, 0.9);
 }
 
-.article > * + * {
-    margin-top: 2rem;
+.info, .description {
+    margin-top: 2em;
 }
-
 
 /*
 Content
