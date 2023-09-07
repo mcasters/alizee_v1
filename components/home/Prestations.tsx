@@ -5,7 +5,7 @@ export default function Prestations() {
   return (
     <section className={`${s.parallaxGroup} ${s.prestationsGroup}`}>
       <figure className={`${s.parallaxLayer} ${s.figure}`}>
-        <img src={`/figo-barbaste.jpeg`} />
+        <img src={`/image_1.jpeg`} />
       </figure>
       <article className={`${s.parallaxLayer} ${s.article}`}>
         <h1>Mes prestations</h1>

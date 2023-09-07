@@ -72,7 +72,3 @@ export const DataType = {
   HORSE: "horse",
   HORSE_TO_SELL: "post-to-sell",
 };
-
-export interface HTMLInputEvent extends Event {
-  target: HTMLInputElement & EventTarget;
-}

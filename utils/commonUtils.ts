@@ -1,7 +1,8 @@
 import { Post, Horse } from "@/interfaces/index";
-export const getIsHorse = (i: Horse | Post): boolean => "name" in i;
+export const isHorse = (i: Horse | Post): boolean =>
+  Object.keys(i).includes("name");
 
-export const getDirnameFromString = (name: string) => {
+export const getDirnameFromNameOrTitle = (name: string) => {
   return name
     .toLowerCase()
     .split(" " || "'")
@@ -15,12 +16,14 @@ export const getDirnameFromString = (name: string) => {
     .replace(/ç/gi, "c");
 };
 
-export const getDirname = (item: Horse | Post) => {
-  const name = getIsHorse(item) ? item.name : item.title;
-  return getDirnameFromString(name);
+export const createItem = <T extends Horse | Post>(
+  item: T
+): T extends Horse ? Horse : Post => {
+  return item as any;
 };
 
-export const getPath = (item: Horse | Post) => {
-  if (getIsHorse(item)) return `/images/chevaux/${getDirname(item)}`;
-  return `/images/actu/${getDirname(item)}`;
+export const getPath = (item: any) => {
+  if (isHorse(item))
+    return `/images/chevaux/${getDirnameFromNameOrTitle(item.name)}`;
+  return `/images/actu/${getDirnameFromNameOrTitle(item.title)}`;
 };

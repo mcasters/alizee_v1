@@ -8,7 +8,7 @@ interface HeaderProps {
 }
 
 export default function Header({ isHome }: HeaderProps) {
-  const videoRef = useRef(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     if (videoRef.current) videoRef.current.playbackRate = 0.6;

@@ -7,7 +7,7 @@ import { getServerSession } from "next-auth/next";
 
 import { resizeAndSaveImage } from "@/utils/serverSideUtils";
 import { createDir, parseFormData } from "@/utils/serverSideUtils";
-import { getDirnameFromString } from "@/utils/commonUtils";
+import { getDirnameFromNameOrTitle } from "@/utils/commonUtils";
 import { Prisma } from ".prisma/client";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 

@@ -7,7 +7,7 @@ import { getServerSession } from "next-auth/next";
 
 import { resizeAndSaveImage } from "@/utils/serverSideUtils";
 import { createDir, parseFormData } from "@/utils/serverSideUtils";
-import { getDirnameFromString } from "@/utils/commonUtils";
+import { getDirnameFromNameOrTitle } from "@/utils/commonUtils";
 import { Prisma } from ".prisma/client";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
@@ -22,7 +22,7 @@ export default async function handler(
 
   if (session) {
     const { fields, files } = await parseFormData(req, res);
-    const dirName = getDirnameFromString(fields.name);
+    const dirName = getDirnameFromNameOrTitle(fields.name);
     const dir = join(`${serverLibraryPath}`, "chevaux", `${dirName}`);
 
     createDir(dir);

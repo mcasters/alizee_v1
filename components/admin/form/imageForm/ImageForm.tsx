@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { FiTrash2 } from "react-icons/fi";
 
-import { Horse, HorseToSell, Post } from "@/interfaces/index";
+import { Horse, Post } from "@/interfaces/index";
 import { getPath } from "@/utils/commonUtils";
 import s from "@/components/admin/form/form.module.css";
 
 type ImageFormProps = {
-  item: Horse | Post | HorseToSell | null;
+  item: Horse | Post | null;
 };
 
 export default function ImageForm({ item }: ImageFormProps) {
@@ -21,7 +21,7 @@ export default function ImageForm({ item }: ImageFormProps) {
       ? item.images.map((image) => image.filename)
       : [];
   });
-  const dir = item !== null ? getPath(item) : undefined;
+  const path = item !== null ? getPath(item) : undefined;
 
   const deleteMainFile = () => {
     setExistantMain("");
@@ -66,7 +66,7 @@ export default function ImageForm({ item }: ImageFormProps) {
       {existantMain !== "" && (
         <>
           <Image
-            src={`${dir}/${existantMain}`}
+            src={`${path}/${existantMain}`}
             alt="image principale"
             width={100}
             height={100}
@@ -86,7 +86,7 @@ export default function ImageForm({ item }: ImageFormProps) {
         existantAlbum.map((filename) => (
           <div key={filename} className={s.imageContainer}>
             <Image
-              src={`${dir}/${filename}`}
+              src={`${path}/${filename}`}
               alt="image album"
               width={100}
               height={100}

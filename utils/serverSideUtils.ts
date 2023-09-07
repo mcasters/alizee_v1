@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import multer from "multer";
 import { mkdir, stat, rm, rename } from "fs";
 import sharp from "sharp";
-import { getDirnameFromString } from "@/utils/commonUtils";
+import { getDirnameFromNameOrTitle } from "@/utils/commonUtils";
 import { join } from "path";
 
 const serverLibraryPath = process.env.PHOTOS_PATH;
@@ -29,12 +29,12 @@ export const parseFormData = async (
 };
 
 export const getActuPath = (title: string) => {
-  const dirName = getDirnameFromString(title);
+  const dirName = getDirnameFromNameOrTitle(title);
   return join(`${serverLibraryPath}`, "actu", `${dirName}`);
 };
 
 export const getHorsePath = (name: string) => {
-  const dirName = getDirnameFromString(name);
+  const dirName = getDirnameFromNameOrTitle(name);
   return join(`${serverLibraryPath}`, "chevaux", `${dirName}`);
 };
 
