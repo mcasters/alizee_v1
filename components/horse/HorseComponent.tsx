@@ -16,11 +16,7 @@ export default function HorseComponent({ horse, isToSell }: Props) {
   return (
     <section className={s.section}>
       <figure className={s.figure}>
-        <Image
-          src={`${path}/${horse.mainImage.filename}`}
-          fill
-          alt={horse.name}
-        />
+        <Image src={`${path}/${horse.mainImage.filename}`} alt={horse.name} />
       </figure>
       <article id={`${horse.id}`} className={s.article}>
         <h1>{horse.name}</h1>
